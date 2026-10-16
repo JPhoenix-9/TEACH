@@ -36,10 +36,13 @@ export default function Header() {
           </nav>
 
           <div className="account-nav">
-            <button className="search-button" type="button" aria-label="Search">⌕</button>
-            <a href="/my-desk">My Desk</a>
+            <label className="header-search">
+              <span aria-hidden="true">⌕</span>
+              <input type="search" placeholder="Search TEACH" aria-label="Search TEACH" />
+            </label>
+            <a className="my-desk-button" href="/my-desk">My Desk</a>
             <a className="create-account" href="/create-account">Create a Free Account</a>
-            <a href="/login">Log In</a>
+            <a className="login-button" href="/login">Log In</a>
           </div>
         </div>
       </div>
