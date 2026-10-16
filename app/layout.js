@@ -1,15 +1,14 @@
-{
-  "name": "teach",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  }
+import "./globals.css";
+
+export const metadata = {
+  title: "TEACH",
+  description: "Teaching Excellence and Christianity at Home",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }
