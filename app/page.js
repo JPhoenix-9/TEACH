@@ -7,6 +7,8 @@ export default function Home() {
       <Header />
       <main>
         <section className="home-hero">
+          <div className="hero-art" aria-hidden="true" />
+          <div className="hero-wash" aria-hidden="true" />
           <div className="hero-copy">
             <h1>Extraordinary<br />education happens<br />at <strong>HOME.</strong></h1>
             <p>Practical tools. Trusted guidance.<br />A more confident journey.</p>
@@ -16,7 +18,6 @@ export default function Home() {
             </div>
             <div className="hero-flourish" aria-hidden="true"><span /><b>❧</b><span /></div>
           </div>
-          <div className="hero-reference" aria-hidden="true" />
         </section>
         <div id="explore" />
       </main>
