@@ -50,11 +50,26 @@ a {
 }
 
 .brand-mark {
-  font-size: 34px;
-  line-height: 1;
-  margin-right: 9px;
-  color: #6c7650;
-  transform: rotate(-12deg);
+  width: 31px;
+  height: 43px;
+  flex: 0 0 auto;
+  margin-right: 8px;
+  overflow: visible;
+}
+
+.botanical-stem {
+  fill: none;
+  stroke: #737b58;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.botanical-leaf {
+  fill: #7c8460;
+  stroke: #737b58;
+  stroke-width: 0.65;
+  stroke-linejoin: round;
 }
 
 .brand-copy {
