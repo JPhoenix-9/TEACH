@@ -13,7 +13,6 @@ export default function Header() {
     ["Planner", "/planner"],
     ["Library", "/library"],
     ["Webinars", "/webinars"],
-    ["Front Porch", "/front-porch"],
     ["About", "/about"],
   ];
 
@@ -41,6 +40,7 @@ export default function Header() {
               <input type="search" placeholder="Search TEACH" aria-label="Search TEACH" />
             </label>
             <a className="my-desk-button" href="/my-desk">My Desk</a>
+            <a className="front-porch-button" href="/front-porch">Front Porch</a>
             <a className="create-account" href="/create-account">Create a Free Account</a>
             <a className="login-button" href="/login">Log In</a>
           </div>
