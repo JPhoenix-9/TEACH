@@ -1,14 +1,14 @@
 import Header from "./components/Header";
 
 const destinations = [
-  { icon: "📚", title: "Courses & Curriculum", text: "Thoughtful resources for learning at home.", href: "/curriculum" },
-  { icon: "⚙", title: "Generators", text: "Tools that help turn ideas, learning, and experience into something useful.", href: "/generators" },
-  { icon: "▱", title: "Homeschool Success Blueprint", text: "A practical path for building a homeschool that fits your family.", href: "/blueprint" },
-  { icon: "▣", title: "Planner & Attendance", text: "Keep the essentials organized without turning home into school administration.", href: "/planner" },
-  { icon: "🚪", title: "TEACH Library", text: "Free articles, guidance, ideas, and resources to return to whenever you need them.", href: "/library" },
-  { icon: "▰", title: "Webinars & Videos", text: "Watch practical teaching and homeschool guidance on your own time.", href: "/webinars" },
-  { icon: "⌂", title: "The Front Porch", text: "A welcoming place for conversation, encouragement, and community.", href: "/front-porch" },
-  { icon: "✦", title: "My Desk", text: "Your personal TEACH home for the tools, resources, and work that belong to you.", href: "/my-desk" },
+  { image: "/Icons/courses-curriculum.png", title: "Courses & Curriculum", text: "Thoughtful resources for learning at home.", href: "/curriculum" },
+  { image: "/Icons/generators.png", title: "Generators", text: "Tools that help turn ideas, learning, and experience into something useful.", href: "/generators" },
+  { image: "/Icons/blueprint.png", title: "Homeschool Success Blueprint", text: "A practical path for building a homeschool that fits your family.", href: "/blueprint" },
+  { image: "/Icons/planner.png", title: "Planner & Attendance", text: "Keep the essentials organized without turning home into school administration.", href: "/planner" },
+  { image: "/Icons/library.png", title: "TEACH Library", text: "Free articles, guidance, ideas, and resources to return to whenever you need them.", href: "/library" },
+  { image: "/Icons/webinars.png", title: "Webinars & Videos", text: "Watch practical teaching and homeschool guidance on your own time.", href: "/webinars" },
+  { image: "/Icons/front-porch.png", title: "The Front Porch", text: "A welcoming place for conversation, encouragement, and community.", href: "/front-porch" },
+  { image: "/Icons/my-desk.png", title: "My Desk", text: "Your personal TEACH home for the tools, resources, and work that belong to you.", href: "/my-desk" },
 ];
 
 export default function Home() {
@@ -39,8 +39,8 @@ export default function Home() {
           <div className="destination-grid">
             {destinations.map((item) => (
               <a className="destination-card" href={item.href} key={item.title}>
-                <div className="destination-icon" aria-hidden="true">{item.icon}</div>
-                <div>
+                <img className="destination-image" src={item.image} alt="" aria-hidden="true" />
+                <div className="destination-card-copy">
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                   <span className="destination-link">Explore →</span>
