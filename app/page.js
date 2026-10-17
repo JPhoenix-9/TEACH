@@ -1,5 +1,16 @@
 import Header from "./components/Header";
 
+const destinations = [
+  { icon: "📚", title: "Courses & Curriculum", text: "Thoughtful resources for learning at home.", href: "/curriculum" },
+  { icon: "⚙", title: "Generators", text: "Tools that help turn ideas, learning, and experience into something useful.", href: "/generators" },
+  { icon: "▱", title: "Homeschool Success Blueprint", text: "A practical path for building a homeschool that fits your family.", href: "/blueprint" },
+  { icon: "▣", title: "Planner & Attendance", text: "Keep the essentials organized without turning home into school administration.", href: "/planner" },
+  { icon: "🚪", title: "TEACH Library", text: "Free articles, guidance, ideas, and resources to return to whenever you need them.", href: "/library" },
+  { icon: "▰", title: "Webinars & Videos", text: "Watch practical teaching and homeschool guidance on your own time.", href: "/webinars" },
+  { icon: "⌂", title: "The Front Porch", text: "A welcoming place for conversation, encouragement, and community.", href: "/front-porch" },
+  { icon: "✦", title: "My Desk", text: "Your personal TEACH home for the tools, resources, and work that belong to you.", href: "/my-desk" },
+];
+
 export default function Home() {
   return (
     <>
@@ -16,10 +27,48 @@ export default function Home() {
               <a className="hero-primary" href="#explore">Explore TEACH</a>
               <a className="hero-secondary" href="/create-account">Create a Free Account</a>
             </div>
-            <div className="hero-flourish" aria-hidden="true"><span /><b>❧</b><span /></div>
           </div>
         </section>
-        <div id="explore" />
+
+        <section className="explore-section" id="explore">
+          <div className="section-heading">
+            <span>MAKE YOURSELF AT HOME</span>
+            <h2>Explore TEACH</h2>
+            <p>Start wherever your family needs help today. You never have to follow a prescribed path.</p>
+          </div>
+          <div className="destination-grid">
+            {destinations.map((item) => (
+              <a className="destination-card" href={item.href} key={item.title}>
+                <div className="destination-icon" aria-hidden="true">{item.icon}</div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                  <span className="destination-link">Explore →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="home-guidance">
+          <div className="guidance-card start-card">
+            <span className="eyebrow">NOT SURE WHERE TO START?</span>
+            <h2>Tell us what you need.</h2>
+            <p>You do not have to understand everything TEACH offers before you begin. Start with the problem in front of you and find the tools and guidance that fit.</p>
+            <a href="/start">Help me find my way →</a>
+          </div>
+          <div className="guidance-card free-card">
+            <span className="eyebrow">FREE TO EXPLORE</span>
+            <h2>Come in before you buy anything.</h2>
+            <p>Create a free account, browse the Library, discover free resources, and get to know TEACH. An account adds capability; it does not put the house behind a paywall.</p>
+            <a href="/create-account">Create a free account →</a>
+          </div>
+        </section>
+
+        <section className="home-belief">
+          <p className="belief-quote">“Home is not where we recreate school. Home is the educational environment.”</p>
+          <p className="belief-copy">TEACH exists to help parents use the relationships, rhythms, interests, work, books, conversations, and ordinary life already around them to give their children an extraordinary education.</p>
+        </section>
       </main>
     </>
   );
