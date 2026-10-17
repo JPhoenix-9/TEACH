@@ -20,6 +20,7 @@ export default function Home() {
         <section className="home-hero">
           <div className="hero-art" aria-hidden="true" />
           <img className="hero-children" src="/TEACH-hero-children.png" alt="" aria-hidden="true" />
+          <div className="hero-desk-occlusion" aria-hidden="true" />
           <div className="hero-wash" aria-hidden="true" />
           <div className="hero-copy">
             <h1>Extraordinary<br />education happens<br />at <strong>HOME.</strong></h1>
