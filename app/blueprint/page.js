@@ -75,7 +75,8 @@ export default function Blueprint() {
 
       <section className={styles.enroll} id="enroll">
         <p className={styles.eyebrow}>YOUR NEXT STEP</p><h2>Give your homeschool<br />a thoughtful beginning.</h2><p>Six modules. Your own pace. Guidance for the decisions ahead.</p>
-        <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">View current pricing & enrollment ↗</a>
+        <p><strong>Christmas Special</strong><br /><del>$279</del> <strong>$199</strong><br />Save $80 this Christmas.</p>
+        <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">Enroll for $199 ↗</a>
         <p className={styles.small}>Enrollment currently opens on our Homeschool-911 website.</p>
       </section>
       <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/">Return to TEACH →</a></footer>
