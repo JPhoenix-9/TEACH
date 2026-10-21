@@ -56,7 +56,7 @@ export default function GAP() {
       <section className={styles.section} id="choose">
         <div className={styles.center}><p className={styles.eyebrow}>FOUR PACKAGES. ONE CLEAR NEXT STEP.</p><h2>Choose your child’s grade band.</h2><p>Each GAP package is prepared for its grade range and provides a starting plan for 4–6 weeks.</p></div>
         <div className={styles.packages}>{packages.map(item => <article key={item.id} id={`grades-${item.id}`}>
-          <p className={styles.eyebrow}>GAP CURRICULUM</p><h3><span>Grades</span>{item.grades}</h3><p>{item.label}</p><ul><li>4–6 week starting plan</li><li>Reading lists and checklists</li><li>Instructions and creative ideas</li></ul><a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer" aria-label={`View pricing and options for GAP grades ${item.grades}`}>View options & pricing ↗</a>
+          <p className={styles.eyebrow}>GAP CURRICULUM</p><h3><span>Grades</span>{item.grades}</h3><p>{item.label}</p><ul><li>4–6 week starting plan</li><li>Reading lists and checklists</li><li>Instructions and creative ideas</li></ul><p><strong>Christmas Sale</strong><br /><del>$129</del> <strong>$79</strong><br />Save $50</p><a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer" aria-label={`Choose GAP grades ${item.grades} for $79`}>Choose this package · $79 ↗</a>
         </article>)}</div>
         <p className={styles.note}>Pricing and enrollment currently open on Homeschool-911. Select the matching grade band there.</p>
       </section>
