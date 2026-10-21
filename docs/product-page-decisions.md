@@ -12,6 +12,6 @@ Draft implementation notes:
 
 - /curriculum/gap uses the locked shared Header and existing Courses & Curriculum artwork.
 - GAP factual basis: https://www.homeschool-911.com/gap-curriculum (retrieved October 20, 2026).
-- GAP pricing is not approved for the new page; the draft links to the original shop for current pricing.
+- GAP Christmas Sale approved: $79 per grade-band package, reduced from $129, retaining the old site's pricing. No end date established. The draft links to the original shop for enrollment.
 - Grade-specific checkout destinations and eventual TEACH fulfillment still need wiring. The draft explicitly identifies its original-shop links.
 - Page copy and layout are drafts for owner review, not new permanent specifications.
