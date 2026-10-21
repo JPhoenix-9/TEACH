@@ -1,3 +1,4 @@
+import SiteFooter from "../components/SiteFooter";
 import Header from "../components/Header";
 import styles from "./page.module.css";
 
@@ -79,7 +80,7 @@ export default function Blueprint() {
         <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">Enroll for $199 ↗</a>
         <p className={styles.small}>Enrollment currently opens on our Homeschool-911 website.</p>
       </section>
-      <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/">Return to TEACH →</a></footer>
     </main>
+    <SiteFooter />
   </>;
 }

@@ -1,3 +1,4 @@
+import SiteFooter from "../../components/SiteFooter";
 import Header from "../../components/Header";
 import styles from "./page.module.css";
 
@@ -88,7 +89,7 @@ export default function GAP() {
         </div>
       </section>
       <section className={styles.lastStep}><p className={styles.eyebrow}>START WITH THE DAYS IN FRONT OF YOU</p><h2>Take the first step together.</h2><p>A prepared plan for now. Time to choose what comes next.</p><a className={styles.primary} href="#choose">Choose your GAP curriculum ↑</a></section>
-      <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/">Return to TEACH →</a></footer>
     </main>
+    <SiteFooter />
   </>;
 }

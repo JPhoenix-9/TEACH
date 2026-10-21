@@ -1,3 +1,4 @@
+import SiteFooter from "../../components/SiteFooter";
 import Header from "../../components/Header";
 import styles from "./registration.module.css";
 
@@ -39,7 +40,7 @@ export default function RegistrationPage({ title, subtitle, description, introdu
         </aside>
       </section>
       <section className={styles.about}><p className={styles.eyebrow}>MEET YOUR PRESENTER</p><h2>Jana Sheridan</h2><p>Jana brings more than 25 years of teaching experience across every grade level. A veteran homeschool mom and former private Christian school principal, she has also led a homeschool support group of more than 100 families.</p></section>
-      <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/webinars">Explore the webinars →</a></footer>
     </main>
+    <SiteFooter />
   </>;
 }

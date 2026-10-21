@@ -1,3 +1,4 @@
+import SiteFooter from "../components/SiteFooter";
 import Header from "../components/Header";
 import styles from "./page.module.css";
 
@@ -49,7 +50,7 @@ export default function Webinars() {
         <a href="/blueprint"><img className={styles.productThumbnail} src="/products/homeschool-success-blueprint-approved.jpg" width="1200" height="800" alt="Homeschool Success Blueprint product cover" /><div><span>GUIDANCE FOR PARENTS</span><h3>Homeschool Success Blueprint</h3><p>A six-module course to help you build your homeschool with confidence.</p><strong>Explore Blueprint →</strong></div></a>
         <a href="/curriculum/gap"><img className={styles.productThumbnail} src="/products/gap-curriculum-thumbnail.jpg" width="800" height="450" alt="GAP Get Away Plan curriculum product artwork for all four grade bands" /><div><span>CURRICULUM FOR CHILDREN</span><h3>GAP Curriculum</h3><p>Start homeschooling in 20 minutes, with 4–6 weeks of complete curriculum. Zero worksheets. No additional purchases.</p><strong>Explore GAP →</strong></div></a>
       </div></section>
-      <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/">Return to TEACH →</a></footer>
     </main>
+    <SiteFooter />
   </>;
 }

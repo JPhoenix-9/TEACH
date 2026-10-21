@@ -1,0 +1,10 @@
+import PageFrame from "../components/PageFrame";
+import styles from "../components/page-frame.module.css";
+import articles from "./articles.json";
+export const metadata = { title: "Free Homeschool Library | TEACH", description: "Read free articles by Jana Sheridan on homeschooling, teaching confidence, and family relationships. No account required." };
+export default function Library() {
+  return <PageFrame eyebrow="FREE TO READ · NO ACCOUNT NEEDED" title="The TEACH Library" introduction="A place to return for thoughtful guidance, encouragement, and ideas for life and learning at home." image="/Icons/library.png">
+    <section className={styles.section} id="articles"><p className={styles.eyebrow}>FROM THE HOMESCHOOL-911 ARCHIVES</p><h2>A few good things to read.</h2><p>These articles by Jana Sheridan are now available here at TEACH, with their original publication dates and text.</p><div className={styles.grid}>{articles.map(article => <a className={`${styles.card} ${styles.cardLink}`} href={`/library/${article.slug}`} key={article.slug}><span className={styles.badge}>{article.topic}</span><h3>{article.title}</h3><p>{article.summary}</p><p className={styles.muted}>Jana Sheridan · {article.minutes} min read</p><strong>Read the article →</strong></a>)}</div></section>
+    <section className={styles.soft}><div className={styles.section}><p className={styles.eyebrow}>KEEP EXPLORING</p><h2>Prefer to watch or find a starting place?</h2><div className={styles.gridTwo}><a className={`${styles.card} ${styles.cardLink}`} href="/webinars"><h3>Webinars & Videos</h3><p>Explore free webinars with Jana. Register for the available recording, or see what is coming next.</p><strong>Explore the webinars →</strong></a><a className={`${styles.card} ${styles.cardLink}`} href="/start"><h3>Take the Tour</h3><p>Find the resources that fit the question in front of you, whether you’re exploring homeschooling or ready to begin.</p><strong>Find your next step →</strong></a></div></div></section>
+  </PageFrame>;
+}

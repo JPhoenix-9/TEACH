@@ -1,5 +1,15 @@
 # Product page decisions
 
+## Batch authorization and launch status — October 21, 2026
+
+- Owner authorizes publishing completed, tested work in batches without individual approvals for routine implementation steps.
+- Front Porch may be Coming Soon tonight. Real community participation remains a near-term priority, not a permanently deferred destination.
+- support@teachforlove.com is the intended support address. Owner will set it up; it is not active yet. Display a pending notice and no mailto link until confirmed working.
+- Stripe remains on hold. New TEACH account, registration, checkout, and access integrations remain unfinished; never suggest these placeholder pages perform those functions.
+- Added truthful navigation destinations, the Take the Tour page, free Library with three original archived articles, shared footer and help navigation, and custom not-found page.
+- Existing article text is preserved, with its original October 17, 2022 publication date. Migration sources and unresolved Wix dependencies are tracked in docs/content-migration-inventory.md.
+- Master specifications and incremental change log updated as existing Library items, preserving prior history and marking superseded decisions in the update.
+
 ## Approved Blueprint product artwork — October 20, 2026
 
 - Owner approved the brighter blue vertical gradient cover with the gold learning journey, books, discovery, everyday learning, and parent/child illustration. Title is exactly “Homeschool Success Blueprint” with no “The”; author is Jana Sheridan.

@@ -1,3 +1,4 @@
+import SiteFooter from "../components/SiteFooter";
 import Header from "../components/Header";
 import styles from "./page.module.css";
 
@@ -55,7 +56,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      <footer className={styles.footer}><a href="/">TEACH · Teaching Excellence and Christianity at Home</a><a href="/">Return to TEACH →</a></footer>
     </main>
+    <SiteFooter />
   </>;
 }
