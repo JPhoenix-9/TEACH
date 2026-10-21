@@ -15,3 +15,11 @@ Draft implementation notes:
 - GAP Christmas Sale approved: $79 per grade-band package, reduced from $129, retaining the old site's pricing. No end date established. The draft links to the original shop for enrollment.
 - Grade-specific checkout destinations and eventual TEACH fulfillment still need wiring. The draft explicitly identifies its original-shop links.
 - Page copy and layout are drafts for owner review, not new permanent specifications.
+
+Owner clarification, October 20, 2026:
+
+- GAP includes teaching methods, complete instructions, and age-appropriate curriculum specific to each subject area.
+- Families can download GAP and be homeschooling in 20 minutes.
+- Everything needed for 4–6 weeks is included; no other purchase is needed.
+- GAP is a zero worksheet curriculum; this must be prominent in its positioning.
+- Use actual product images for the packages, not destination icons as product substitutes. Original artwork was retrieved from the existing GAP and shop pages.
