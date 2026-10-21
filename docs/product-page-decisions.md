@@ -1,5 +1,11 @@
 # Product page decisions
 
+## Approved Blueprint product artwork — October 20, 2026
+
+- Owner approved the brighter blue vertical gradient cover with the gold learning journey, books, discovery, everyday learning, and parent/child illustration. Title is exactly “Homeschool Success Blueprint” with no “The”; author is Jana Sheridan.
+- Use this approved artwork on the Blueprint sales page and in product recommendations on GAP and Webinars. Web asset: public/products/homeschool-success-blueprint-approved.jpg. Preserve the approved composition; do not regenerate it without an owner request.
+- This supersedes the old green/purple product cover. The locked homepage destination icon remains part of the existing navigation design.
+
 Approved by the owner on October 20, 2026:
 
 - Homeschool Success Blueprint is a paid flagship available at launch with its own homepage destination.

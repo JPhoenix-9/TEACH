@@ -29,7 +29,7 @@ export default function Blueprint() {
             <p>You want to give your children an excellent education. This six-module course helps you work through the practical decisions—and find a way forward that fits your family.</p>
             <div className={styles.actions}><a className={styles.primary} href="#enroll">Explore the course</a><a className={styles.textLink} href="#video">Watch the introduction ↓</a></div>
           </div>
-          <img className={styles.art} src="/Icons/blueprint.png" alt="An open blueprint with a gold drafting instrument" />
+          <img className={styles.art} src="/products/homeschool-success-blueprint-approved.jpg" width="1200" height="800" alt="Homeschool Success Blueprint by Jana Sheridan, with a blue and gold learning journey illustration" />
         </div>
         <div className={styles.facts}><span>6 modules</span><span>Learn at your own pace</span><span>Practical guidance for parents</span></div>
       </section>

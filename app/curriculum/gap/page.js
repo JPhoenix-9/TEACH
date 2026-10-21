@@ -69,7 +69,7 @@ export default function GAP() {
       </section>
 
       <section className={`${styles.section} ${styles.companion}`} id="blueprint">
-        <img src="/products/homeschool-success-blueprint.jpg" width="1200" height="675" alt="The Homeschool Success Blueprint course product artwork" />
+        <img src="/products/homeschool-success-blueprint-approved.jpg" width="1200" height="800" alt="Homeschool Success Blueprint by Jana Sheridan, with a blue and gold learning journey illustration" />
         <div><p className={styles.eyebrow}>A NATURAL COMPANION TO GAP</p><h2>Homeschool Success Blueprint</h2><p className={styles.companionLead}>A plan for your child. Guidance for you.</p><p>GAP gives your child a place to begin. The Homeschool Success Blueprint helps you learn about teaching methods, legal requirements, curriculum choices, and organizing life at home.</p><p>Use these first weeks to learn alongside your child and prepare for the longer journey.</p><a className={styles.textLink} href="/blueprint">Explore the Homeschool Success Blueprint →</a><p className={styles.note}>Blueprint is a separate course for parents.</p></div>
       </section>
 
