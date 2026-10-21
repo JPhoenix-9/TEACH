@@ -28,7 +28,7 @@ Launch content clarification:
 
 - GAP is currently the only curriculum. /curriculum should open its sales page directly, rather than showing a separate catalog.
 - Two webinars exist. The first is "5 Shifts to Stress-Free Homeschooling," free, presented by Jana Sheridan. Source: https://www.homeschool-911.com/webinar-registration.
-- The second is filmed but unreleased and covers the ten most commonly asked homeschooling questions. "10 Common Questions About Homeschooling" is a proposed display title, pending the owner's wording. Show Coming Soon until release is authorized and the recording is supplied.
+- The second is filmed but unreleased and covers the ten most commonly asked homeschooling questions. Owner-approved title: "Can I Really Homeschool?" Subtitle: "Your Top 10 Questions Answered". This supersedes the working title "10 Common Questions About Homeschooling". Show Coming Soon until release is authorized and the recording is supplied.
 - /webinars drafts a free webinar collection with the first linked to its existing registration page. No direct video source or new registration integration has been supplied yet.
 
 Webinar registration requirement:

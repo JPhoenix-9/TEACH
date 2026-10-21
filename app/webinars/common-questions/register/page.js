@@ -1,10 +1,17 @@
 import RegistrationPage from "../../components/RegistrationPage";
 
 export const metadata = {
-  title: "Coming Soon: 10 Common Questions About Homeschooling | TEACH",
+  title: "Can I Really Homeschool? Your Top 10 Questions Answered | TEACH",
+  description: "A free webinar with Jana Sheridan to help you take your next step with confidence. Your top 10 homeschooling questions answered. Coming soon, with registration required.",
   robots: { index: false, follow: false },
 };
 
 export default function RegisterCommonQuestions() {
-  return <RegistrationPage title="10 Common Questions About Homeschooling" description="Jana addresses ten of the questions parents most often ask about homeschooling." upcoming />;
+  return <RegistrationPage
+    title="Can I Really Homeschool?"
+    subtitle="Your Top 10 Questions Answered"
+    description="A free webinar with Jana Sheridan to help you take your next step with confidence."
+    introduction="Thinking about homeschooling brings plenty of questions. Join Jana as she addresses ten of the questions parents most often ask, so you can consider your next step with a clearer understanding."
+    upcoming
+  />;
 }

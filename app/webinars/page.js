@@ -35,7 +35,7 @@ export default function Webinars() {
           <div className={`${styles.cover} ${styles.questionsCover}`} aria-hidden="true"><span>TEACH WEBINARS</span><div className={styles.numeral}>10</div><p>Common questions.<br /><em>A place to begin.</em></p><span>WITH JANA SHERIDAN</span></div>
           <div className={styles.featureCopy}>
             <p className={styles.eyebrow}>FREE WITH REGISTRATION · COMING SOON</p>
-            <h2>10 Common Questions<br />About Homeschooling</h2>
+            <h2>Can I Really Homeschool?<br /><em>Your Top 10 Questions Answered</em></h2>
             <p>Jana addresses ten of the questions parents most often ask about homeschooling.</p><p>This new webinar has been filmed and is preparing for release. Check back here when it becomes available.</p>
             <p className={styles.presenter}>Presented by Jana Sheridan</p><span className={styles.status}>Coming Soon</span>
           </div>
