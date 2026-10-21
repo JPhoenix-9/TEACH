@@ -44,5 +44,6 @@ Registration page design drafts:
 - Shared template at /webinars/5-shifts/register and /webinars/common-questions/register.
 - First name, email, explicit unchecked email permission, and Register Free action. Preview-only disabled fieldset prevents submitting or implying capture before integration exists.
 - Both pages display an explicit design-preview notice and are excluded from search indexing. Existing webinar catalog continues to link the actual old registration flow until the new integration is ready.
+- The 5 Shifts registration page uses the original old-homepage Webinar1 photograph of a mother and two children learning at home, preserved unchanged in public/webinars/five-shifts-homepage.png.
 - The newer webinar remains Coming Soon; displaying its registration design does not authorize its release.
 - Brevo supports separate brand folders, lists, and sender addresses within one account. The owner's existing account could not be inspected because sign-in was unavailable; plan/settings remain unverified. Revisit later without interrupting design work for another login request.

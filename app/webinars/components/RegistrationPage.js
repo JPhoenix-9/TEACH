@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import styles from "./registration.module.css";
 
-export default function RegistrationPage({ title, description, upcoming = false }) {
+export default function RegistrationPage({ title, description, image, upcoming = false }) {
   return <>
     <div className="atmosphere-band" aria-hidden="true" />
     <Header />
@@ -12,6 +12,7 @@ export default function RegistrationPage({ title, description, upcoming = false 
         <div className={styles.introduction}>
           <p className={styles.eyebrow}>A FREE WEBINAR WITH JANA SHERIDAN</p>
           <h1 id="webinar-title">{title}</h1>
+          {image && <img className={styles.webinarImage} src={image} alt="A mother and two children learning together at home" />}
           <p className={styles.lead}>{description}</p>
           <div className={styles.details}><p><strong>Practical guidance for parents.</strong><br />Learn with Jana, a veteran homeschool mom and former Christian school principal.</p><p><strong>Free with registration.</strong><br />Share your name and email address, and agree to receive TEACH emails to access this webinar.</p></div>
           <p className={styles.invitation}>A little guidance can make the next step feel possible.</p>
