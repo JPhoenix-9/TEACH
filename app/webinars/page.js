@@ -20,7 +20,7 @@ export default function Webinars() {
 
       <section className={styles.collection} id="webinars" aria-label="Homeschool webinars">
         <article className={styles.feature}>
-          <div className={styles.cover} aria-hidden="true"><span>TEACH WEBINARS</span><div className={styles.numeral}>5</div><p>Shifts to<br /><em>Stress-Free Homeschooling</em></p><span>WITH JANA SHERIDAN</span></div>
+          <img className={styles.featureImage} src="/webinars/five-shifts-directory.jpg" width="1080" height="720" alt="A mother and her two sons learning together at home" />
           <div className={styles.featureCopy}>
             <p className={styles.eyebrow}>FREE WITH REGISTRATION · AVAILABLE NOW</p>
             <h2>5 Shifts to<br />Stress-Free Homeschooling</h2>
@@ -32,7 +32,7 @@ export default function Webinars() {
         </article>
 
         <article className={`${styles.feature} ${styles.upcoming}`}>
-          <div className={`${styles.cover} ${styles.questionsCover}`} aria-hidden="true"><span>TEACH WEBINARS</span><div className={styles.numeral}>10</div><p>Common questions.<br /><em>A place to begin.</em></p><span>WITH JANA SHERIDAN</span></div>
+          <img className={styles.featureImage} src="/webinars/common-questions-directory.jpg" width="1080" height="720" alt="A mother and daughter reading together at a sunlit table" />
           <div className={styles.featureCopy}>
             <p className={styles.eyebrow}>FREE WITH REGISTRATION · COMING SOON</p>
             <h2>Can I Really Homeschool?<br /><em>Your Top 10 Questions Answered</em></h2>
