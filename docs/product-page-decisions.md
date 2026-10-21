@@ -10,7 +10,7 @@ Approved by the owner on October 20, 2026:
 
 Draft implementation notes:
 
-- /curriculum/gap uses the locked shared Header and existing Courses & Curriculum artwork.
+- /curriculum/gap uses the locked shared Header and original product cover artwork preserved in public/products/.
 - GAP factual basis: https://www.homeschool-911.com/gap-curriculum (retrieved October 20, 2026).
 - GAP Christmas Sale approved: $79 per grade-band package, reduced from $129, retaining the old site's pricing. No end date established. The draft links to the original shop for enrollment.
 - Grade-specific checkout destinations and eventual TEACH fulfillment still need wiring. The draft explicitly identifies its original-shop links.
@@ -23,3 +23,18 @@ Owner clarification, October 20, 2026:
 - Everything needed for 4–6 weeks is included; no other purchase is needed.
 - GAP is a zero worksheet curriculum; this must be prominent in its positioning.
 - Use actual product images for the packages, not destination icons as product substitutes. Original artwork was retrieved from the existing GAP and shop pages.
+
+Launch content clarification:
+
+- GAP is currently the only curriculum. /curriculum should open its sales page directly, rather than showing a separate catalog.
+- Two webinars exist. The first is "5 Shifts to Stress-Free Homeschooling," free, presented by Jana Sheridan. Source: https://www.homeschool-911.com/webinar-registration.
+- The second is filmed but unreleased and covers the ten most commonly asked homeschooling questions. "10 Common Questions About Homeschooling" is a proposed display title, pending the owner's wording. Show Coming Soon until release is authorized and the recording is supplied.
+- /webinars drafts a free webinar collection with the first linked to its existing registration page. No direct video source or new registration integration has been supplied yet.
+
+Webinar registration requirement:
+
+- Public visitors may see the webinar titles and descriptions. Recordings require registration for the selected webinar.
+- Capture name, email address, and explicit permission to receive TEACH communications before granting viewing access. Do not infer communication permission from a free account or a purchase.
+- Proposed consent wording: "Yes, I agree to receive emails from TEACH with homeschooling guidance, news, and offers. I can unsubscribe at any time." Use an unchecked consent control and retain the wording/version, timestamp, and webinar registration alongside the email address.
+- Recording access must be checked on the server; do not expose a public recording URL in page source or use a browser-only flag as the gate.
+- Confirm the destination email platform/list and access approach before implementing the live registration integration. The draft currently links the available webinar to the old registration page; the new TEACH capture and viewing flow is not yet connected.
