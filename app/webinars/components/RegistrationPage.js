@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import styles from "./registration.module.css";
 
-export default function RegistrationPage({ title, subtitle, description, introduction, image, upcoming = false }) {
+export default function RegistrationPage({ title, subtitle, description, introduction, image, imageAlt = "A mother and two children learning together at home", upcoming = false }) {
   return <>
     <div className="atmosphere-band" aria-hidden="true" />
     <Header />
@@ -13,7 +13,7 @@ export default function RegistrationPage({ title, subtitle, description, introdu
           <p className={styles.eyebrow}>A FREE WEBINAR WITH JANA SHERIDAN</p>
           <h1 id="webinar-title">{title}</h1>
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-          {image && <img className={styles.webinarImage} src={image} alt="A mother and two children learning together at home" />}
+          {image && <img className={styles.webinarImage} src={image} alt={imageAlt} />}
           <p className={styles.lead}>{description}</p>
           {introduction && <p>{introduction}</p>}
           <div className={styles.details}><p><strong>Practical guidance for parents.</strong><br />Learn with Jana, a veteran homeschool mom and former Christian school principal.</p><p><strong>Free with registration.</strong><br />Share your name and email address, and agree to receive TEACH emails to access this webinar.</p></div>

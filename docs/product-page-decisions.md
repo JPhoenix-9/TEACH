@@ -46,4 +46,5 @@ Registration page design drafts:
 - Both pages display an explicit design-preview notice and are excluded from search indexing. Existing webinar catalog continues to link the actual old registration flow until the new integration is ready.
 - The 5 Shifts registration page uses the original old-homepage Webinar1 photograph of a mother and two children learning at home, preserved unchanged in public/webinars/five-shifts-homepage.png.
 - The newer webinar remains Coming Soon; displaying its registration design does not authorize its release.
+- Approved artwork for "Can I Really Homeschool?": the generated photograph-style scene of a mother and daughter at a sunlit wooden kitchen table, preserved unchanged as public/webinars/can-i-really-homeschool.png. Owner accepted it on October 20, 2026. Use this exact asset; do not regenerate or alter it without a specific request.
 - Brevo supports separate brand folders, lists, and sender addresses within one account. The owner's existing account could not be inspected because sign-in was unavailable; plan/settings remain unverified. Revisit later without interrupting design work for another login request.
