@@ -1,5 +1,7 @@
 # Planner preview — October 22, 2026
 
+Database update October 22: the separate TEACH project now has tested private family, child, subscription and Planner tables. See `teach-backend-status.md`. Website accounts and Planner saving remain unconnected; the preview still resets on reload. This supersedes the earlier open question about backend organization selection, but does not make the product ready for real family records.
+
 Owner has specified independent per-child attendance checkboxes at the top of the daily page, optional family and individual child notes on the same day, and a perpetual monthly calendar opposite. Open to the current month; page turn between months; type directly into date squares for any plans or events. Match the approved leather planner icon, with optional page-turn sounds.
 
 Open from My Desk as an embedded mini-app covering about 80% of the screen. Desktop workspace uses 90vw by 90dvh (81% viewport area). On narrow screens pages stack within the workspace. Keep the shared site header source unchanged.
