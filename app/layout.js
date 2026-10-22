@@ -1,3 +1,4 @@
+import AuthReturn from "./components/AuthReturn";
 import "./globals.css";
 import ImageInteractionPolicy from "./components/ImageInteractionPolicy";
 import PrintCopyright from "./components/PrintCopyright";
@@ -11,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body><ImageInteractionPolicy />{children}<PrintCopyright /></body>
+      <body><AuthReturn/><ImageInteractionPolicy />{children}<PrintCopyright /></body>
     </html>
   );
 }

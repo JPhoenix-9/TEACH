@@ -11,6 +11,6 @@ export default function PurchaseInvitation({ desk = false }) {
       {desk && <a className={`${styles.card} ${styles.cardLink}`} href="/planner"><img src="/Icons/planner.png" alt="Closed leather TEACH planner" /><p className={styles.eyebrow}>STANDALONE PRODUCT · COMING SOON</p><h3>Planner & Attendance</h3><p>Planning and attendance tools, available to purchase separately when ready. A Planner purchase alone does not include Front Porch access.</p><strong>Explore Planner →</strong></a>}
     </div>
     <p className={styles.muted}>Front Porch access requires a Blueprint, curriculum, or generator purchase. A Planner-only purchase does not qualify.</p>
-    <p className={styles.muted}>Already purchased? TEACH accounts and purchase recognition are still being prepared. Keep using the access instructions supplied with your existing purchase for now.</p>
+    <p className={styles.muted}>Already purchased? Free TEACH accounts are available; recognition of earlier purchases is still being prepared. Keep using the access instructions supplied with your existing purchase for now.</p>
   </div></section>;
 }

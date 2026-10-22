@@ -62,7 +62,7 @@ export default function Home() {
           <div className="guidance-card free-card">
             <span className="eyebrow">FREE TO EXPLORE</span>
             <h2>Come in before you buy anything.</h2>
-            <p>Browse the free Library, explore the webinars, and get to know TEACH. Free accounts are coming soon; you can read the Library without one.</p>
+            <p>Browse the free Library, explore the webinars, and get to know TEACH. Free family accounts are available; you can read the Library without one.</p>
             <a href="/library">Visit the free Library →</a>
           </div>
         </section>

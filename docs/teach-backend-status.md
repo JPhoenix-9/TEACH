@@ -28,3 +28,15 @@ Supabase security advisor returned no findings. Performance advisor only reporte
 The website still has Coming Soon account/login pages and a fictional session-only Planner preview. Database setup does not change that behavior. No customer records are being saved from the website yet.
 
 Still needed: actual signup and sign-in, verification/reset email configuration, family profile screens, authenticated Planner loading/saving with conflict/error handling, subscription integration, authenticated cross-device browser tests, and an operational backup/recovery plan. Free project creation alone does not supply the tested permanent archive promise. Full-record printing through Files remains future scope.
+
+## Account and email integration October 22 2026
+
+Owner authenticated and branded teachforlove.com through Brevo/GoDaddy, created sender TEACH <support@teachforlove.com>, generated a TEACH Supabase SMTP key and saved it in Supabase. A test invitation reached Gmail spam; Gmail Show original reported SPF, DKIM and DMARC PASS. Delivery to inbox is not guaranteed. An inbound support mailbox has not been demonstrated. The key/password remain outside this repository.
+
+Owner set Site URL to https://teach-mocha.vercel.app and allowed the exact https://teach-mocha.vercel.app/auth/callback redirect. TeachForLove.com is not yet the live website destination.
+
+Account UI now implements email signup, password login, reset requests, confirmation/recovery/invitation callbacks, logout and editable private parent/child profiles. Uses pinned supabase-js 2.118.0 and only the public publishable key. Auth uses browser sessions; database RLS enforces ownership. Dashboard invitation tokens reaching Site URL are forwarded to the callback without rendering tokens. Email link errors offer fresh reset/login links. No third-party tracking is added to the callback.
+
+Profile saves use the security-invoker save_family_profile RPC so parent and child updates commit atomically, with ownership enforced by RLS. An independent rolled-back SQL test verified privacy, atomic rollback, child ages/count, separate marketing choice and archiving. No fictional test accounts remain. No entitlement is granted on signup.
+
+The public account and callback screens have been built; real email-link completion and cross-device user acceptance still need testing with the owner. Planner saving is not yet connected to these accounts. Stripe, historical purchase recognition and backup/recovery operations remain pending. Supabase's security advisor reports leaked-password checking is disabled; it did not report a table/RLS issue in this batch.

@@ -14,7 +14,7 @@ export default function Tour() {
     <section className={styles.soft}><div className={`${styles.sectionNarrow} ${styles.faq}`}><p className={styles.eyebrow}>A FEW HELPFUL DISTINCTIONS</p><h2>Find the right fit.</h2>
       <details><summary>Is Blueprint the same as GAP?</summary><p>Blueprint is a course for parents. GAP is curriculum for children, with four grade bands: K–2, 3–5, 6–8, and 9–12. They are separate purchases and can be used together.</p></details>
       <details><summary>What can I explore free?</summary><p>The Library is free to read without an account. Our webinars are free with registration; the available webinar currently uses our original registration page.</p></details>
-      <details><summary>What is still being prepared?</summary><p>Planner & Attendance, the Generators, My Desk, and TEACH accounts are in development. The Front Porch community is also preparing to open. Their pages explain what is planned.</p></details>
+      <details><summary>What is still being prepared?</summary><p>Planner & Attendance, the Generators, and the working My Desk dashboard are in development. Free TEACH accounts and family profiles are now available. The Front Porch community is also preparing to open. Their pages explain what is planned.</p></details>
       <details><summary>Who can use My Desk and the Front Porch?</summary><p>A free account can have a desk with product suggestions. Purchases will unlock the resources you choose at My Desk when account features open. The Front Porch requires a Blueprint, curriculum, or generator purchase. The Planner is sold separately, and buying it alone does not include community access.</p></details>
     </div></section>
   </PageFrame>;
