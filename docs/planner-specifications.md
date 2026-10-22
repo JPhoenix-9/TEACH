@@ -16,6 +16,19 @@ Recovered from the owner's October 16, 2026 decisions, alongside the October 21 
 
 ## Purchase and access
 
+## Printing decisions October 21 2026
+
+- Three content choices: attendance only; attendance and notes; notes only.
+- Each format supports one child or the whole family in one report, over a specified date range.
+- Attendance is a simple date-by-child chart. Every report containing attendance shows total school days for each selected child. Count a child's checked date once; do not add sibling days together as a family total.
+- Notes-only reports omit the attendance chart, attendance marks and day tallies. Attendance-only reports omit notes entirely. Combined reports contain the same chart followed by dated notes.
+- Keep the report heading, family/child scope, date-range presentation and typography consistent across formats. Individual notes reports include family notes and the selected child's notes, never siblings' private notes.
+- The owner requires a TEACH copyright footer at the bottom of EVERYTHING printed. Reuse the shared footer in all future print/export implementations; repeat it on every printed page. Current wording: © YEAR TEACH · Higher Ground Publishing.
+- Retain printing inside the Planner. File folders become the central hub for all student data, eventually including transcripts and assigned curriculum; they may also print Planner data using the same report component. This is the specifically permitted redundancy.
+- Remove the standalone printer object/icon from the desk; it has no separate role. This supersedes earlier printer placement requirements.
+
+## Purchase and access details
+
 Latest visual decision, October 21, 2026: remove the bookmark ribbon completely; retain the three-ring binding. This supersedes all earlier ribbon design requests.
 
 - Planner is a standalone paid product, purchasable independently of Blueprint, curriculum, and generators.

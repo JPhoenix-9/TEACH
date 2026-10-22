@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
-import {dateKey,monthCells,makeReport} from "./model.mjs";
+import {dateKey,monthCells} from "./model.mjs";
+import PlannerReport from "./PlannerReport";
 import s from "./planner.module.css";
 
 const children=[{id:"emma",name:"Emma",grade:"Grade 3"},{id:"noah",name:"Noah",grade:"Grade 1"}];
@@ -11,7 +12,7 @@ export default function Planner(){
   const [today,setToday]=useState("");const [day,setDay]=useState("");const [month,setMonth]=useState(null);
   const [records,setRecords]=useState({});const [notesOpen,setNotesOpen]=useState({});
   const [sound,setSound]=useState(true);const [turn,setTurn]=useState(0);const [direction,setDirection]=useState("next");
-  const [start,setStart]=useState("");const [end,setEnd]=useState("");const [scope,setScope]=useState("family");const [report,setReport]=useState(null);const [printOpen,setPrintOpen]=useState(false);
+  const [start,setStart]=useState("");const [end,setEnd]=useState("");const [scope,setScope]=useState("family");const [content,setContent]=useState("attendance");const [report,setReport]=useState(null);const [printOpen,setPrintOpen]=useState(false);
   const audio=useRef(null),turnTimer=useRef(null),panel=useRef(null),printDialog=useRef(null);
   useEffect(()=>{
     const now=new Date(),key=dateKey(now);setToday(key);setDay(key);setMonth([now.getFullYear(),now.getMonth()]);
@@ -30,8 +31,6 @@ export default function Planner(){
   function pageTurn(delta){paperSound();setDirection(delta<0?"previous":"next");setTurn(v=>v+1);clearTimeout(turnTimer.current);turnTimer.current=setTimeout(()=>setTurn(0),850);setMonth(([y,m])=>{const d=new Date(y,m+delta,1);return[d.getFullYear(),d.getMonth()];});}
   function chooseDay(key){setDay(key);}
   const record=records[day]||empty,cells=month?monthCells(...month):[],monthTitle=month?new Date(...month,1).toLocaleDateString("en-US",{month:"long",year:"numeric"}):"";
-  const reportRows=report?makeReport(records,children,report.scope,report.start,report.end):[];
-  const reportChildren=report?.scope==="family"?children:children.filter(c=>c.id===report?.scope);
   return <main className={s.backdrop}>
     <audio ref={element=>{audio.current=element;if(element){element.volume=.35;element.playbackRate=.9;}}} src="/sounds/page-turn-recorded.mp3" preload="auto" aria-hidden="true"/>
     <div className={s.deskBackdrop} aria-hidden="true"><img src="/Icons/planner.png" alt=""/><p>A place for your family’s learning.</p></div>
@@ -61,8 +60,8 @@ export default function Planner(){
       </div>}
       <p className={s.archiveStatus}>Sample workspace <span>Permanent family archive: account setup pending</span></p>
     </section>
-    <dialog className={s.printDialog} ref={printDialog} onCancel={()=>setPrintOpen(false)} aria-labelledby="print-title"><div className={s.printControls}><div><p className={s.eyebrow}>KEEP A COPY</p><button type="button" className={s.closePrint} aria-label="Close print records" onClick={()=>setPrintOpen(false)}>×</button><h2 id="print-title">Your records, on paper.</h2><p>A child’s report includes family notes and that child’s notes.</p></div><form onSubmit={e=>{e.preventDefault();setReport({scope,start,end});}}><label>Record for<select value={scope} onChange={e=>setScope(e.target.value)}><option value="family">Whole family</option>{children.map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></label><label>From<input type="date" required max={end||undefined} value={start} onChange={e=>setStart(e.target.value)}/></label><label>Through<input type="date" required min={start||undefined} value={end} onChange={e=>setEnd(e.target.value)}/></label><button className={s.primary} type="submit">Preview record</button></form></div>
-      {report&&<section className={s.report} aria-label="Printable record preview"><div className={s.reportActions}><p>Sample record preview</p><button type="button" className={s.primary} onClick={()=>window.print()}>Print this record</button></div><div className={s.reportHeader}><p>TEACH · FAMILY LEARNING RECORD</p><h2>{report.scope==="family"?"Family record":`${reportChildren[0]?.name}’s record`}</h2><p>{pretty(report.start,{month:"long",day:"numeric",year:"numeric"})} – {pretty(report.end,{month:"long",day:"numeric",year:"numeric"})}</p><small>Design preview · fictional sample records</small></div><div className={s.totals}>{reportChildren.map(c=><p key={c.id}><strong>{c.name}</strong> · {reportRows.filter(r=>r.children.find(x=>x.id===c.id)?.present).length} days marked schooled</p>)}</div>{reportRows.length?reportRows.map(r=><article className={s.reportDay} key={r.day}><h3>{pretty(r.day)}</h3>{r.event&&<p><strong>Calendar:</strong> {r.event}</p>}{r.familyNote&&<p><strong>Family notes:</strong> {r.familyNote}</p>}{r.children.map(c=><div key={c.id}><p><strong>{c.name}:</strong> {c.present?"Schooled":"Attendance not marked"}</p>{c.note&&<p><strong>{c.name}’s notes:</strong> {c.note}</p>}</div>)}</article>):<p>No recorded entries in this period.</p>}<p className={s.reportEnd}>Only recorded days are included. An unchecked box does not establish an absence.</p></section>}
+    <dialog className={s.printDialog} ref={printDialog} onCancel={()=>setPrintOpen(false)} aria-labelledby="print-title"><div className={s.printControls}><div><p className={s.eyebrow}>KEEP A COPY</p><button type="button" className={s.closePrint} aria-label="Close print records" onClick={()=>setPrintOpen(false)}>×</button><h2 id="print-title">Your records, on paper.</h2><p>Choose the content, children and dates. Individual notes reports include shared family notes and that child’s notes.</p></div><form onChange={()=>setReport(null)} onSubmit={e=>{e.preventDefault();setReport({scope,start,end,content});}}><label>Include<select value={content} onChange={e=>setContent(e.target.value)}><option value="attendance">Attendance only</option><option value="attendance-notes">Attendance and notes</option><option value="notes">Notes only</option></select></label><label>Record for<select value={scope} onChange={e=>setScope(e.target.value)}><option value="family">Whole family</option>{children.map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></label><label>From<input type="date" required max={end||undefined} value={start} onChange={e=>setStart(e.target.value)}/></label><label>Through<input type="date" required min={start||undefined} value={end} onChange={e=>setEnd(e.target.value)}/></label><button className={s.primary} type="submit" disabled={!start||!end||start>end}>Preview record</button></form><p className={s.printHint}>Attendance prints as a chart with school-day totals for each child. Notes include calendar entries, family notes and the selected children’s notes.</p></div>
+      {report&&<PlannerReport records={records} children={children} report={report}/>}
     </dialog>
   </main>;
 }

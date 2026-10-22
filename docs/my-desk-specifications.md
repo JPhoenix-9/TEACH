@@ -24,6 +24,8 @@ Latest explicit arrangement:
 
 ## Implementation and access
 
+Latest functional decision: remove the printer object/icon entirely. The file folders are the central hub for each child's data, expanding to include transcripts and assigned curriculum as those products are developed. Keep direct Planner printing intact; Planner data can also be printed from the folders using the same report formats. This supersedes the earlier printer side-table composition. All printed pages require the shared TEACH copyright footer.
+
 - Build a real layered interface with independent accessible controls, not a flattened mockup presented as a working dashboard.
 - Clicking the leather Planner opens the existing large Planner mini-app. Its current sample preview is not authenticated or permanently saved.
 - Free accounts may have the desk shell. Nonbuyers receive product suggestions and no purchased resources are unlocked. Purchases unlock only the products bought.
