@@ -88,3 +88,5 @@ The owner is considering $5.99 per year for the Planner. This remains tentative;
 Owner-approved renewal rule: when the paid term expires, stop new entries but keep existing records readable and downloadable. Renewing restores entry capability. Do not delete or withhold historical records solely because renewal lapses. $5.99/year remains the proposed price pending ongoing-cost review; Stripe is on hold.
 
 Owner's pricing rationale: inexpensive functional entry product, ongoing exposure to TEACH's other products, relevant suggestions and permission-based marketing. Use the established parent contact and child count/age profile; marketing consent remains separate from account creation and purchase. Planner-only purchase still does not grant Front Porch access.
+
+Explicit product goal: the Planner should bring families back to the website daily through a quick attendance check, reviewing today's plans and recording notes. Keep that daily routine fast and easy; relevant TEACH product discovery should not obstruct it.
