@@ -12,7 +12,7 @@ The owner asked to proceed with all remaining launch work except Stripe/payments
 - Product resource pages, webinar viewer and a private storage bucket are prepared. Short-lived signed links require database/storage permissions. Course files and recordings remain unavailable because they have not been supplied. No invented modules or downloadable packages.
 - Webinar registration infrastructure captures explicit permission wording, version and timestamp; a release flag prevents registration/viewing before the recording is ready. Existing live webinar registration stays on Homeschool-911 during migration. The unreleased webinar is not released by this batch.
 - Private Wishing Well and support-message forms save authenticated submissions. No outgoing messages or campaigns were sent. Inbound support email still has not been verified.
-- Administrator role and read-only admin overview are implemented. Administrator assignment cannot be self-granted. No real administrator was assigned automatically; it must be linked to the owner's verified account by a trusted operation. No private family information is exposed in public pages.
+- Administrator role and read-only admin overview are implemented. Administrator assignment cannot be self-granted. The owner’s existing confirmed invitation account was assigned using a guarded trusted database operation only after verifying that it is the project’s sole account. No browser signup can assign this role. No private family information is exposed in public pages.
 - Public site search works without editing the locked Header component. Added factual Privacy and Using TEACH pages, collection-point links, footer links, sitemap, robots and conservative response headers. These do not invent final checkout/refund/cancellation terms, nor claim a completed legal review.
 
 ## Verification
@@ -25,6 +25,11 @@ The owner asked to proceed with all remaining launch work except Stripe/payments
 - Stripe integration, final Planner pricing/renewal checkout and actual paid fulfillment tests.
 - Recording/package delivery content and complete Wix media inventory/evacuation. Keep Wix until its dependencies are preserved.
 - Front Porch operational decisions and launch; no private community is exposed.
-- Owner's administrator identity assignment, real-device signed-in acceptance testing, production domain cutover after launch blockers close.
+- Real-device signed-in acceptance testing, production domain cutover after launch blockers close.
 - Brevo marketing-list automation and replies need separate operational setup; account SMTP is working, but no marketing campaigns were created or sent.
 - Restore/backup operations beyond family PDF/Word copies need a documented database operations plan. Free-plan backup availability is not assumed.
+
+Live deployment verified. Browser search found Planner and Children’s Records for attendance, and the header Enter action found the Patience article. Local development preview did not hydrate reliably; production hydration worked, so interactive verification uses the deployed site.
+
+Owner approval: the owner called the new desk room image terrific on October 22. Preserve this approved room background; further work is functional. A trusted one-year nonbilling Planner test seat was added only to the sole verified owner/admin account so she can test saving without Stripe. This is not a customer purchase, checkout or general free access.
+Phone-width QA: the desk main area fits a 375px content width without horizontal overflow. The existing locked Header tagline clips at that width; its design was not changed. Real phone acceptance and any specifically authorized Header responsiveness adjustment remain pending.
