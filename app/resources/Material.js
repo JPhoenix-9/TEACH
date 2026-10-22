@@ -1,0 +1,6 @@
+'use client';
+import {useState} from 'react';
+import {getSupabase} from '../lib/supabase-browser';
+import s from '../components/account.module.css';
+export default function Material({material}){const [url,setUrl]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');async function open(){setBusy(true);setError('');const {data,error}=await getSupabase().storage.from('teach-resources').createSignedUrl(material.storage_path,300,{download:material.kind==='document'});if(error){setError('We couldn’t open this resource. Please try again.');setBusy(false);return;}setUrl(data.signedUrl);setBusy(false);}
+ return <article className={s.material}><h3>{material.title}</h3>{url&&material.kind==='video'?<video src={url} controls controlsList="nodownload" onError={()=>{setUrl('');setError('This viewing link may have expired. Open a fresh link below.');}}/>:null}{(!url||material.kind==='document')&&<button className={s.button} onClick={open} disabled={busy}>{busy?'Opening…':material.kind==='video'?'Play video':'Prepare document download'}</button>}{url&&material.kind==='document'&&<p><a href={url}>Download {material.title} →</a><br/><small>This private link expires in five minutes.</small></p>}{error&&<p role="alert">{error}</p>}</article>;}

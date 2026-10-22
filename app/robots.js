@@ -1,0 +1,1 @@
+export default function robots(){return {rules:{userAgent:'*',allow:'/',disallow:['/account','/admin','/auth/','/records','/resources','/planner/workspace','/planner/preview','/webinars/watch','/search']},sitemap:'https://teach-mocha.vercel.app/sitemap.xml'};}

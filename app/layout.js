@@ -1,3 +1,4 @@
+import SearchNavigation from "./components/SearchNavigation";
 import AuthReturn from "./components/AuthReturn";
 import "./globals.css";
 import ImageInteractionPolicy from "./components/ImageInteractionPolicy";
@@ -12,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body><AuthReturn/><ImageInteractionPolicy />{children}<PrintCopyright /></body>
+      <body><SearchNavigation/><AuthReturn/><ImageInteractionPolicy />{children}<PrintCopyright /></body>
     </html>
   );
 }

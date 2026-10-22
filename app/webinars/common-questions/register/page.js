@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default function RegisterCommonQuestions() {
-  return <RegistrationPage
+  return <RegistrationPage slug="common-questions"
     title="Can I Really Homeschool?"
     subtitle="Your Top 10 Questions Answered"
     image="/webinars/can-i-really-homeschool.png"

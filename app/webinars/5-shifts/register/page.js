@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function RegisterFiveShifts() {
-  return <RegistrationPage title="5 Shifts to Stress-Free Homeschooling" image="/webinars/five-shifts-homepage.png" description="Discover five key things you need to understand to make homeschooling work for your family." />;
+  return <RegistrationPage slug="5-shifts" title="5 Shifts to Stress-Free Homeschooling" image="/webinars/five-shifts-homepage.png" description="Discover five key things you need to understand to make homeschooling work for your family." />;
 }

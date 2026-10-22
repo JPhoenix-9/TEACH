@@ -24,5 +24,5 @@ export default function AuthForm({mode="login"}){
   {signup&&<p className={s.hint}>Your free account stores your family profile. Products unlock separately when purchased. You can choose whether to receive marketing emails when you complete your profile.</p>}
   <button className={s.button} disabled={busy} type="submit">{busy?"Please wait…":reset?"Send reset link":signup?"Create free account":"Log in"}</button>
   {message&&<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message}</p>}
- </form><div className={s.links}>{mode!=="login"&&<a href="/login">Log in</a>}{mode!=="signup"&&<a href="/create-account">Create a free account</a>}{!reset&&<a href="/forgot-password">Forgot password?</a>}</div></div>;
+ <p className={s.hint}>TEACH accounts are for parents and other adults. Read <a href="/privacy">Privacy</a> and <a href="/terms">Using TEACH</a>.</p></form><div className={s.links}>{mode!=="login"&&<a href="/login">Log in</a>}{mode!=="signup"&&<a href="/create-account">Create a free account</a>}{!reset&&<a href="/forgot-password">Forgot password?</a>}</div></div>;
 }

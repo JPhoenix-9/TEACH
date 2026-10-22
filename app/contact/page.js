@@ -1,3 +1,4 @@
+import SupportForm from "./components/SupportForm";
 import PageFrame from "../components/PageFrame";
 import styles from "../components/page-frame.module.css";
 export const metadata = { title: "Contact & Help | TEACH", description: "Find your way around TEACH and check support availability." };
@@ -6,6 +7,7 @@ export default function Contact() {
     <section className={styles.sectionNarrow}><p className={styles.eyebrow}>TEACH SUPPORT</p><h2>Our new inbox is being prepared.</h2><p><strong>support@teachforlove.com</strong></p><div className={styles.notice}><p>This address is not receiving messages yet. Please wait until this notice is removed before sending an email.</p></div><p>If you purchased through Homeschool-911, use the contact or reply information in your existing order confirmation for questions about that purchase.</p>
       <div className={styles.actions}><a className={styles.primary} href="/start">Take the Tour</a><a className={styles.textLink} href="/library">Browse the free Library →</a></div>
     </section>
+    <section className={styles.sectionNarrow}><h2>Leave a private message.</h2><SupportForm/></section>
     <section className={styles.soft}><div className={`${styles.sectionNarrow} ${styles.faq}`}><h2>Quick answers</h2>
       <details><summary>Where do purchases happen?</summary><p>Blueprint and GAP enrollment currently open on our original Homeschool-911 website. The sales pages identify these links before you leave TEACH.</p></details>
       <details><summary>Can I create a TEACH account now?</summary><p>Yes. Choose Create a Free Account in the header, confirm your email, and complete your family profile. The Library is also available without an account.</p></details>

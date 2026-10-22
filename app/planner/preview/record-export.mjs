@@ -3,8 +3,8 @@ import {attendanceMonths,buildPrintReport} from "./model.mjs";
 const titles={attendance:"Attendance record","attendance-notes":"Attendance and notes",notes:"Notes record"};
 const xml=value=>String(value).replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g,"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[char]));
 const copyright=()=>`© ${new Date().getFullYear()} TEACH · Higher Ground Publishing`;
-export function selectedRecordExport(records,children,report){
-  return {format:"TEACH Planner records",version:1,copyright:copyright(),dateRange:{from:report.start,through:report.end},content:report.content,scope:report.scope,...buildPrintReport(records,children,report.scope,report.start,report.end,report.content)};
+export function selectedRecordExport(records,children,report,preview=true){
+  return {preview,format:"TEACH Planner records",version:1,copyright:copyright(),dateRange:{from:report.start,through:report.end},content:report.content,scope:report.scope,...buildPrintReport(records,children,report.scope,report.start,report.end,report.content)};
 }
 export function exportFilename(report,extension){return `TEACH-${report.content}-${report.scope}-${report.start}-to-${report.end}.${extension}`;}
 
@@ -28,7 +28,7 @@ export function wordDocument(data){
   const run=(text,bold=false,size=20)=>`<w:r><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:color w:val="000000"/>${bold?"<w:b/>":""}<w:sz w:val="${size}"/></w:rPr><w:t xml:space="preserve">${xml(text)}</w:t></w:r>`;
   const paragraph=(text,{bold=false,size=20,keep=false}={})=>`<w:p><w:pPr><w:spacing w:after="65"/>${keep?"<w:keepNext/>":""}</w:pPr>${String(text).split("\n").map((line,i)=>(i?"<w:r><w:br/></w:r>":"")+run(line,bold,size)).join("")}</w:p>`;
   const date=key=>new Date(`${key}T12:00:00`).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
-  let body=paragraph("TEACH · FAMILY LEARNING RECORD",{bold:true,size:18})+paragraph(titles[data.content],{bold:true,size:26})+paragraph(data.scope==="family"?`Whole family · ${data.children.map(c=>c.name).join(", ")}`:data.children[0]?.name||"")+paragraph(`${date(data.dateRange.from)} – ${date(data.dateRange.through)}`)+paragraph("Design preview · fictional sample records",{size:16});
+  let body=paragraph("TEACH · FAMILY LEARNING RECORD",{bold:true,size:18})+paragraph(titles[data.content],{bold:true,size:26})+paragraph(data.scope==="family"?`Whole family · ${data.children.map(c=>c.name).join(", ")}`:data.children[0]?.name||"")+paragraph(`${date(data.dateRange.from)} – ${date(data.dateRange.through)}`)+(data.preview?paragraph("Design preview · fictional sample records",{size:16}):"");
   if(data.hasAttendance){
     const months=attendanceMonths(data.attendanceRows,data.dateRange.from,data.dateRange.through);
     const cell=(text,width,bold=false)=>`<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/></w:tcPr><w:p><w:pPr><w:spacing w:after="0"/><w:jc w:val="center"/></w:pPr>${run(text,bold,16)}</w:p></w:tc>`;
