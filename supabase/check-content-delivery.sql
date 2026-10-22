@@ -25,6 +25,7 @@ do $$ begin
  if exists(select 1 from public.teach_materials) or exists(select 1 from public.webinar_registrations) then raise exception 'Other user material exposed';end if;
  begin perform public.register_teach_webinar('5-shifts','Fixture',false);raise exception 'Registration without permission allowed';exception when raise_exception then if sqlerrm not like 'Please log in and confirm%' then raise;end if;end;
  insert into public.family_support_messages(user_id,subject,message) values(auth.uid(),'Fixture subject','Fixture message');
+ begin insert into public.family_support_messages(user_id,subject,message,reply_email) values(auth.uid(),'Fixture','Fixture','someone-else@example.invalid');raise exception 'Spoofed reply accepted';exception when check_violation then null;end;
 end $$;
 reset role;
 insert into public.teach_administrators(user_id) values('11111111-1111-4111-8111-111111111111');

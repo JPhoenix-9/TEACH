@@ -15,6 +15,8 @@ do $$ declare revision bigint;begin
  if (select d.revision from public.planner_days d where day='2026-10-22')<>1 then raise exception 'Partial day update survived';end if;
  revision:=public.save_planner_day('2026-10-22',1,'Saved again','Notes','[{"id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","schooled":false,"note":"Updated"}]');
  if revision<>2 then raise exception 'Revision increment failed';end if;
+ if (select count(*) from public.read_planner_records(null,1000))<>1 then raise exception 'Archive pagination missing day';end if;
+ if (select children->0->>'note' from public.read_planner_records(null,1000))<>'Updated' then raise exception 'Consistent child read failed';end if;
  begin insert into public.product_access(user_id,product_key) values(auth.uid(),'blueprint');raise exception 'Self entitlement allowed';exception when insufficient_privilege then null;end;
  insert into public.family_wishes(user_id,wish) values(auth.uid(),'Fixture wish');
 end $$;
