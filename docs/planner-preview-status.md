@@ -11,3 +11,7 @@ Permanent family archive is mandatory. Records must persist across devices and s
 Implemented `/planner/preview`: fictional sample family, session-memory editing, month paging with paper-like sound, date-specific attendance and notes, date-range report preview and browser printing. Explicit demo notice and no search indexing. No account storage, authentication, purchase gate, or checkout connected. My Desk links this preview without representing it as purchased access.
 
 Still needed: standalone Planner price and billing model; organization choice and cost review for a separate TEACH backend. Stripe remains on hold. Planner alone does not grant Front Porch entry.
+
+## Owner refinements — October 21, 2026
+
+Calendar on the left, attendance/notes on the right. The daily page scrollbar is clearly visible along the outer right edge; calendar overflow scrolls on its outer left edge. Replace all substitute botanical glyphs with the exact approved header leaf artwork, reused unchanged. Lay a fabric-style ribbon down the center seam for the full book height. Page-turn sound uses a much quieter 1.15-second rustle with slow attack and release; animation also slows to 0.85 seconds. These are design refinements; archive/account limitations remain unchanged.
