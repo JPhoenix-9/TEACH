@@ -16,6 +16,8 @@ Recovered from the owner's October 16, 2026 decisions, alongside the October 21 
 
 ## Purchase and access
 
+Latest visual decision, October 21, 2026: remove the bookmark ribbon completely; retain the three-ring binding. This supersedes all earlier ribbon design requests.
+
 - Planner is a standalone paid product, purchasable independently of Blueprint, curriculum, and generators.
 - Its purchase grants the Planner tools at My Desk. It does not grant Front Porch access.
 - Community eligibility requires Blueprint, curriculum, or generator purchase. Keep Planner entitlement separate from community entitlement.

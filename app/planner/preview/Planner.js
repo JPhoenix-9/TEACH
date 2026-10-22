@@ -2,7 +2,6 @@
 import {useEffect,useRef,useState} from "react";
 import {dateKey,monthCells,makeReport} from "./model.mjs";
 import s from "./planner.module.css";
-import ClothRibbon from "./ClothRibbon";
 
 const children=[{id:"emma",name:"Emma",grade:"Grade 3"},{id:"noah",name:"Noah",grade:"Grade 1"}];
 const empty={attendance:{},childNotes:{},familyNote:"",event:""};
@@ -58,7 +57,7 @@ export default function Planner(){
             <div className={s.childNotes}><p className={s.noteLabel}>Individual notes <span>optional</span></p>{children.map(child=><div key={child.id} className={s.childNote}><button type="button" aria-expanded={notesOpen[child.id]??!!record.childNotes[child.id]} aria-controls={`notes-${child.id}`} onClick={()=>setNotesOpen(o=>({...o,[child.id]:!(o[child.id]??!!record.childNotes[child.id])}))}>{child.name}’s notes <span aria-hidden="true">{(notesOpen[child.id]??!!record.childNotes[child.id])?"−":"+"}</span></button>{(notesOpen[child.id]??!!record.childNotes[child.id])&&<textarea id={`notes-${child.id}`} aria-label={`${child.name}'s notes`} className={s.childText} value={record.childNotes[child.id]||""} placeholder={`A note just for ${child.name}…`} onChange={e=>update(day,{childNotes:{...record.childNotes,[child.id]:e.target.value}})}/>}</div>)}</div>
             <div className={s.pageFoot}><span>Our family’s story, one day at a time.</span><img className={s.footerLeaf} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/></div>
           </section>
-        </div><ClothRibbon className={s.ribbon}/>
+        </div>
       </div>}
       <p className={s.archiveStatus}>Sample workspace <span>Permanent family archive: account setup pending</span></p>
     </section>
