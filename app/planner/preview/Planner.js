@@ -2,6 +2,7 @@
 import {useEffect,useRef,useState} from "react";
 import {dateKey,monthCells,makeReport} from "./model.mjs";
 import s from "./planner.module.css";
+import ClothRibbon from "./ClothRibbon";
 
 const children=[{id:"emma",name:"Emma",grade:"Grade 3"},{id:"noah",name:"Noah",grade:"Grade 1"}];
 const empty={attendance:{},childNotes:{},familyNote:"",event:""};
@@ -18,29 +19,25 @@ export default function Planner(){
     setStart(dateKey(new Date(now.getFullYear(),now.getMonth(),1)));setEnd(key);
     setRecords({[key]:{...empty,attendance:{emma:true,noah:true},familyNote:"We read together and explored the garden.",event:"Nature walk · library visit"}});
     panel.current?.focus();const timer=setInterval(()=>setToday(dateKey(new Date())),60000);
-    return()=>{clearInterval(timer);clearTimeout(turnTimer.current);audio.current?.close();};
+    return()=>{clearInterval(timer);clearTimeout(turnTimer.current);audio.current?.pause();};
   },[]);
   useEffect(()=>{if(printOpen)printDialog.current?.showModal();else printDialog.current?.close();},[printOpen]);
   function update(key,changes){setRecords(old=>({...old,[key]:{...empty,...old[key],...changes}}));}
   function paperSound(){
-    if(!sound)return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;const ctx=audio.current||(audio.current=new Audio());ctx.resume();
-      // A slow, low-volume paper rustle, with no sharp attack or impact.
-      const duration=1.15,buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate),data=buffer.getChannelData(0);
-      for(let i=0;i<data.length;i++){const t=i/ctx.sampleRate;data[i]=(Math.random()*2-1)*(.72+.18*Math.sin(t*31)+.1*Math.sin(t*67));}
-      const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();source.buffer=buffer;filter.type="bandpass";filter.frequency.setValueAtTime(2300,ctx.currentTime);filter.frequency.linearRampToValueAtTime(1400,ctx.currentTime+duration);filter.Q.value=.35;
-      gain.gain.setValueAtTime(0,ctx.currentTime);gain.gain.linearRampToValueAtTime(.018,ctx.currentTime+.24);gain.gain.linearRampToValueAtTime(.028,ctx.currentTime+.56);gain.gain.linearRampToValueAtTime(.012,ctx.currentTime+.88);gain.gain.linearRampToValueAtTime(0,ctx.currentTime+duration);
-      source.connect(filter);filter.connect(gain);gain.connect(ctx.destination);source.start();source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
-    }catch{/* Decorative sound may be unavailable without affecting the planner. */}
+    if(!sound)return;
+    const recording=audio.current;if(!recording)return;
+    recording.currentTime=0;recording.play().catch(()=>{});
   }
-  function pageTurn(delta){paperSound();setDirection(delta<0?"previous":"next");setTurn(v=>v+1);clearTimeout(turnTimer.current);turnTimer.current=setTimeout(()=>setTurn(0),550);setMonth(([y,m])=>{const d=new Date(y,m+delta,1);return[d.getFullYear(),d.getMonth()];});}
+  function pageTurn(delta){paperSound();setDirection(delta<0?"previous":"next");setTurn(v=>v+1);clearTimeout(turnTimer.current);turnTimer.current=setTimeout(()=>setTurn(0),850);setMonth(([y,m])=>{const d=new Date(y,m+delta,1);return[d.getFullYear(),d.getMonth()];});}
   function chooseDay(key){setDay(key);}
   const record=records[day]||empty,cells=month?monthCells(...month):[],monthTitle=month?new Date(...month,1).toLocaleDateString("en-US",{month:"long",year:"numeric"}):"";
   const reportRows=report?makeReport(records,children,report.scope,report.start,report.end):[];
   const reportChildren=report?.scope==="family"?children:children.filter(c=>c.id===report?.scope);
   return <main className={s.backdrop}>
+    <audio ref={element=>{audio.current=element;if(element){element.volume=.35;element.playbackRate=.9;}}} src="/sounds/page-turn-recorded.mp3" preload="auto" aria-hidden="true"/>
     <div className={s.deskBackdrop} aria-hidden="true"><img src="/Icons/planner.png" alt=""/><p>A place for your family’s learning.</p></div>
     <section className={s.app} aria-labelledby="planner-title" ref={panel} tabIndex={-1}>
-      <div className={s.appBar}><div><span className={s.brand}>TEACH <img className={s.approvedLeaf} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/></span><h1 id="planner-title">Family planner</h1></div><nav aria-label="Planner controls"><button type="button" aria-pressed={sound} onClick={()=>setSound(v=>!v)}>Sound {sound?"on":"off"}</button><button type="button" onClick={()=>setPrintOpen(true)}>Print records</button><a href="/my-desk">Back to My Desk <span aria-hidden="true">×</span></a></nav></div>
+      <div className={s.appBar}><div><span className={s.brand}>TEACH <img className={s.approvedLeaf} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/></span><h1 id="planner-title">Family planner</h1></div><nav aria-label="Planner controls"><button type="button" aria-pressed={sound} onClick={()=>{if(sound)audio.current?.pause();setSound(v=>!v);}}>Sound {sound?"on":"off"}</button><button type="button" onClick={()=>setPrintOpen(true)}>Print records</button><a href="/my-desk">Back to My Desk <span aria-hidden="true">×</span></a></nav></div>
       <p className={s.previewNotice}><strong>Design preview · sample family.</strong> Try with sample text only. Changes reset on reload; account saving is not connected.</p>
       {!month?<p className={s.loading}>Opening your planner…</p>:<div className={s.leather}>
         <img className={s.cornerTL} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/><img className={s.cornerBR} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/>
@@ -61,7 +58,7 @@ export default function Planner(){
             <div className={s.childNotes}><p className={s.noteLabel}>Individual notes <span>optional</span></p>{children.map(child=><div key={child.id} className={s.childNote}><button type="button" aria-expanded={notesOpen[child.id]??!!record.childNotes[child.id]} aria-controls={`notes-${child.id}`} onClick={()=>setNotesOpen(o=>({...o,[child.id]:!(o[child.id]??!!record.childNotes[child.id])}))}>{child.name}’s notes <span aria-hidden="true">{(notesOpen[child.id]??!!record.childNotes[child.id])?"−":"+"}</span></button>{(notesOpen[child.id]??!!record.childNotes[child.id])&&<textarea id={`notes-${child.id}`} aria-label={`${child.name}'s notes`} className={s.childText} value={record.childNotes[child.id]||""} placeholder={`A note just for ${child.name}…`} onChange={e=>update(day,{childNotes:{...record.childNotes,[child.id]:e.target.value}})}/>}</div>)}</div>
             <div className={s.pageFoot}><span>Our family’s story, one day at a time.</span><img className={s.footerLeaf} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/></div>
           </section>
-        </div><div className={s.ribbon} aria-hidden="true"/>
+        </div><ClothRibbon className={s.ribbon}/>
       </div>}
       <p className={s.archiveStatus}>Sample workspace <span>Permanent family archive: account setup pending</span></p>
     </section>
