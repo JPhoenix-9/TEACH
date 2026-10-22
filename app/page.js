@@ -8,8 +8,8 @@ const destinations = [
   { image: "/Icons/planner.png", title: "Planner & Attendance", text: "Keep the essentials organized without turning home into school administration.", href: "/planner", status: "Coming soon", upcoming: true },
   { image: "/Icons/library.png", title: "TEACH Library", text: "Free articles, guidance, ideas, and resources to return to whenever you need them.", href: "/library", status: "Free to read" },
   { image: "/Icons/webinars.png", title: "Webinars & Videos", text: "Watch practical teaching and homeschool guidance on your own time.", href: "/webinars", status: "Free with registration" },
-  { image: "/Icons/front-porch.png", title: "The Front Porch", text: "A welcoming place for conversation, encouragement, and community.", href: "/front-porch", status: "Coming soon", upcoming: true },
-  { image: "/Icons/my-desk.png", title: "My Desk", text: "Your personal TEACH home for the tools, resources, and work that belong to you.", href: "/my-desk", status: "Coming soon", upcoming: true },
+  { image: "/Icons/front-porch.png", title: "The Front Porch", text: "Community included with Blueprint, curriculum, or generator purchases.", href: "/front-porch", status: "Coming soon", upcoming: true },
+  { image: "/Icons/my-desk.png", title: "My Desk", text: "Your purchased resources and tools, together in one personal TEACH space.", href: "/my-desk", status: "Coming soon", upcoming: true },
 ];
 
 export default function Home() {

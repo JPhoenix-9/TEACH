@@ -1,5 +1,18 @@
 # Product page decisions
 
+## Customer access clarification — October 21, 2026
+
+- Purchases unlock the purchased resources at My Desk. Front Porch access requires a Blueprint, curriculum, or generator purchase. No separate community membership purchase is required. The later Planner exception supersedes the earlier broad statement that any product purchase grants community access.
+- Planner is a standalone product. A Planner-only purchase unlocks its tools at My Desk but does not grant Front Porch entry or community content access.
+- A free account can have a desk, but no paid/shared features are unlocked without a product purchase. Show useful purchase suggestions to accounts with no purchase history.
+- Owner clarified that the nonbuyer desk functions as a product advertisement: lead with attractive product recommendations and benefits, rather than a blank or rejection-style dashboard. After a verified purchase, it becomes the working dashboard.
+- Visitors and accounts without a qualifying purchase must see a public invitation and product suggestions at Front Porch. This includes Planner-only customers. They must not see the private community or its content.
+- This supersedes earlier wording that implied My Desk features or community participation were free. Free Library reading and free webinar registration do not establish purchase eligibility.
+- Purchases unlock the purchased product plus shared customer features; they do not automatically unlock other products.
+- Future eligibility checks must use trusted, server-verified purchase history. Do not infer eligibility from client flags, editable profile fields, email consent, or free registration. Historical purchase recognition remains to be implemented.
+- Current public pages explain this model and suggest Blueprint and GAP for community access. The nonbuyer desk also advertises the standalone Planner with a Coming Soon label. Accounts, purchase recognition, and the private community are not implemented yet.
+- Free-account signup should collect parent name, email contact, optional phone number, number of children, and each child’s age. Use family ages to improve desk product recommendations, including GAP grade-band discovery. Keep these family/contact fields private and separate from purchase eligibility. Detailed implementation requirements are in docs/account-access-spec.md.
+
 ## Batch authorization and launch status — October 21, 2026
 
 - Owner authorizes publishing completed, tested work in batches without individual approvals for routine implementation steps.
