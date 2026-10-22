@@ -11,7 +11,6 @@ export default function ClothRibbon({className}){
     <use href="#ribbon-shape" fill="url(#ribbon-shade)"/>
     <use href="#ribbon-shape" fill="url(#ribbon-weave)"/>
     <path d="M21 18 C18 69 21 83 25 105 C36 176 18 242 22 321 C25 400 45 463 37 530 C29 603 29 671 37 736" fill="none" stroke="#e0e5bb" strokeWidth=".7" opacity=".4"/>
-    <ellipse cx="24" cy="6" rx="13" ry="5" fill="#3e2d1f" opacity=".7"/>
-    <path d="M11 6 Q24 -1 37 6" fill="none" stroke="#b7a17b" strokeWidth="2.5"/>
+    <path d="M15 0 Q24 5 34 0 L31 11 Q24 7 18 11Z" fill="#36281b" opacity=".75"/>
   </svg>;
 }
