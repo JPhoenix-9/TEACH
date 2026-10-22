@@ -59,3 +59,9 @@ Latest visual decision, October 21, 2026: remove the bookmark ribbon completely;
 - Private family records, server-side ownership checks, and verified Planner entitlement before writing or reading customer records.
 - `/planner/preview` now demonstrates the mini-app design with fictional children, session-memory records, optional paper sound, month page turning, editable calendar squares and date-range report printing. It is explicitly a sample preview, excluded from search indexing. My Desk and the Planner introduction link to it.
 - Production authentication, purchase checks and permanent archive storage remain unconnected. See `planner-preview-status.md` for the full implementation boundary and latest owner decisions.
+
+## Print economy — October 21, 2026
+
+- Make paper and ink economy a priority for every Planner print format. Attendance uses one compact month-by-day grid per child, with day columns 1–31, monthly totals and an overall school-day tally. A full year is twelve rows per child, not hundreds of dated rows.
+- The whole-family summary contains each selected child's grid in the same flowing report. Avoid forced page breaks between children, months, or dated notes. Notes use compact readable black text, modest margins and spacing, and may flow across pages. No leather textures, decorative imagery, large display headings, or shaded table backgrounds on paper.
+- Preserve the date range, selected child privacy, all complete notes, and the TEACH copyright at the bottom of every page. Long notes may require more pages; do not truncate them to achieve a page count.

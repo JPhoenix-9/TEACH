@@ -19,3 +19,17 @@ export function buildPrintReport(records,children,scope,start,end,content="atten
     notesRows:hasNotes?rows.filter(r=>r.familyNote.trim()||r.event.trim()||r.children.some(c=>c.note.trim())).map(r=>({day:r.day,familyNote:r.familyNote,event:r.event,children:r.children.filter(c=>c.note.trim()).map(c=>({id:c.id,name:c.name,note:c.note}))})):[]
   };
 }
+
+export function attendanceMonths(rows,start,end){
+  if(!start||!end||start>end)return [];
+  const byDay=new Map(rows.map(row=>[row.day,row.attendance]));
+  const [year,month]=start.split("-").map(Number),months=[];
+  for(let cursor=new Date(year,month-1,1);dateKey(cursor).slice(0,7)<=end.slice(0,7);cursor=new Date(cursor.getFullYear(),cursor.getMonth()+1,1)){
+    const y=cursor.getFullYear(),m=cursor.getMonth(),count=new Date(y,m+1,0).getDate();
+    months.push({month:dateKey(cursor),days:Array.from({length:31},(_,i)=>{
+      const key=`${y}-${String(m+1).padStart(2,"0")}-${String(i+1).padStart(2,"0")}`;
+      return i<count&&key>=start&&key<=end?(byDay.get(key)||{}):null;
+    })});
+  }
+  return months;
+}
