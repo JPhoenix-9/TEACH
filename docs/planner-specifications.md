@@ -69,7 +69,7 @@ Latest visual decision, October 21, 2026: remove the bookmark ribbon completely;
 ## Digital copies and date range — October 21 2026
 
 - Every printing and export flow must require a From and Through date range and apply it consistently to the preview, printed report, PDF, Word document and data download. Keep child selection and attendance/notes content selection consistent across outputs. Changing these selections invalidates the old preview before exporting.
-- Print / Save as PDF opens the device print dialog; the parent chooses its PDF saving destination. Download Word document produces a real DOCX locally with compact attendance grids, complete selected notes and a repeating TEACH copyright footer. Download data file produces a versioned JSON file of the selected date range and records, with scope, dates and copyright. It is not an entire-account backup and does not yet have an import/restore tool.
+- Print / Save as PDF opens the device print dialog; the parent chooses its PDF saving destination. Download Word document produces a real DOCX locally with compact attendance grids, complete selected notes and a repeating TEACH copyright footer. Raw data downloads are not offered; the owner prefers readable document copies only.
 - File names include content, child/family scope and date range. Export is local on the device. The current fictional sample preview remains session-only; downloaded files do not imply permanent account storage is connected.
 
-The raw JSON option is labeled Download data file rather than backup because no Planner import or restore feature currently exists. Word and PDF are the ordinary readable digital copies.
+Final owner decision: remove raw data downloads completely. Offer only Print / Save as PDF and Download Word document. All exports use the selected date range, child/family scope and content mode, and retain the TEACH copyright.

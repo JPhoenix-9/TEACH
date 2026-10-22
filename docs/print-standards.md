@@ -8,4 +8,4 @@ Planner reports use `PlannerReport.js` and `buildPrintReport` as a shared implem
 
 Current preview remains fictional and session-only. The shared report components do not provide account storage, entitlements or permanent archival guarantees.
 
-All record printing and export projects require selectable date boundaries. Respect the same From/Through values, child/family scope and content mode in every output. Digital document copies must retain the compact attendance layout and the TEACH copyright on every page. JSON record downloads include copyright and date-range metadata.
+All record printing and export projects require selectable date boundaries. Respect the same From/Through values, child/family scope and content mode in every output. Digital document copies must retain the compact attendance layout and the TEACH copyright on every page. Do not offer raw data downloads. Parents keep digital copies as PDF or Word documents, with copyright and the selected date range.
