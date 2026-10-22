@@ -5,13 +5,14 @@
 Recovered from the owner's October 16, 2026 decisions, alongside the October 21 access clarification:
 
 - A simple notes and reminder calendar. No Google Calendar integration.
-- Attendance uses a simple checkmark, a daily family note, and optional child-specific notes.
+- Attendance uses an independent checkbox beside each child's name at the top of the daily page. Family notes and individual notes are both optional and can coexist on any date.
 - Print attendance for a single child or the whole family.
 - Select a date range or school year when printing.
 - A child's report includes the family notes plus that child's notes, without siblings' private notes.
 - Student profiles are shared across TEACH tools and stored with the family account. Baseline student fields are name and grade level; the latest signup request adds child ages and household count.
 - Save planning and attendance records to the account/server so they follow the parent across devices. Browser-only persistence is not the product's storage model.
-- Use the approved leather planner destination artwork. A two-page spread with calendar on the left and attendance on the right is the prior design direction, not an excuse to expand feature scope.
+- Match the approved brown leather planner icon. The latest owner instruction places attendance and notes on one page, perpetual monthly calendar opposite. The preview uses daily records left and calendar right. Calendar opens to the current month automatically, page-turn navigation accesses other months, and text is entered directly into date squares for any plan or event. Optional page-turn sound is welcome.
+- Open from My Desk as a mini-app occupying about 80% of the screen. Permanent family archive across years and devices is mandatory; temporary browser records are not an acceptable production archive.
 
 ## Purchase and access
 
@@ -22,7 +23,7 @@ Recovered from the owner's October 16, 2026 decisions, alongside the October 21 
 
 ## Choices still needed
 
-- Whether one family-wide attendance check marks every child by default with individual exceptions, or each child is always checked separately.
+- Attendance decision resolved: each child has their own checkbox, checked by the parent if that child was schooled that day.
 - Purchase price and whether access is one-time or recurring.
 - Organization selection for the separate TEACH backend project, followed by cost review and provisioning. Do not use the Chef Jay production project for TEACH data.
 
@@ -32,4 +33,5 @@ Recovered from the owner's October 16, 2026 decisions, alongside the October 21 
 - Family student selector and attendance entry panel; preserve the simple checkmark workflow.
 - Printable reports use selected children and date boundaries, with clean print styling and no sales/navigation elements.
 - Private family records, server-side ownership checks, and verified Planner entitlement before writing or reading customer records.
-- These implementation defaults can be refined once the remaining owner decisions are supplied. There is no working Planner application or authenticated storage yet.
+- `/planner/preview` now demonstrates the mini-app design with fictional children, session-memory records, optional paper sound, month page turning, editable calendar squares and date-range report printing. It is explicitly a sample preview, excluded from search indexing. My Desk and the Planner introduction link to it.
+- Production authentication, purchase checks and permanent archive storage remain unconnected. See `planner-preview-status.md` for the full implementation boundary and latest owner decisions.

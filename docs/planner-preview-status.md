@@ -1,0 +1,13 @@
+# Planner preview — October 22, 2026
+
+Owner has specified independent per-child attendance checkboxes at the top of the daily page, optional family and individual child notes on the same day, and a perpetual monthly calendar opposite. Open to the current month; page turn between months; type directly into date squares for any plans or events. Match the approved leather planner icon, with optional page-turn sounds.
+
+Open from My Desk as an embedded mini-app covering about 80% of the screen. Desktop workspace uses 90vw by 90dvh (81% viewport area). On narrow screens pages stack within the workspace. Keep the shared site header source unchanged.
+
+Print either one child's record or the family record over any specified date range. Individual reports include family notes and that child's notes, excluding sibling notes and sibling attendance. Calendar entries are common family plans. Unchecked attendance means not marked, not a verified absence.
+
+Permanent family archive is mandatory. Records must persist across devices and school years. Production requires authenticated family-owned server storage, Planner purchase entitlement, retention policy and tested backup/recovery plus export. Session-memory or device-only records do not satisfy this requirement. No real family data should be entered into the design preview.
+
+Implemented `/planner/preview`: fictional sample family, session-memory editing, month paging with paper-like sound, date-specific attendance and notes, date-range report preview and browser printing. Explicit demo notice and no search indexing. No account storage, authentication, purchase gate, or checkout connected. My Desk links this preview without representing it as purchased access.
+
+Still needed: standalone Planner price and billing model; organization choice and cost review for a separate TEACH backend. Stripe remains on hold. Planner alone does not grant Front Porch entry.
