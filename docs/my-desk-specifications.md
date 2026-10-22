@@ -32,3 +32,10 @@ Latest functional decision: remove the printer object/icon entirely. The file fo
 - Planner is standalone and does not unlock Front Porch. Blueprint, curriculum or generator purchases qualify for the community.
 - Account storage, purchase recognition, child records and permanent Planner archive remain pending; do not fabricate a returning parent, learning progress, downloads or purchase history.
 - Refine the composition with the owner before publishing an unapproved replacement for the room design.
+
+## Future complete records printing — October 22 2026
+
+- Owner-approved future function: **Print complete records**, accessed through Files / Children’s Records folders on My Desk, not through the Planner.
+- When generators and K–12 curriculum become available, the folders should bring together relevant student records across those products, including Planner attendance and notes and transcripts where applicable. The exact report contents will be defined with those products. This is a future requirement, not an existing integration.
+- Planner continues to print its own information directly. Printing Planner information from the Files hub is the explicitly allowed overlap; do not create a separate printer tool or icon.
+- Complete-record printing must support a selected date range, compact economical formatting, attendance totals where applicable, readable PDF/Word copies and the TEACH copyright at the bottom of every printed page. Do not offer raw data downloads.

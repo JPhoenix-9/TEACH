@@ -73,3 +73,16 @@ Latest visual decision, October 21, 2026: remove the bookmark ribbon completely;
 - File names include content, child/family scope and date range. Export is local on the device. The current fictional sample preview remains session-only; downloaded files do not imply permanent account storage is connected.
 
 Final owner decision: remove raw data downloads completely. Offer only Print / Save as PDF and Download Word document. All exports use the selected date range, child/family scope and content mode, and retain the TEACH copyright.
+
+## Future complete records printing — October 22 2026
+
+- Owner-approved future function: **Print complete records**, accessed through Files / Children’s Records folders on My Desk, not through the Planner.
+- When generators and K–12 curriculum become available, the folders should bring together relevant student records across those products, including Planner attendance and notes and transcripts where applicable. The exact report contents will be defined with those products. This is a future requirement, not an existing integration.
+- Planner continues to print its own information directly. Printing Planner information from the Files hub is the explicitly allowed overlap; do not create a separate printer tool or icon.
+- Complete-record printing must support a selected date range, compact economical formatting, attendance totals where applicable, readable PDF/Word copies and the TEACH copyright at the bottom of every printed page. Do not offer raw data downloads.
+
+## Tentative subscription proposal — October 22 2026
+
+The owner is considering $5.99 per year for the Planner. This remains tentative; do not publish it as final pricing or configure billing. Stripe remains on hold. Rules for renewal, expired access and long-term archive retention still need agreement.
+
+Owner-approved renewal rule: when the paid term expires, stop new entries but keep existing records readable and downloadable. Renewing restores entry capability. Do not delete or withhold historical records solely because renewal lapses. $5.99/year remains the proposed price pending ongoing-cost review; Stripe is on hold.
