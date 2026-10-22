@@ -13,7 +13,8 @@ export default function Planner(){
   const [records,setRecords]=useState({});const [notesOpen,setNotesOpen]=useState({});
   const [sound,setSound]=useState(true);const [turn,setTurn]=useState(0);const [direction,setDirection]=useState("next");
   const [start,setStart]=useState("");const [end,setEnd]=useState("");const [scope,setScope]=useState("family");const [content,setContent]=useState("attendance");const [report,setReport]=useState(null);const [printOpen,setPrintOpen]=useState(false);
-  const audio=useRef(null),turnTimer=useRef(null),panel=useRef(null),printDialog=useRef(null);
+  const [calendarDay,setCalendarDay]=useState(null);
+  const audio=useRef(null),turnTimer=useRef(null),panel=useRef(null),printDialog=useRef(null),dayDialog=useRef(null);
   useEffect(()=>{
     const now=new Date(),key=dateKey(now);setToday(key);setDay(key);setMonth([now.getFullYear(),now.getMonth()]);
     setStart(dateKey(new Date(now.getFullYear(),now.getMonth(),1)));setEnd(key);
@@ -22,6 +23,8 @@ export default function Planner(){
     return()=>{clearInterval(timer);clearTimeout(turnTimer.current);audio.current?.pause();};
   },[]);
   useEffect(()=>{if(printOpen)printDialog.current?.showModal();else printDialog.current?.close();},[printOpen]);
+  useEffect(()=>{if(calendarDay)dayDialog.current?.showModal();else dayDialog.current?.close();},[calendarDay]);
+  function openCalendarDay(key){chooseDay(key);setCalendarDay(key);}
   function update(key,changes){setRecords(old=>({...old,[key]:{...empty,...old[key],...changes}}));}
   function paperSound(){
     if(!sound)return;
@@ -42,8 +45,8 @@ export default function Planner(){
         <div className={s.book}>
           <section className={`${s.paper} ${s.calendarPage} ${turn?s.turning:""}`} data-direction={direction} aria-label="Monthly calendar">
             <div className={s.paperHeading}><p className={s.smallCaps}>PLANS, POSSIBILITIES & EVERYDAY LIFE</p><div className={s.monthHeading}><button type="button" aria-label="Previous month" onClick={()=>pageTurn(-1)}>‹</button><h2 aria-live="polite">{monthTitle}</h2><button type="button" aria-label="Next month" onClick={()=>pageTurn(1)}>›</button></div><div className={s.rule}/></div>
-            <div className={s.calendarTools}><span>Write a little plan in any square.</span><button type="button" onClick={()=>{const now=new Date();setMonth([now.getFullYear(),now.getMonth()]);chooseDay(dateKey(now));}}>Current month</button></div>
-            <div className={s.calendar}><div className={s.weekdays}>{["SUN","MON","TUE","WED","THU","FRI","SAT"].map(d=><span key={d}>{d}</span>)}</div><div className={s.dateGrid} style={{"--weeks":cells.length/7}}>{cells.map((key,i)=>key?<div key={key} className={`${s.dateCell} ${key===day?s.selected:""} ${key===today?s.today:""}`}><button type="button" aria-label={`Open daily record for ${pretty(key)}`} aria-pressed={key===day} onClick={()=>chooseDay(key)}>{Number(key.slice(-2))}{key===today&&<span className={s.todayDot} aria-label="Today"/>}</button><textarea aria-label={`Calendar note for ${pretty(key)}`} value={records[key]?.event||""} onFocus={()=>chooseDay(key)} onChange={e=>update(key,{event:e.target.value})}/></div>:<div key={`blank-${i}`} className={`${s.dateCell} ${s.blank}`} aria-hidden="true"/>)}</div></div>
+            <div className={s.calendarTools}><span>Click any square for more room to write.</span><button type="button" onClick={()=>{const now=new Date();setMonth([now.getFullYear(),now.getMonth()]);chooseDay(dateKey(now));}}>Current month</button></div>
+            <div className={s.calendar}><div className={s.weekdays}>{["SUN","MON","TUE","WED","THU","FRI","SAT"].map(d=><span key={d}>{d}</span>)}</div><div className={s.dateGrid} style={{"--weeks":cells.length/7}}>{cells.map((key,i)=>key?<div key={key} className={`${s.dateCell} ${key===day?s.selected:""} ${key===today?s.today:""}`}><button className={s.calendarSquare} type="button" aria-label={`Open calendar day for ${pretty(key)}${records[key]?.event?", has an entry":""}`} aria-haspopup="dialog" onClick={()=>openCalendarDay(key)}><span className={s.squareDate}>{Number(key.slice(-2))}{key===today&&<span className={s.todayDot} aria-label="Today"/>}</span><span className={s.squarePreview}>{records[key]?.event||""}</span>{records[key]?.event&&<span className={s.squareMore}>Open entry</span>}</button></div>:<div key={`blank-${i}`} className={`${s.dateCell} ${s.blank}`} aria-hidden="true"/>)}</div></div>
             <p className={s.calendarCaption}>Field trips. Lessons. Beautiful ordinary days.</p><div className={s.pageFoot}><button type="button" onClick={()=>pageTurn(-1)}>← Previous month</button><img className={s.footerLeaf} src="/teach-approved-leaf.png" alt="" aria-hidden="true"/><button type="button" onClick={()=>pageTurn(1)}>Next month →</button></div>
           </section>
           <div className={s.binding} aria-hidden="true"><i/><i/><i/></div>
@@ -60,6 +63,11 @@ export default function Planner(){
       </div>}
       <p className={s.archiveStatus}>Sample workspace <span>Permanent family archive: account setup pending</span></p>
     </section>
+    <dialog className={s.dayDialog} ref={dayDialog} onCancel={()=>setCalendarDay(null)} onClose={()=>setCalendarDay(null)} aria-labelledby="calendar-day-title" aria-describedby="calendar-day-hint">
+      <div className={s.daySheet}><header className={s.daySheetHeader}><p className={s.smallCaps}>{calendarDay?pretty(calendarDay,{month:"long",year:"numeric"}):""}</p><button type="button" className={s.closeDay} aria-label="Close calendar day" onClick={()=>setCalendarDay(null)}>×</button><h2 id="calendar-day-title"><span>{calendarDay?Number(calendarDay.slice(-2)):""}</span>{calendarDay?pretty(calendarDay,{weekday:"long"}):""}</h2></header>
+      <label className={s.dayEntryLabel} htmlFor="calendar-day-entry">Plans & notes</label><textarea autoFocus id="calendar-day-entry" className={s.dayEntry} value={records[calendarDay]?.event||""} placeholder="A field trip, a lesson, an appointment… or a whole day’s worth of plans." onChange={e=>update(calendarDay,{event:e.target.value})}/>
+      <footer className={s.daySheetFooter}><p id="calendar-day-hint">Room for the whole story. Your entry stays with this date in this preview; changes reset on reload.</p><button type="button" className={s.primary} onClick={()=>setCalendarDay(null)}>Done</button></footer></div>
+    </dialog>
     <dialog className={s.printDialog} ref={printDialog} onCancel={()=>setPrintOpen(false)} aria-labelledby="print-title"><div className={s.printControls}><div><p className={s.eyebrow}>KEEP A COPY</p><button type="button" className={s.closePrint} aria-label="Close print records" onClick={()=>setPrintOpen(false)}>×</button><h2 id="print-title">Your records, on paper.</h2><p>Choose the content, children and dates. Individual notes reports include shared family notes and that child’s notes.</p></div><form onChange={()=>setReport(null)} onSubmit={e=>{e.preventDefault();setReport({scope,start,end,content});}}><label>Include<select value={content} onChange={e=>setContent(e.target.value)}><option value="attendance">Attendance only</option><option value="attendance-notes">Attendance and notes</option><option value="notes">Notes only</option></select></label><label>Record for<select value={scope} onChange={e=>setScope(e.target.value)}><option value="family">Whole family</option>{children.map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></label><label>From<input type="date" required max={end||undefined} value={start} onChange={e=>setStart(e.target.value)}/></label><label>Through<input type="date" required min={start||undefined} value={end} onChange={e=>setEnd(e.target.value)}/></label><button className={s.primary} type="submit" disabled={!start||!end||start>end}>Preview record</button></form><p className={s.printHint}>Attendance prints as a chart with school-day totals for each child. Notes include calendar entries, family notes and the selected children’s notes.</p></div>
       {report&&<PlannerReport records={records} children={children} report={report}/>}
     </dialog>

@@ -18,6 +18,15 @@ Recovered from the owner's October 16, 2026 decisions, alongside the October 21 
 
 ## Printing decisions October 21 2026
 
+## Calendar day expansion — October 22 2026
+
+- Clicking anywhere in a date square opens a larger single-day calendar square, matching the planner's cream paper and brown leather styling. This supersedes direct editing inside the small grid square.
+- The popup shows the date prominently and provides a readable, scrolling multiline writing area without a character limit imposed by the square. Long entries remain intact; the monthly grid shows a compact preview with an Open entry cue.
+- Reopening a date displays its complete entry for reading or editing. Done, the close button, or Escape closes the popup without discarding edits. Keep entries associated with their original dates and available to existing print reports.
+- Keyboard activation and native modal focus behavior are required. The current sample still resets on reload until permanent account storage is connected.
+
+## Print formats
+
 - Three content choices: attendance only; attendance and notes; notes only.
 - Each format supports one child or the whole family in one report, over a specified date range.
 - Attendance is a simple date-by-child chart. Every report containing attendance shows total school days for each selected child. Count a child's checked date once; do not add sibling days together as a family total.
