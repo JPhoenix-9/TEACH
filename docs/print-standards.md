@@ -7,3 +7,5 @@ Reuse `app/components/PrintCopyright.js` in report/export layouts. The root layo
 Planner reports use `PlannerReport.js` and `buildPrintReport` as a shared implementation for the Planner and future Family Records hub. Three content modes: attendance; attendance and notes; notes. Each supports family or individual child scope and date boundaries. Attendance is tabular with a school-day total per child; notes are grouped by date. Notes-only output contains no attendance or tally. Child scope must exclude sibling data.
 
 Current preview remains fictional and session-only. The shared report components do not provide account storage, entitlements or permanent archival guarantees.
+
+All record printing and export projects require selectable date boundaries. Respect the same From/Through values, child/family scope and content mode in every output. Digital document copies must retain the compact attendance layout and the TEACH copyright on every page. JSON record downloads include copyright and date-range metadata.
