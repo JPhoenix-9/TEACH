@@ -14,6 +14,12 @@ Latest explicit arrangement:
 - Use the exact homepage mug: ivory ceramic, dark blue leafy sprigs, handwritten `you've got this`, with its wooden coaster. Tuck it out of the way so it does not block a tool or take over the work area.
 - Closed brown leather Planner may be in the middle of the desk, but the owner allows another position if the arrangement works better.
 - Retain the other dashboard objects: Blueprint, generator machine, curriculum books, webinar/video monitor, child record folders, printer, and Wishing Well.
+- Distribute the six main tools evenly around the perimeter of the desk, leaving the center clear. Objects should face the seated parent, with generous gaps and no haphazard cluster in the middle.
+- Keep the monitor fully supported on the desk, visibly inset from its back edge, with the screen facing the person at the desk.
+- Keep exactly THREE modest interior plants. Remove greenery along the immediate left edge of the desk and the tall plant beside the fireplace. Remove the remaining excess plants.
+- Remove the unidentified dark object in front of the lamp and the narrow upright clutter between the curriculum books and child folders.
+- The rolled blueprint must prominently read `Homeschool Success Blueprint` so the product is immediately identifiable.
+- Remove the portrait photo from the child folders. Use an elegant `Children’s Records` label, without a human photo or mugshot-like treatment.
 - Keep the warm elegant home-study atmosphere, fireplace and chair/cream throw. Reuse the actual locked shared site header; do not generate another header into the room artwork.
 
 ## Implementation and access
