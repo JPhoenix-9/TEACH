@@ -90,3 +90,6 @@ Owner-approved renewal rule: when the paid term expires, stop new entries but ke
 Owner's pricing rationale: inexpensive functional entry product, ongoing exposure to TEACH's other products, relevant suggestions and permission-based marketing. Use the established parent contact and child count/age profile; marketing consent remains separate from account creation and purchase. Planner-only purchase still does not grant Front Porch access.
 
 Explicit product goal: the Planner should bring families back to the website daily through a quick attendance check, reviewing today's plans and recording notes. Keep that daily routine fast and easy; relevant TEACH product discovery should not obstruct it.
+
+## Backup responsibility and service lifetime October 22 2026
+“Permanent family archive” describes records carried across school years while TEACH offers the archive; it does not require perpetual site operation. Parents must keep independent document copies. A planned permanent closure provides notice and at least 30 calendar days for retrieval; catastrophic loss or urgent legal/security action may prevent notice or recovery. See `backup-and-service-closure-spec.md` and the published Terms and Privacy pages. Ordinary subscription expiry still preserves read/export access while the archive service operates.
