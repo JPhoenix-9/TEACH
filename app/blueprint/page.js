@@ -36,7 +36,7 @@ export default function Blueprint() {
       </section>
 
       <section className={styles.section} id="video">
-        <div className={styles.center}><p className={styles.eyebrow}>START WITH A LITTLE CLARITY</p><h2>You don’t have to figure it all out alone.</h2><p>Meet the Homeschool Success Blueprint and see how it can help you take your next step.</p></div>
+        <div className={styles.center}><p className={styles.eyebrow}>START WITH A LITTLE CLARITY</p><h2>Practical guidance for the way you teach.</h2><p>Meet the Homeschool Success Blueprint and see how it can help you take your next step.</p></div>
         <div className={styles.videoBridge}>
           <span className={styles.play} aria-hidden="true">▶</span>
           <h3>Watch the Blueprint introduction</h3>

@@ -25,7 +25,7 @@ export default function Webinars() {
           <div className={styles.featureCopy}>
             <p className={styles.eyebrow}>FREE WITH REGISTRATION · AVAILABLE NOW</p>
             <h2>5 Shifts to<br />Stress-Free Homeschooling</h2>
-            <p>Discover five key things you need to understand to make homeschooling work for your family.</p><p>This webinar explores the understanding that helps parents move from struggling to get by toward mastering the art and science of homeschooling.</p>
+            <p>Discover five key things you need to understand to make homeschooling work for your family.</p><p>Explore the principles behind effective teaching and a homeschool that fits your family.</p>
             <p className={styles.presenter}>Presented by Jana Sheridan</p>
             <a className={styles.primary} href="https://www.homeschool-911.com/webinar-registration" target="_blank" rel="noopener noreferrer">Register to watch free ↗</a>
             <p className={styles.note}>Registration currently opens on Homeschool-911.</p>

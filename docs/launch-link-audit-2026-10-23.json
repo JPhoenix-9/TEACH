@@ -1,0 +1,1286 @@
+{
+  "routes": {
+    "/front-porch": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/front-porch",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/wishing-well",
+        "/terms#community",
+        "/contact",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/front-porch-room-v5.webp"
+      ],
+      "ids": [
+        "_R_",
+        "porch-dialog-title",
+        "porch-title"
+      ]
+    },
+    "/": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#explore",
+        "/create-account",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/front-porch",
+        "/my-desk",
+        "/start",
+        "/library",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/courses-curriculum.png",
+        "/Icons/generators.png",
+        "/Icons/blueprint.png",
+        "/Icons/planner.png",
+        "/Icons/library.png",
+        "/Icons/webinars.png",
+        "/Icons/front-porch.png",
+        "/Icons/my-desk.png"
+      ],
+      "ids": [
+        "_R_",
+        "explore"
+      ]
+    },
+    "/generators": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/generators",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/library",
+        "/start",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/generators.png"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/wishing-well": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/wishing-well",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/my-desk",
+        "/contact",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/contact": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/contact",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/start",
+        "/library",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/create-account": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/create-account",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/privacy",
+        "/terms",
+        "/login",
+        "/forgot-password",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/forgot-password": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/forgot-password",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/privacy",
+        "/terms",
+        "/login",
+        "/create-account",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/login": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/login",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/privacy",
+        "/terms",
+        "/create-account",
+        "/forgot-password",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/planner": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/planner",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/planner/workspace",
+        "/planner/preview",
+        "/my-desk",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/planner.png"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/admin": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/admin",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/my-desk",
+        "/account",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/blueprint": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/blueprint",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#enroll",
+        "#video",
+        "https://www.homeschool-911.com/hsb",
+        "https://www.homeschool-911.com/courses",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA+CAYAAAB6Kgg+AAAMEklEQVR42u1aaVRUV7rd59ZczPMoGMYUBBBEMIlPdDmbphMnRBPH5IkvxsS0MYl2VlfovJe0HTUmTo1p09GYhFQrAUGSRhScQAaZQQooZgqQYiioeTrvh02v7rW6fxhBC5f7V917173n7PrOt7/hHOAJnmBKgkyFSd5tuLD/8pU80fCoNuL1faeeeqyIUoC0l0g8yoquPhX8dGBRw516JCUlY2wMkc6iRbX3+z3GGkmmpW3jEIBq9boLc5+PKGpurIAowA/FxZWfOIsW1UokEtaU8pu0tG2c8d9vvz1bAAC5uTt5AJB1as+2gjO7aNbRlw35X79G0w9tLXiQsdiPiqRYLGZSUlKNFT9/9ByxWG5W1MoyKC3eQggZfX1TgqdRPZQ2YlFZhLZ8NsPmwDfQ1+VBxntkSzc1NdWi7izyMZvYksqqYgT4u60ckl7tBYDkJXMuGtQDsLETMGYLJRaWLbx9/T6YkkQBwMbvuR4brsnHy8ORdnc1U6NeeR0AuIwlRsATQKnUYGhMX+no7PN9wMwNF6Ys0dKLn26prq7VWcxm4uzAJZ5RL75AKY1r7uxW9vQpzEFPhyNmztpFsUt2rX/QsR4p0bHR0d/4+bjxqYVQMFzs3uIZWnbl7BahgOfwYuIS1ozYuF0lGqW6v/Z81JQmatBrsnh8HuQ9fYRFuEjZ/M5Wyddf6AU8LnynB6ChouJAsr9QayLsbx50rIeiukOy634dMun2rk55rKvbtPznXtzyRwDgcAVVHC4BIWyMKMfQ19W5Oy58GjgMNeX9lMfq6u1nlVY1Yu7CxNwpQXSgt91/RojLXqOyCyODbYvuNlza7B62KIwQWqkxcEBYPFCwaH1jI2FMFpjMFrbRaKFanQWRz0T2B8YmvT8liDbV1thV3+yEt5cLHb07TEpvaER/EW/iL1j3f7Ka/GNDDOE5Dw6rCcPmIyR0OmAyQyh0IuEz4sBwXOIBgFIQQkCtmigjEObwiS3uKgfAFRA42hIYvByjARQrR1UFAdODVvkEBMLG0a1dqxqtbG9rr5Qr1FW0va9u9pJfd1CJhEVIktnqLaozGzK4Av4qjW6AMDojvHlseHu4RgAoVoxglbxz5NK8jf+z+D9WHkkPRvKhVC+nPt/x22ke3P9VK7th0RhNYaJn2Z5+kf99vWFoGFrFuV9veIsAwHHxIneuwGWWjaOr7brtR3+Y8FU1GTnsP1/b2zpVC/j2MGj04HL57KLSittOYcv+zKjvxBDzwBhVXTl+8P157fZCQX+Iv2tOoJ93+pQpvCuLsn3YLHIyIv5XL+RnHfYI9PLoK8r/wWJvZ8eozUJtUGhoIIxjcguxQK8ZhrRZCr5AiJiYOegb0GQouoZeSdr9mXYi5zQpPhr9XGJPztlPllcXnqW3pNe4of4RR1kspw0MZRycHR0FfDYjr65pAGDC3b4+C4snNBvMXIue8RiYv+blrYQQ7ZSwKADsfm3xzHmLl/QlJu3uAYCKnCP5bPPogqaWFrNc3sOys3OodfPyY5YsSghnu7iitaXnN4Ez13wGABKJhJU0AQI06cj9/F7xDAAFkqO2AEANrfEVF7+4cP7z1+hNiZhSapxHKbUZbr6yu7cuOw4AaEEB26qJFYjFbAAoPHciuKU4O3j8fmHW2ZWFGV+2UdrgBQDrEmxdB+t/pL2NBT/fj6BZjY/OT001XTj10ZywQNfr0rYWLaWKl9qrsks5Fu75vLxCTKv0SAeQsP/Qt9/WNrZj3qoVSylACP410zl9YEeIUqOL0ytlPwJQW52PHnx7sbOTA3dQr9djyUtbERC/jnRXZ4ZKm+5ULFiz1wYAirNO0OFR1ZrlG/acG39P3VmyUzEoX98r7xKNKPodYuNmoUoqX7fwpdfTrc6ifxeOIcmnya1OtoKAuooCzPGDk2/US1IANgDQUPRTjH6kG6qRIS4AnD++/Zmq28UOV/P/+p6QY/Fpb+2ko1o6bOMSVBMza2631cbRgdYbn0lLL+3qaKozc+34LJ6rb5MoMv7d4KiVWQBw7uTH35iN2jVrd3zEL7t48A17tuZId3cbhkdGQA1ms7urJ4tl43VyzvoPU+4l8GKGkFSL1WVGffLOMS6PCwLKGlUMmVz5rJDBnq4Xx5/zGa2nh4vwLwDQWF965HL+z6a7d+Uwm3UwMwzpVxoR9Exc0D/+/QkmOWFi1N0iLXcSmMBhA1wWl90ra4WBMxgGAN8dfjMyyM9+YWNTQ8THO2cGa8cGYGvPZas1Kqo3WoiDgxvj5OYFz8jlCyYzMkwI0RHF3Uo4cEFZAMtMYdJrQC3cGQBg6+Q9ciY93eBiCzdPZ8ECo0kPrZ5QSlkkNCwaldXN7xNmLOOfXIlarY8CQMbJd3vNGrkn26KlBrWe2Nq7QV5T4mIXv+pGa80VkVrZZ+Fx2AzDcGDr5AJwbRo8fEVFy9a99Z6jo9/QZMf6CSFadvlMYXNjSYJFO4R+eZ9u8ytr+c7RybO2rZq9cW7cMzsjRGH3wonOhOmh4fCOiltBSHDmZFtxUix6OfuLjYr+vlN8loHdJJX98b8SZueMDA5ec3Bwlcye9WyHTCar7Optq5y/OrURAMrL0zixsSnGh5W9kQn6BgWAhoYGF1n1xWw+MURxOSxDeV3rjd3ik4l4nJBx+uN/bAJdk/yBfvbeat349aG9yTs+2LG8sPjKeU3TrVz7RzG/CYmj1SXn6909XBXfHNrnBQB3auobt65cyZNdOh1SUtLgEi4KPsrlsBRjOtWy4PhlY4+ipXPfRMViMdNw6bRLSc7JpPF7rgI7gWawHy2tdeGU0lADpU+fzbgoDly0qam38dIBhdJQ9rvD2asXL990lRBCs7/aE5x1anfS5XOH/3TrUvpGqxKjcfEoyz3yU8zTfkuvlctKPaZHvxoWN7+uKPfP3znYOkpURD0rLiJk39/yyo4tTXrzjfF3ZXXXTjRUFopYRlWUvS3bkTAsiCJi0N5nbIpJSAq1OjEa7Sl5bbCr7sv0r4+rf5W40qa+bfhk8hsHUsaff/Xl+5uEAruv1r68z54QogaAwvSDJ6b5uW2/U18GGNUwWwC9hYdBjWVPTPzzdfHzN/78MIjeV2ak1WqHwLGBi5e7TUtrLfQqmlSZd4wXvXjHZgBw9XC9GOQrYsZJpu/fHOPIKLffvlpKOXxCuDwejCYKJxffm0lv/v4AkGadYuQemJB5/JjY3mtaKFrb+qiQy3Ec7OvalLbt3lkEe+o2l2EEH97rBJ6rcnVzvd3RLoWLMx9CIRsjqhHzUyEiLHwldeHDEqFfRJQQYvn0K+lYaOTcb5zcg0h/3wAU/V2Aj3oGABjNxvOX867+eCt3/9baW7lRnZ1SsHgMeu726XUmgmUvrGA5uPmvJ4To/n6yhFolUbE4gQ0AIbErNy5ckLhzSGsoH9MbMKg1zASAMY1GERE7Y05LU5e/l4szRtWmXoWadiQmbePb+caWrwjfLAiatf778rRtHKvt8o136Pa+uuzdgfIfaH9V4caBgUxvqi+nTeUZB3ZuW5d46/L3lFIavXNpkP1R8atB94po6tsru5kx3Ns8b8pkP0Z51VLZte/onnXx9PDeVcUluYf+dLvwTBcAnPjDrtXfnvhw8F9D0gWhtcz9vpYu2yuqoKaxLvrZ+XNBiH62dmwgpaqi2h4AGJPqr3Ofj7sBAPL6a19237nS4MQm6tsF5zYM3Llh96iJsu9TjPQAqqTlmRXDo8qYq0UVEIXPsAcAlUanqK0sT3trbeyy3BzJJp6AzZE2y5CcvOUMbIRxAMoeJdFfLO8dNX9LyczJPP6UnwfD5QpaBRxegLe7OyrLr2NUMwqNzoTomc/DPzBshV/4wsxHvc3wi5J6Sinxj1yS5ieKDPSZFpKrUg4H5F/JN5feruzoHdHrpLLWRJVKO7uirZnvF74wszwtjTMl9lL+fT93zfgJS6czX7xDvz3xQQ4A6AfrD+FxA6VUUH4968fVL8xW4XHH5/vf0fbKymhHU3mgNc/zgQpvvb45XK0e5f+Ud+mYf0isbDJ2wawCBz95+8xH+1KmhMg8kAXGhtTTpvsHVz6ubkkA4FPxrtXZZ49QSjXJj6tFKQD4+/mf1upM+YQI0/EET/AEk4X/Bwh6X5dDAG7TAAAAAElFTkSuQmCC",
+        "/products/homeschool-success-blueprint-approved.jpg"
+      ],
+      "ids": [
+        "_R_",
+        "enroll",
+        "video"
+      ]
+    },
+    "/terms": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/terms",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/contact",
+        "/contact",
+        "/privacy",
+        "/contact",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_",
+        "backups",
+        "community",
+        "service-closure",
+        "service-failures"
+      ]
+    },
+    "/records": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/records",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/account": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/account",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/about": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/about",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/blueprint",
+        "/curriculum/gap",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/library": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/library",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#articles",
+        "/library/is-homeschooling-a-good-idea",
+        "/library/i-dont-have-the-patience",
+        "/library/you-and-me-against-the-world",
+        "/webinars",
+        "/my-desk",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/library-room-v1.webp"
+      ],
+      "ids": [
+        "_R_",
+        "articles",
+        "collection-title",
+        "library-title"
+      ]
+    },
+    "/privacy": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/privacy",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/account",
+        "/contact",
+        "/terms#service-closure",
+        "/terms#backups",
+        "/contact",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/search": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/search",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/webinars": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/webinars",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#webinars",
+        "https://www.homeschool-911.com/webinar-registration",
+        "/blueprint",
+        "/curriculum/gap",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/webinars.png",
+        "/webinars/five-shifts-directory.jpg",
+        "/webinars/common-questions-directory.jpg",
+        "/products/homeschool-success-blueprint-approved.jpg",
+        "/products/gap-curriculum-thumbnail.jpg"
+      ],
+      "ids": [
+        "_R_",
+        "next-step",
+        "webinars"
+      ]
+    },
+    "/my-desk": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/my-desk",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/blueprint",
+        "/generators",
+        "/curriculum/gap",
+        "/planner",
+        "/create-account",
+        "/wishing-well",
+        "/create-account",
+        "/records",
+        "/library",
+        "/blueprint",
+        "/curriculum/gap",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/my-desk-room-v5.webp",
+        "/desk/webinars.webp",
+        "/desk/blueprint.webp",
+        "/desk/generators.webp",
+        "/desk/curriculum.webp",
+        "/desk/planner-open.webp",
+        "/desk/wishing-well.webp",
+        "/products/homeschool-success-blueprint-approved.jpg",
+        "/products/gap-curriculum-thumbnail.jpg"
+      ],
+      "ids": [
+        "_R_",
+        "desk-title"
+      ]
+    },
+    "/start": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/start",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/curriculum/gap",
+        "/blueprint",
+        "/library",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/webinars.png",
+        "/Icons/courses-curriculum.png",
+        "/products/homeschool-success-blueprint-approved.jpg",
+        "/Icons/library.png"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/resources": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/resources",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/my-desk",
+        "/account",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/curriculum": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/curriculum/gap",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#choose",
+        "#inside",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "/blueprint",
+        "#choose",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/products/6f94c3e35ac1446ab67468d2b669274a.png",
+        "/products/a869c008bf84480991c85f9fa18fd141.png",
+        "/products/cffd2456ab344d298227d346207c1e20.png",
+        "/products/45df80b439d445ba83acd18c19c26da6.png",
+        "/products/12ec34124c4f41ae9c3bc914ca76c241.png",
+        "/products/homeschool-success-blueprint-approved.jpg"
+      ],
+      "ids": [
+        "_R_",
+        "blueprint",
+        "choose",
+        "grades-3-5",
+        "grades-6-8",
+        "grades-9-12",
+        "grades-k-2",
+        "inside"
+      ]
+    },
+    "/curriculum/gap": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/curriculum/gap",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "#choose",
+        "#inside",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "https://www.homeschool-911.com/courses",
+        "/blueprint",
+        "#choose",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/products/6f94c3e35ac1446ab67468d2b669274a.png",
+        "/products/a869c008bf84480991c85f9fa18fd141.png",
+        "/products/cffd2456ab344d298227d346207c1e20.png",
+        "/products/45df80b439d445ba83acd18c19c26da6.png",
+        "/products/12ec34124c4f41ae9c3bc914ca76c241.png",
+        "/products/homeschool-success-blueprint-approved.jpg"
+      ],
+      "ids": [
+        "_R_",
+        "blueprint",
+        "choose",
+        "grades-3-5",
+        "grades-6-8",
+        "grades-9-12",
+        "grades-k-2",
+        "inside"
+      ]
+    },
+    "/webinars/common-questions/register": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/webinars/common-questions/register",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/webinars/can-i-really-homeschool.png"
+      ],
+      "ids": [
+        "_R_",
+        "registration-heading",
+        "webinar-title"
+      ]
+    },
+    "/planner/workspace": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/planner/workspace",
+      "links": [
+        "/my-desk"
+      ],
+      "images": [
+        "/Icons/planner.png",
+        "/teach-approved-leaf.png"
+      ],
+      "ids": [
+        "_R_",
+        "calendar-day-entry",
+        "calendar-day-hint",
+        "calendar-day-title",
+        "planner-title",
+        "print-title"
+      ]
+    },
+    "/webinars/watch": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/webinars/watch",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/resources",
+        "/account",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/planner/preview": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/planner/preview",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/my-desk"
+      ],
+      "images": [
+        "data:image/png;base64,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",
+        "/Icons/planner.png",
+        "/teach-approved-leaf.png"
+      ],
+      "ids": [
+        "_R_",
+        "calendar-day-entry",
+        "calendar-day-hint",
+        "calendar-day-title",
+        "planner-title",
+        "print-title"
+      ]
+    },
+    "/webinars/5-shifts/register": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/webinars/5-shifts/register",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA+CAYAAAB6Kgg+AAAMEklEQVR42u1aaVRUV7rd59ZczPMoGMYUBBBEMIlPdDmbphMnRBPH5IkvxsS0MYl2VlfovJe0HTUmTo1p09GYhFQrAUGSRhScQAaZQQooZgqQYiioeTrvh02v7rW6fxhBC5f7V917173n7PrOt7/hHOAJnmBKgkyFSd5tuLD/8pU80fCoNuL1faeeeqyIUoC0l0g8yoquPhX8dGBRw516JCUlY2wMkc6iRbX3+z3GGkmmpW3jEIBq9boLc5+PKGpurIAowA/FxZWfOIsW1UokEtaU8pu0tG2c8d9vvz1bAAC5uTt5AJB1as+2gjO7aNbRlw35X79G0w9tLXiQsdiPiqRYLGZSUlKNFT9/9ByxWG5W1MoyKC3eQggZfX1TgqdRPZQ2YlFZhLZ8NsPmwDfQ1+VBxntkSzc1NdWi7izyMZvYksqqYgT4u60ckl7tBYDkJXMuGtQDsLETMGYLJRaWLbx9/T6YkkQBwMbvuR4brsnHy8ORdnc1U6NeeR0AuIwlRsATQKnUYGhMX+no7PN9wMwNF6Ys0dKLn26prq7VWcxm4uzAJZ5RL75AKY1r7uxW9vQpzEFPhyNmztpFsUt2rX/QsR4p0bHR0d/4+bjxqYVQMFzs3uIZWnbl7BahgOfwYuIS1ozYuF0lGqW6v/Z81JQmatBrsnh8HuQ9fYRFuEjZ/M5Wyddf6AU8LnynB6ChouJAsr9QayLsbx50rIeiukOy634dMun2rk55rKvbtPznXtzyRwDgcAVVHC4BIWyMKMfQ19W5Oy58GjgMNeX9lMfq6u1nlVY1Yu7CxNwpQXSgt91/RojLXqOyCyODbYvuNlza7B62KIwQWqkxcEBYPFCwaH1jI2FMFpjMFrbRaKFanQWRz0T2B8YmvT8liDbV1thV3+yEt5cLHb07TEpvaER/EW/iL1j3f7Ka/GNDDOE5Dw6rCcPmIyR0OmAyQyh0IuEz4sBwXOIBgFIQQkCtmigjEObwiS3uKgfAFRA42hIYvByjARQrR1UFAdODVvkEBMLG0a1dqxqtbG9rr5Qr1FW0va9u9pJfd1CJhEVIktnqLaozGzK4Av4qjW6AMDojvHlseHu4RgAoVoxglbxz5NK8jf+z+D9WHkkPRvKhVC+nPt/x22ke3P9VK7th0RhNYaJn2Z5+kf99vWFoGFrFuV9veIsAwHHxIneuwGWWjaOr7brtR3+Y8FU1GTnsP1/b2zpVC/j2MGj04HL57KLSittOYcv+zKjvxBDzwBhVXTl+8P157fZCQX+Iv2tOoJ93+pQpvCuLsn3YLHIyIv5XL+RnHfYI9PLoK8r/wWJvZ8eozUJtUGhoIIxjcguxQK8ZhrRZCr5AiJiYOegb0GQouoZeSdr9mXYi5zQpPhr9XGJPztlPllcXnqW3pNe4of4RR1kspw0MZRycHR0FfDYjr65pAGDC3b4+C4snNBvMXIue8RiYv+blrYQQ7ZSwKADsfm3xzHmLl/QlJu3uAYCKnCP5bPPogqaWFrNc3sOys3OodfPyY5YsSghnu7iitaXnN4Ez13wGABKJhJU0AQI06cj9/F7xDAAFkqO2AEANrfEVF7+4cP7z1+hNiZhSapxHKbUZbr6yu7cuOw4AaEEB26qJFYjFbAAoPHciuKU4O3j8fmHW2ZWFGV+2UdrgBQDrEmxdB+t/pL2NBT/fj6BZjY/OT001XTj10ZywQNfr0rYWLaWKl9qrsks5Fu75vLxCTKv0SAeQsP/Qt9/WNrZj3qoVSylACP410zl9YEeIUqOL0ytlPwJQW52PHnx7sbOTA3dQr9djyUtbERC/jnRXZ4ZKm+5ULFiz1wYAirNO0OFR1ZrlG/acG39P3VmyUzEoX98r7xKNKPodYuNmoUoqX7fwpdfTrc6ifxeOIcmnya1OtoKAuooCzPGDk2/US1IANgDQUPRTjH6kG6qRIS4AnD++/Zmq28UOV/P/+p6QY/Fpb+2ko1o6bOMSVBMza2631cbRgdYbn0lLL+3qaKozc+34LJ6rb5MoMv7d4KiVWQBw7uTH35iN2jVrd3zEL7t48A17tuZId3cbhkdGQA1ms7urJ4tl43VyzvoPU+4l8GKGkFSL1WVGffLOMS6PCwLKGlUMmVz5rJDBnq4Xx5/zGa2nh4vwLwDQWF965HL+z6a7d+Uwm3UwMwzpVxoR9Exc0D/+/QkmOWFi1N0iLXcSmMBhA1wWl90ra4WBMxgGAN8dfjMyyM9+YWNTQ8THO2cGa8cGYGvPZas1Kqo3WoiDgxvj5OYFz8jlCyYzMkwI0RHF3Uo4cEFZAMtMYdJrQC3cGQBg6+Q9ciY93eBiCzdPZ8ECo0kPrZ5QSlkkNCwaldXN7xNmLOOfXIlarY8CQMbJd3vNGrkn26KlBrWe2Nq7QV5T4mIXv+pGa80VkVrZZ+Fx2AzDcGDr5AJwbRo8fEVFy9a99Z6jo9/QZMf6CSFadvlMYXNjSYJFO4R+eZ9u8ytr+c7RybO2rZq9cW7cMzsjRGH3wonOhOmh4fCOiltBSHDmZFtxUix6OfuLjYr+vlN8loHdJJX98b8SZueMDA5ec3Bwlcye9WyHTCar7Optq5y/OrURAMrL0zixsSnGh5W9kQn6BgWAhoYGF1n1xWw+MURxOSxDeV3rjd3ik4l4nJBx+uN/bAJdk/yBfvbeat349aG9yTs+2LG8sPjKeU3TrVz7RzG/CYmj1SXn6909XBXfHNrnBQB3auobt65cyZNdOh1SUtLgEi4KPsrlsBRjOtWy4PhlY4+ipXPfRMViMdNw6bRLSc7JpPF7rgI7gWawHy2tdeGU0lADpU+fzbgoDly0qam38dIBhdJQ9rvD2asXL990lRBCs7/aE5x1anfS5XOH/3TrUvpGqxKjcfEoyz3yU8zTfkuvlctKPaZHvxoWN7+uKPfP3znYOkpURD0rLiJk39/yyo4tTXrzjfF3ZXXXTjRUFopYRlWUvS3bkTAsiCJi0N5nbIpJSAq1OjEa7Sl5bbCr7sv0r4+rf5W40qa+bfhk8hsHUsaff/Xl+5uEAruv1r68z54QogaAwvSDJ6b5uW2/U18GGNUwWwC9hYdBjWVPTPzzdfHzN/78MIjeV2ak1WqHwLGBi5e7TUtrLfQqmlSZd4wXvXjHZgBw9XC9GOQrYsZJpu/fHOPIKLffvlpKOXxCuDwejCYKJxffm0lv/v4AkGadYuQemJB5/JjY3mtaKFrb+qiQy3Ec7OvalLbt3lkEe+o2l2EEH97rBJ6rcnVzvd3RLoWLMx9CIRsjqhHzUyEiLHwldeHDEqFfRJQQYvn0K+lYaOTcb5zcg0h/3wAU/V2Aj3oGABjNxvOX867+eCt3/9baW7lRnZ1SsHgMeu726XUmgmUvrGA5uPmvJ4To/n6yhFolUbE4gQ0AIbErNy5ckLhzSGsoH9MbMKg1zASAMY1GERE7Y05LU5e/l4szRtWmXoWadiQmbePb+caWrwjfLAiatf778rRtHKvt8o136Pa+uuzdgfIfaH9V4caBgUxvqi+nTeUZB3ZuW5d46/L3lFIavXNpkP1R8atB94po6tsru5kx3Ns8b8pkP0Z51VLZte/onnXx9PDeVcUluYf+dLvwTBcAnPjDrtXfnvhw8F9D0gWhtcz9vpYu2yuqoKaxLvrZ+XNBiH62dmwgpaqi2h4AGJPqr3Ofj7sBAPL6a19237nS4MQm6tsF5zYM3Llh96iJsu9TjPQAqqTlmRXDo8qYq0UVEIXPsAcAlUanqK0sT3trbeyy3BzJJp6AzZE2y5CcvOUMbIRxAMoeJdFfLO8dNX9LyczJPP6UnwfD5QpaBRxegLe7OyrLr2NUMwqNzoTomc/DPzBshV/4wsxHvc3wi5J6Sinxj1yS5ieKDPSZFpKrUg4H5F/JN5feruzoHdHrpLLWRJVKO7uirZnvF74wszwtjTMl9lL+fT93zfgJS6czX7xDvz3xQQ4A6AfrD+FxA6VUUH4968fVL8xW4XHH5/vf0fbKymhHU3mgNc/zgQpvvb45XK0e5f+Ud+mYf0isbDJ2wawCBz95+8xH+1KmhMg8kAXGhtTTpvsHVz6ubkkA4FPxrtXZZ49QSjXJj6tFKQD4+/mf1upM+YQI0/EET/AEk4X/Bwh6X5dDAG7TAAAAAElFTkSuQmCC",
+        "/webinars/five-shifts-homepage.png"
+      ],
+      "ids": [
+        "_R_",
+        "registration-heading",
+        "webinar-title"
+      ]
+    },
+    "/library/you-and-me-against-the-world": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/library/you-and-me-against-the-world",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/library",
+        "/library",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/library/i-dont-have-the-patience": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/library/i-dont-have-the-patience",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/library",
+        "/library",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/auth/callback": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/auth/callback",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    },
+    "/library/is-homeschooling-a-good-idea": {
+      "status": 200,
+      "url": "https://teach-mocha.vercel.app/library/is-homeschooling-a-good-idea",
+      "links": [
+        "/",
+        "/",
+        "/curriculum",
+        "/generators",
+        "/blueprint",
+        "/planner",
+        "/library",
+        "/webinars",
+        "/about",
+        "/my-desk",
+        "/front-porch",
+        "/create-account",
+        "/login",
+        "/library",
+        "/library",
+        "/webinars",
+        "/",
+        "/start",
+        "/library",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "images": [
+        "data:image/png;base64,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"
+      ],
+      "ids": [
+        "_R_"
+      ]
+    }
+  },
+  "assets": {
+    "/Icons/blueprint.png": 200,
+    "/Icons/courses-curriculum.png": 200,
+    "/Icons/front-porch.png": 200,
+    "/Icons/generators.png": 200,
+    "/Icons/library.png": 200,
+    "/Icons/my-desk.png": 200,
+    "/Icons/planner.png": 200,
+    "/Icons/webinars.png": 200,
+    "/desk/blueprint.webp": 200,
+    "/desk/curriculum.webp": 200,
+    "/desk/generators.webp": 200,
+    "/desk/planner-open.webp": 200,
+    "/desk/webinars.webp": 200,
+    "/desk/wishing-well.webp": 200,
+    "/front-porch-room-v5.webp": 200,
+    "/library-room-v1.webp": 200,
+    "/my-desk-room-v5.webp": 200,
+    "/products/12ec34124c4f41ae9c3bc914ca76c241.png": 200,
+    "/products/45df80b439d445ba83acd18c19c26da6.png": 200,
+    "/products/6f94c3e35ac1446ab67468d2b669274a.png": 200,
+    "/products/a869c008bf84480991c85f9fa18fd141.png": 200,
+    "/products/cffd2456ab344d298227d346207c1e20.png": 200,
+    "/products/gap-curriculum-thumbnail.jpg": 200,
+    "/products/homeschool-success-blueprint-approved.jpg": 200,
+    "/teach-approved-leaf.png": 200,
+    "/webinars/can-i-really-homeschool.png": 200,
+    "/webinars/common-questions-directory.jpg": 200,
+    "/webinars/five-shifts-directory.jpg": 200,
+    "/webinars/five-shifts-homepage.png": 200
+  },
+  "unknown_internal_paths": [],
+  "missing_anchors": [],
+  "external_original_site_links": {
+    "https://www.homeschool-911.com/courses": {
+      "status": 200,
+      "url": "https://www.homeschool-911.com/courses"
+    },
+    "https://www.homeschool-911.com/hsb": {
+      "status": 200,
+      "url": "https://www.homeschool-911.com/hsb"
+    },
+    "https://www.homeschool-911.com/webinar-registration": {
+      "status": 200,
+      "url": "https://www.homeschool-911.com/webinar-registration"
+    }
+  }
+}

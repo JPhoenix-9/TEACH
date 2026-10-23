@@ -8,6 +8,7 @@ export default function LibraryExperience({articles}) {
   const dialog = useRef(null);
   const dialogBody = useRef(null);
   const dialogHeading = useRef(null);
+  const searchInput = useRef(null);
   const [mode, setMode] = useState(null);
   const [selectedSlug, setSelectedSlug] = useState(null);
   const [query, setQuery] = useState('');
@@ -97,11 +98,11 @@ export default function LibraryExperience({articles}) {
       <div className={s.dialogBody} ref={dialogBody}>
         {mode === 'shelves' && <section className={s.shelfContents}>
           <p className={s.eyebrow}>ARTICLES BY JANA SHERIDAN</p><h2 id="library-dialog-title" ref={dialogHeading} tabIndex={-1}>Browse the Library.</h2><p className={s.dialogIntro}>A little help for wherever you are in your homeschool.</p>
-          <label className={s.searchLabel}>Find an article<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search by title, topic or a word on your mind…"/></label>
+          <label className={s.searchLabel}>Find an article<input ref={searchInput} type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search by title, topic or a word on your mind…"/></label>
           <div className={s.topics} aria-label="Filter articles by topic">{topics.map(item => <button key={item} type="button" aria-pressed={topic === item} onClick={() => setTopic(item)}>{item}</button>)}</div>
           <p className={s.resultCount} role="status">{filtered.length} {filtered.length === 1 ? 'article' : 'articles'}{normalizedQuery ? ` matching “${query.trim()}”` : ''}</p>
           <div className={s.shelfList}>{filtered.map(article => <a key={article.slug} href={`/library/${article.slug}`} onClick={event => readLink(event, article)}><div><span className={s.topic}>{article.topic}</span><h3>{article.title}</h3><p>{article.summary}</p><small>{article.author} · {article.minutes} min read</small></div><span className={s.openArrow} aria-hidden="true">↗</span></a>)}</div>
-          {!filtered.length && <div className={s.empty}><h3>Nothing on this shelf matches yet.</h3><p>Try a different word or look through all the articles.</p><button type="button" onClick={() => {setQuery('');setTopic('All articles');}}>Show all articles</button></div>}
+          {!filtered.length && <div className={s.empty}><h3>Nothing on this shelf matches yet.</h3><p>Try a different word or look through all the articles.</p><button type="button" onClick={() => {setQuery('');setTopic('All articles');searchInput.current?.focus();}}>Show all articles</button></div>}
           <p className={s.archiveNote}>These articles retain their original text and publication dates from Homeschool-911.</p>
         </section>}
         {mode === 'article' && selected && <article className={s.readingPage}>
