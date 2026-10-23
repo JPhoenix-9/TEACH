@@ -21,3 +21,5 @@ Validation: production build passes. Transactional integration checks passed for
 Artwork revision: two parents playing ball with three children on the lawn replace the distant pair. The warm daylight, porch, Wishing Well, lemonade pitcher and three iced glasses remain. Current asset: public/front-porch-room-v3.webp.
 
 Wishing Well wording: invite wants and needs for existing TEACH resources and future creations. Porch tag: “Tell us what you want & need.” Remove privacy as the promotional emphasis. This copy update does not change who can read previously submitted wishes.
+
+Artwork revision: replace the ball game with a calm, recognizable family read-aloud on a picnic blanket. Correct the mother’s extra arm using simple natural seated poses. Current asset: public/front-porch-room-v4.webp.
