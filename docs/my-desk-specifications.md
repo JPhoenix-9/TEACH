@@ -35,6 +35,8 @@ Latest functional decision: remove the printer object/icon entirely. The file fo
 
 ## Future complete records printing — October 22 2026
 
+Fireplace visibility refinement: swap the generator and book-stack positions so the taller books are left of the fire and the shorter generator sits nearer the center. Move the family files toward the mug, and enlarge Blueprint again. Keep the fire visible, the objects supported on the wood and adjacent labels clear.
+
 Latest layout correction: arrange the monitor, generators, curriculum books and family folders along the back of the desktop, with Blueprint and Planner along the left and right sides. Size each object realistically relative to the existing coffee mug: a substantial monitor, a book stack and full-size folders, and a planner with a larger footprint than the mug. The trial reduction to about half-size made these objects too small and is superseded. All objects and nameplates must rest on the wood, away from the front lip; leave the middle and foreground open. Preserve the approved room, mug, lamp, independent links and existing access behavior. Scale the composition with the room at narrow widths rather than cropping the desktop behind large floating tools.
 
 - Owner-approved future function: **Print complete records**, accessed through Files / Children’s Records folders on My Desk, not through the Planner.

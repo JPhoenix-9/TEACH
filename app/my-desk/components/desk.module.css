@@ -9,14 +9,14 @@
 .plaque{gap:3px;padding:6px 5px;border-radius:4px;box-shadow:0 2px 3px #27180d55}
 .plaque strong{font-size:clamp(11px,1.05cqw,16px)}
 .plaque small{font-size:clamp(8px,.65cqw,10px)}
-.webinars{top:auto;left:5%;bottom:36%;width:18%}
+.webinars{top:auto;left:5%;bottom:39%;width:18%}
 .webinars>img{width:150%;height:18cqw}
-.generators{top:auto;left:29%;bottom:36%;width:12%}
-.curriculum{top:auto;left:47%;right:auto;bottom:36%;width:14%}
+.generators{top:auto;left:48%;bottom:39%;width:12%}
+.curriculum{top:auto;left:28%;right:auto;bottom:39%;width:14%}
 .curriculum>img{width:160%;height:15cqw}
-.records{top:auto;left:65%;right:auto;bottom:36%;width:13%}
-.blueprint{top:auto;left:6%;bottom:19%;width:15%}
-.blueprint>img{width:165%;height:9cqw}
+.records{top:auto;left:70%;right:auto;bottom:39%;width:13%}
+.blueprint{top:auto;left:6%;bottom:18%;width:15%}
+.blueprint>img{width:210%;height:12cqw}
 .planner{top:auto;right:7%;bottom:19%;width:15%}
 .planner>img{width:180%;height:12cqw}
 .folderArt{width:100%;height:10.5cqw;margin-bottom:3px;filter:drop-shadow(2px 3px 2px #21150d88)}
