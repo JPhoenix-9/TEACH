@@ -14,7 +14,7 @@ export default function LibraryExperience({articles}) {
   const [topic, setTopic] = useState('All articles');
   const isOpen = mode !== null;
   const selected = articles.find(article => article.slug === selectedSlug);
-  const featured = articles.find(article => article.slug === 'i-dont-have-the-patience') || articles[0];
+  const featured = articles.find(article => article.slug === 'you-and-me-against-the-world') || articles[0];
   const topics = ['All articles', ...new Set(articles.map(article => article.topic))];
   const normalizedQuery = query.trim().toLocaleLowerCase();
   const filtered = articles.filter(article =>
@@ -72,14 +72,12 @@ export default function LibraryExperience({articles}) {
         <p>Come in. Take your time.<br/>There’s a good place for you here.</p>
       </div>
       <nav className={s.roomControls} aria-label="Explore the Library room">
-        <button type="button" className={`${s.roomPlaque} ${s.shelfSpot}`} onClick={() => setMode('shelves')} aria-haspopup="dialog">
-          <span className={s.plaqueEyebrow}>A LITTLE GUIDANCE & ENCOURAGEMENT</span>
-          <strong>Browse the shelves <span aria-hidden="true">→</span></strong>
-          <span>Find something for the question in front of you.</span>
+        <button type="button" className={s.roomPlaque} onClick={() => setMode('shelves')} aria-haspopup="dialog">
+          <strong>Browse the Library <span aria-hidden="true">→</span></strong>
+          <span>Search all articles or choose a topic.</span>
         </button>
-        <button type="button" className={`${s.roomPlaque} ${s.tableSpot}`} onClick={() => read(featured)} aria-haspopup="dialog">
-          <span className={s.plaqueEyebrow}>ON THE READING TABLE</span>
-          <strong>Take a seat & read <span aria-hidden="true">→</span></strong>
+        <button type="button" className={s.roomPlaque} onClick={() => read(featured)} aria-haspopup="dialog">
+          <strong>Featured article <span aria-hidden="true">→</span></strong>
           <span>{featured.title}</span>
         </button>
       </nav>
@@ -98,7 +96,7 @@ export default function LibraryExperience({articles}) {
       <div className={s.dialogBar}><span>TEACH · THE LIBRARY</span><button className={s.closeButton} type="button" onClick={close} aria-label="Close and return to the Library">Close <span aria-hidden="true">×</span></button></div>
       <div className={s.dialogBody} ref={dialogBody}>
         {mode === 'shelves' && <section className={s.shelfContents}>
-          <p className={s.eyebrow}>PULL UP A CHAIR</p><h2 id="library-dialog-title" ref={dialogHeading} tabIndex={-1}>Browse the shelves.</h2><p className={s.dialogIntro}>A little help for wherever you are in your homeschool.</p>
+          <p className={s.eyebrow}>ARTICLES BY JANA SHERIDAN</p><h2 id="library-dialog-title" ref={dialogHeading} tabIndex={-1}>Browse the Library.</h2><p className={s.dialogIntro}>A little help for wherever you are in your homeschool.</p>
           <label className={s.searchLabel}>Find an article<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search by title, topic or a word on your mind…"/></label>
           <div className={s.topics} aria-label="Filter articles by topic">{topics.map(item => <button key={item} type="button" aria-pressed={topic === item} onClick={() => setTopic(item)}>{item}</button>)}</div>
           <p className={s.resultCount} role="status">{filtered.length} {filtered.length === 1 ? 'article' : 'articles'}{normalizedQuery ? ` matching “${query.trim()}”` : ''}</p>
@@ -107,7 +105,7 @@ export default function LibraryExperience({articles}) {
           <p className={s.archiveNote}>These articles retain their original text and publication dates from Homeschool-911.</p>
         </section>}
         {mode === 'article' && selected && <article className={s.readingPage}>
-          <button className={s.backToShelves} type="button" onClick={() => setMode('shelves')}>← Back to the shelves</button>
+          <button className={s.backToShelves} type="button" onClick={() => setMode('shelves')}>← All articles</button>
           <header><p className={s.eyebrow}>{selected.topic}</p><h2 id="library-dialog-title" ref={dialogHeading} tabIndex={-1}>{selected.title}</h2><p className={s.byline}>By {selected.author} · {selected.minutes} min read<br/><span>Originally published {selected.date}</span></p></header>
           <div className={s.articleBody}>{selected.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
           <footer className={s.readingFooter}><p>Originally published on Homeschool-911. Original text and publication date preserved.</p><div><button type="button" onClick={() => setMode('shelves')}>Choose another article →</button><a href={`/library/${selected.slug}`}>Open on its own page</a></div><small>© {new Date().getFullYear()} Higher Ground Publishing</small></footer>
