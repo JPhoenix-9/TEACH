@@ -19,7 +19,7 @@ export default function Planner({preview=true}){
   const [sound,setSound]=useState(true);const [turn,setTurn]=useState(0);const [direction,setDirection]=useState("next");
   const [start,setStart]=useState("");const [end,setEnd]=useState("");const [scope,setScope]=useState("family");const [content,setContent]=useState("attendance");const [report,setReport]=useState(null);const [printOpen,setPrintOpen]=useState(false);
   const [calendarDay,setCalendarDay]=useState(null),[mobilePage,setMobilePage]=useState("calendar");
-  const audio=useRef(null),turnTimer=useRef(null),panel=useRef(null),printDialog=useRef(null),dayDialog=useRef(null),bookScroll=useRef(null),dailyHeading=useRef(null);
+  const audio=useRef(null),turnTimer=useRef(null),panel=useRef(null),printDialog=useRef(null),dayDialog=useRef(null),bookScroll=useRef(null),dailyHeading=useRef(null),goToDaily=useRef(false);
   useEffect(()=>{
     const now=new Date(),key=dateKey(now);setToday(key);setDay(key);setMonth([now.getFullYear(),now.getMonth()]);
     setStart(dateKey(new Date(now.getFullYear(),now.getMonth(),1)));setEnd(key);
@@ -31,7 +31,7 @@ export default function Planner({preview=true}){
   useEffect(()=>{if(calendarDay)dayDialog.current?.showModal();else dayDialog.current?.close();},[calendarDay]);
   function openCalendarDay(key){chooseDay(key);setCalendarDay(key);}
   function showPage(page){setMobilePage(page);if(bookScroll.current)bookScroll.current.scrollTop=0;}
-  function openDailyRecord(){setCalendarDay(null);showPage("daily");requestAnimationFrame(()=>dailyHeading.current?.focus());}
+  function openDailyRecord(){goToDaily.current=true;setCalendarDay(null);showPage("daily");}
   function update(key,changes){if(!preview){workspace.update(key,changes);return;}setRecords(old=>({...old,[key]:{...empty,...old[key],...changes}}));}
   function paperSound(){
     if(!sound)return;
@@ -71,7 +71,7 @@ export default function Planner({preview=true}){
       </div>}
       <p className={s.archiveStatus}>{preview?"Sample workspace":"Private family archive"} <span>{preview?"Changes reset on reload":workspace.pending?"Keep this page open until changes are saved.":"Your records follow your account across devices."}</span></p>
     </section>
-    <dialog className={s.dayDialog} ref={dayDialog} onCancel={()=>setCalendarDay(null)} onClose={()=>setCalendarDay(null)} aria-labelledby="calendar-day-title" aria-describedby="calendar-day-hint">
+    <dialog className={s.dayDialog} ref={dayDialog} onCancel={()=>setCalendarDay(null)} onClose={()=>{setCalendarDay(null);if(goToDaily.current){goToDaily.current=false;dailyHeading.current?.focus();}}} aria-labelledby="calendar-day-title" aria-describedby="calendar-day-hint">
       <div className={s.daySheet}><header className={s.daySheetHeader}><p className={s.smallCaps}>{calendarDay?pretty(calendarDay,{month:"long",year:"numeric"}):""}</p><button type="button" className={s.closeDay} aria-label="Close calendar day" onClick={()=>setCalendarDay(null)}>×</button><h2 id="calendar-day-title"><span>{calendarDay?Number(calendarDay.slice(-2)):""}</span>{calendarDay?pretty(calendarDay,{weekday:"long"}):""}</h2></header>
       <label className={s.dayEntryLabel} htmlFor="calendar-day-entry">Calendar plans &amp; events</label><textarea autoFocus readOnly={!canEdit} id="calendar-day-entry" className={s.dayEntry} value={records[calendarDay]?.event||""} placeholder="A field trip, a lesson, an appointment… or a whole day’s worth of plans." onChange={e=>update(calendarDay,{event:e.target.value})}/>
       <button type="button" className={s.openDaily} onClick={openDailyRecord}>Attendance &amp; children’s notes for this day →</button>
