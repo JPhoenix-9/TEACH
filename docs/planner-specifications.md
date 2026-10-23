@@ -1,5 +1,13 @@
 # TEACH Planner and Attendance specifications
 
+## Mobile page access — October 23, 2026
+
+- Mobile has two always-visible page controls above the leather book: Calendar and Attendance & notes. Show the selected page directly rather than placing attendance below a full-height calendar in a hidden inner scroll area.
+- Preserve the desktop facing-page layout: calendar left, attendance and notes right.
+- Choosing a calendar date selects that same date for attendance and notes. Its enlarged editor includes a direct Attendance & children’s notes for this day action.
+- Calendar plans/events, family notes, individual child notes and attendance remain separate record fields. Switching pages does not clear entries or alter account saving, subscription checks or print/export behavior.
+- Keep children’s attendance controls and note fields comfortably touchable; use 16px editing text on mobile. This change fixes discovery, not an entitlement or database change.
+
 ## Established requirements
 
 Recovered from the owner's October 16, 2026 decisions, alongside the October 21 access clarification:
@@ -93,3 +101,4 @@ Explicit product goal: the Planner should bring families back to the website dai
 
 ## Backup responsibility and service lifetime October 22 2026
 “Permanent family archive” describes records carried across school years while TEACH offers the archive; it does not require perpetual site operation. Parents must keep independent document copies. A planned permanent closure provides notice and at least 30 calendar days for retrieval; catastrophic loss or urgent legal/security action may prevent notice or recovery. See `backup-and-service-closure-spec.md` and the published Terms and Privacy pages. Ordinary subscription expiry still preserves read/export access while the archive service operates.
+
