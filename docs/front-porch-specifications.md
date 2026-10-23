@@ -25,3 +25,5 @@ Wishing Well wording: invite wants and needs for existing TEACH resources and fu
 Artwork revision: replace the ball game with a calm, recognizable family read-aloud on a picnic blanket. Correct the mother’s extra arm using simple natural seated poses. Current asset: public/front-porch-room-v4.webp.
 
 Artwork revision: family playing a relaxed game of croquet with visible mallets, colored balls and wickets, standing in naturally separated poses to feel approachable. Current asset: public/front-porch-room-v5.webp.
+
+Approved Front Porch welcome: “Pull up a chair. Join a conversation.” Use a sociable invitation without assuming visitors are overwhelmed or in distress.
