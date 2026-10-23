@@ -45,3 +45,7 @@ Owner requested parent name and contact information plus number and ages of chil
 - A separate TEACH backend project is needed. The only discovered Supabase organization is named Chef Jay’s, and its only project belongs to Chef Jay. Organization selection for the TEACH project is awaiting the owner's answer; do not change the Chef Jay project.
 - Check costs before provisioning any service. Stripe is on hold.
 - Support inbox support@teachforlove.com is not active. Transactional email and account recovery delivery require setup and verification before signup is advertised as working.
+
+
+## Front Porch update — October 23, 2026
+Community threads and replies are now implemented with database-enforced purchaser access. Ask Jana threads and all their replies are private to the starter and trusted TEACH administrators. Free accounts and Planner-only access remain excluded. See front-porch-specifications.md for current behavior. This replaces earlier Front Porch Coming Soon implementation status. Generators themselves remain Coming Soon.

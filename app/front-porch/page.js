@@ -1,4 +1,6 @@
-import ComingSoon from "../components/ComingSoon";
-export const metadata = {"title":"The Front Porch | TEACH","description":"A private community included with a Blueprint, curriculum, or generator purchase. A Planner-only purchase does not include access."};
-export default function Page() { return <ComingSoon title="The Front Porch" image="/Icons/front-porch.png" introduction="A welcoming place for the TEACH family to connect." description="A Blueprint, curriculum, or generator purchase is required to enter the Front Porch community. A free account or a Planner-only purchase does not grant entry. If you’re still exploring, take a look at the resources below to find your starting place. Community participation is not open yet." points={[]} account={false} purchaseSuggestions={true} />; }
+import Header from '../components/Header';
+import SiteFooter from '../components/SiteFooter';
+import Porch from './Porch';
+export const metadata={title:'The Front Porch | TEACH',description:'A welcoming, private community for the TEACH family. Homeschooling support, curriculum conversations, Blueprint guidance and a place to ask Jana.'};
+export default function Page(){return <><div className="atmosphere-band" aria-hidden="true"/><Header/><Porch/><SiteFooter/></>;}
 
