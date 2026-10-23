@@ -5,20 +5,21 @@
 .tool{transition:none}
 .tool:hover{transform:none}
 .tool:hover .plaque{background:#fff9e9;border-color:#f3d99c}
-.tool>img{height:8cqw;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 3px 2px #1c100a80)}
+.tool>img{width:130%;max-width:none;height:12cqw;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 3px 2px #1c100a80)}
 .plaque{gap:3px;padding:6px 5px;border-radius:4px;box-shadow:0 2px 3px #27180d55}
 .plaque strong{font-size:clamp(11px,1.05cqw,16px)}
 .plaque small{font-size:clamp(8px,.65cqw,10px)}
 .webinars{top:auto;left:5%;bottom:36%;width:18%}
-.webinars>img{height:11cqw}
+.webinars>img{width:150%;height:18cqw}
 .generators{top:auto;left:29%;bottom:36%;width:12%}
 .curriculum{top:auto;left:47%;right:auto;bottom:36%;width:14%}
+.curriculum>img{width:160%;height:15cqw}
 .records{top:auto;left:67%;right:auto;bottom:36%;width:13%}
-.blueprint{top:auto;left:6%;bottom:24%;width:15%}
-.blueprint>img{height:6cqw}
-.planner{top:auto;right:10%;bottom:23%;width:15%}
-.planner>img{height:6cqw}
-.folderArt{height:6.8cqw;margin-bottom:3px;filter:drop-shadow(2px 3px 2px #21150d88)}
+.blueprint{top:auto;left:6%;bottom:19%;width:15%}
+.blueprint>img{width:165%;height:11cqw}
+.planner{top:auto;right:7%;bottom:19%;width:15%}
+.planner>img{width:180%;height:12cqw}
+.folderArt{width:100%;height:10.5cqw;margin-bottom:3px;filter:drop-shadow(2px 3px 2px #21150d88)}
 .folderArt>span{padding:4px 2px;font-size:clamp(7px,.8cqw,12px)}
 @media(max-width:800px){
  .room{aspect-ratio:3/2;min-height:0}
