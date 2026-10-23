@@ -11,14 +11,14 @@
 .plaque small{font-size:clamp(8px,.65cqw,10px)}
 .webinars{top:auto;left:5%;bottom:39%;width:18%}
 .webinars>img{width:150%;height:18cqw}
-.generators{top:auto;left:auto;right:28%;bottom:39%;width:14%}
+.generators{top:auto;left:auto;right:24%;bottom:39%;width:14%}
 .curriculum{top:auto;left:28%;right:auto;bottom:39%;width:14%}
 .curriculum>img{width:160%;height:15cqw}
 .records{top:auto;left:auto;right:5%;bottom:39%;width:18%}
 .blueprint{top:auto;left:6%;bottom:18%;width:15%}
 .blueprint>img{width:210%;height:12cqw}
-.planner{top:auto;right:6%;bottom:18%;width:15%}
-.planner>img{width:180%;height:12cqw;transform:none}
+.planner{top:auto;left:34%;right:auto;bottom:18%;width:34%}
+.planner>img{width:100%;height:12cqw;object-fit:fill;transform:none}
 .folderArt{width:82%;height:12cqw;margin-bottom:3px;filter:drop-shadow(2px 3px 2px #21150d88)}
 .folderArt>span{padding:4px 2px;font-size:clamp(7px,.8cqw,12px)}
 .well{right:4%;top:2%;width:12%;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;padding:0;border:0;border-radius:0;text-decoration:none;text-shadow:none}
@@ -41,7 +41,8 @@
  .generators{width:14%!important}
  .curriculum{width:14%!important}
  .records{width:18%!important}
- .blueprint,.planner{width:15%!important}
+ .blueprint{width:15%!important}
+ .planner{width:34%!important}
  .plaque{padding:3px 2px;gap:0}
  .plaque strong{font-size:clamp(7px,1.5cqw,12px)}
  .plaque small{display:none}
