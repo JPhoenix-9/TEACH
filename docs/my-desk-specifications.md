@@ -35,6 +35,8 @@ Latest functional decision: remove the printer object/icon entirely. The file fo
 
 ## Future complete records printing — October 22 2026
 
+Latest layout correction: reduce the desk tools to roughly half their previous visual size. Arrange the monitor, generators, curriculum books and family folders along the back of the desktop, with Blueprint and Planner along the left and right sides. All objects and nameplates must rest on the wood, away from the front lip; leave the middle and foreground open. Preserve the approved room, mug, lamp, independent links and existing access behavior. Scale the composition with the room at narrow widths rather than cropping the desktop behind large floating tools.
+
 - Owner-approved future function: **Print complete records**, accessed through Files / Children’s Records folders on My Desk, not through the Planner.
 - When generators and K–12 curriculum become available, the folders should bring together relevant student records across those products, including Planner attendance and notes and transcripts where applicable. The exact report contents will be defined with those products. This is a future requirement, not an existing integration.
 - Planner continues to print its own information directly. Printing Planner information from the Files hub is the explicitly allowed overlap; do not create a separate printer tool or icon.
