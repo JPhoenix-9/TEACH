@@ -11,10 +11,10 @@
 .plaque small{font-size:clamp(8px,.65cqw,10px)}
 .webinars{top:auto;left:5%;bottom:39%;width:18%}
 .webinars>img{width:150%;height:18cqw}
-.generators{top:auto;left:74%;bottom:39%;width:11%}
+.generators{top:auto;left:74%;bottom:42%;width:11%}
 .curriculum{top:auto;left:28%;right:auto;bottom:39%;width:14%}
 .curriculum>img{width:160%;height:15cqw}
-.records{top:auto;left:85%;right:auto;bottom:39%;width:12%}
+.records{top:auto;left:85.5%;right:auto;bottom:42%;width:12%}
 .blueprint{top:auto;left:6%;bottom:18%;width:15%}
 .blueprint>img{width:210%;height:12cqw}
 .planner{top:auto;right:8%;bottom:18%;width:15%}
