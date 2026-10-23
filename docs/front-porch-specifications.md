@@ -23,3 +23,5 @@ Artwork revision: two parents playing ball with three children on the lawn repla
 Wishing Well wording: invite wants and needs for existing TEACH resources and future creations. Porch tag: “Tell us what you want & need.” Remove privacy as the promotional emphasis. This copy update does not change who can read previously submitted wishes.
 
 Artwork revision: replace the ball game with a calm, recognizable family read-aloud on a picnic blanket. Correct the mother’s extra arm using simple natural seated poses. Current asset: public/front-porch-room-v4.webp.
+
+Artwork revision: family playing a relaxed game of croquet with visible mallets, colored balls and wickets, standing in naturally separated poses to feel approachable. Current asset: public/front-porch-room-v5.webp.
