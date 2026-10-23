@@ -19,3 +19,5 @@ Artwork revision: the approved porch now includes a glass lemonade pitcher and e
 Validation: production build passes. Transactional integration checks passed for Blueprint/GAP eligibility, first-name identity stamping, staff impersonation prevention, private thread/reply isolation, denied nonpurchaser writes, revoked access, moderation hide/restore, immutable content and anonymous denial. No test records were committed. Security advisor found no new issues.
 
 Artwork revision: two parents playing ball with three children on the lawn replace the distant pair. The warm daylight, porch, Wishing Well, lemonade pitcher and three iced glasses remain. Current asset: public/front-porch-room-v3.webp.
+
+Wishing Well wording: invite wants and needs for existing TEACH resources and future creations. Porch tag: “Tell us what you want & need.” Remove privacy as the promotional emphasis. This copy update does not change who can read previously submitted wishes.
