@@ -48,8 +48,8 @@ export default function Blueprint() {
       <section className={styles.topics}>
         <div className={styles.section}>
           <p className={styles.eyebrow}>PRACTICAL HELP, STEP BY STEP</p><h2>A foundation you can build on.</h2>
-          <p className={styles.intro}>Across six modules, the Blueprint addresses the questions that shape everyday homeschooling. These are the areas you’ll explore.</p>
-          <div className={styles.grid}>{topics.map(([title, text], i) => <article key={title}><span className={styles.number} aria-hidden="true">0{i + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+          <p className={styles.intro}>Across six modules, the Blueprint addresses the questions that shape everyday homeschooling. Choose the complete Blueprint for $149, or start with the module that addresses what you need most right now for $29.</p>
+          <div className={styles.grid}>{topics.map(([title, text], i) => <article key={title}><span className={styles.number} aria-hidden="true">0{i + 1}</span><h3>{title}</h3><p>{text}</p><p><strong>$29 individually</strong></p></article>)}</div>
         </div>
       </section>
 
@@ -70,15 +70,16 @@ export default function Blueprint() {
           <details><summary>Is this a curriculum for my children?</summary><p>The Blueprint is a course for parents. It helps you make decisions about homeschooling and develop the skills to teach your children. GAP is a separate curriculum for children.</p></details>
           <details><summary>Do I need to follow a class schedule?</summary><p>No. This is a self-paced online video course with six modules.</p></details>
           <details><summary>What will I learn?</summary><p>The course covers mindset, legal requirements, teaching methods, curriculum choices, organization, and finding support.</p></details>
+          <details><summary>Can I buy just one module?</summary><p>Yes. Each of the six Blueprint modules is available individually for $29, so you can start with the area where you need help most. The complete six-module Blueprint is $149.</p></details>
           <details><summary>Can I get personal help?</summary><p>Personalized coaching is available separately if you would like help applying what you learn to your own situation.</p></details>
         </div>
       </section>
 
       <section className={styles.enroll} id="enroll">
         <p className={styles.eyebrow}>YOUR NEXT STEP</p><h2>Give your homeschool<br />a thoughtful beginning.</h2><p>Six modules. Your own pace. Guidance for the decisions ahead.</p>
-        <p><strong>Christmas Special</strong><br /><del>$279</del> <strong>$199</strong><br />Save $80 this Christmas.</p>
-        <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">Enroll for $199 ↗</a>
-        <p className={styles.small}>Enrollment currently opens on our Homeschool-911 website.</p>
+        <p><strong>Complete Homeschool Success Blueprint — $149</strong><br />Get all six modules and save $25 compared with purchasing them separately.</p>
+        <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">Get the complete Blueprint for $149 ↗</a>
+        <p className={styles.small}>Need help with one area right now? Individual modules are $29 each. Enrollment currently opens on our Homeschool-911 website.</p>
       </section>
     </main>
     <SiteFooter />
