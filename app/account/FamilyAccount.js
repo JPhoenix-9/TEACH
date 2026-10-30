@@ -1,8 +1,10 @@
 "use client";
 import {useEffect,useState} from "react";
 import {getSupabase} from "../lib/supabase-browser";
+import LearningProfiles from "./LearningProfiles";
 import s from "../components/account.module.css";
 export default function FamilyAccount(){
+ const [profileVersion,setProfileVersion]=useState(0);
  const [user,setUser]=useState(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[name,setName]=useState(""),[phone,setPhone]=useState(""),[marketing,setMarketing]=useState(false),[children,setChildren]=useState([]),[message,setMessage]=useState(""),[failed,setFailed]=useState(false),[saved,setSaved]=useState(false),[administrator,setAdministrator]=useState(false);
  useEffect(()=>{let alive=true;const sb=getSupabase();async function load(){try{
   const {data,error}=await sb.auth.getUser();if(error||!data.user){if(alive)window.location.replace("/login");return;}
@@ -17,7 +19,7 @@ export default function FamilyAccount(){
  async function save(e){e.preventDefault();setBusy(true);setFailed(false);clearFeedback();try{
   const sb=getSupabase();const {data,error:authError}=await sb.auth.getUser();if(authError||!data.user||data.user.id!==user.id)throw new Error("Your session has ended. Please log in again.");
   const {error}=await sb.rpc("save_family_profile",{p_parent_name:name.trim(),p_phone:phone.trim(),p_marketing_opt_in:marketing,p_children:children.map(c=>({id:c.id,name:c.name.trim(),age_years:c.age_years===""||c.age_years==null?null:Number(c.age_years),grade_level:c.grade_level.trim(),archived_at:c.archived_at||null}))});if(error)throw error;
-  setChildren(old=>old.filter(c=>!c.archived_at).map(c=>({...c,fresh:false})));setSaved(true);
+  setChildren(old=>old.filter(c=>!c.archived_at).map(c=>({...c,fresh:false})));setSaved(true);setProfileVersion(v=>v+1);
  }catch(error){setFailed(true);setMessage(error.message||"We couldn’t finish saving. Please try again; your entries remain on this screen.");}finally{setBusy(false);}}
  async function logout(){setBusy(true);clearFeedback();const {error}=await getSupabase().auth.signOut();if(error){setFailed(true);setMessage("We couldn’t sign you out. Please try again.");setBusy(false);}else window.location.replace("/login");}
  return <div className={s.panel}>{!ready?<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message||"Opening your family profile…"}</p>:<>
@@ -31,5 +33,5 @@ export default function FamilyAccount(){
  <label className={s.check}><input type="checkbox" checked={marketing} onChange={e=>{setMarketing(e.target.checked);clearFeedback();}} disabled={busy}/><span>Yes, TEACH may email me homeschool encouragement, resources, product news and offers. I can change this choice here. Account and security emails are separate.</span></label>
  <button type="submit" className={s.button} disabled={busy||saved}><span aria-live="polite" aria-atomic="true">{busy?"Saving…":saved?"Family profile saved":"Save family profile"}</span></button>
  {message&&<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message}</p>}
- </form><p className={s.status}>Your account is free. Purchased tools unlock separately. Your Planner records stay private and follow your account across devices. Editing requires an active Planner subscription; saved history remains readable when it expires.</p><div className={s.links}>{administrator&&<a href="/admin">TEACH administration</a>}<a href="/my-desk">My Desk</a><a href="/planner/workspace">Your Planner</a><a href="/records">Children’s Records</a><a href="/resources">Your resources</a><a href="/forgot-password">Reset password</a><button type="button" disabled={busy} className={`${s.button} ${s.secondary}`} onClick={logout}>Log out</button></div></> }</div>;
+ </form><LearningProfiles key={profileVersion}/><p className={s.status}>Your account is free. Purchased tools unlock separately. Your Planner records stay private and follow your account across devices. Editing requires an active Planner subscription; saved history remains readable when it expires.</p><div className={s.links}>{administrator&&<a href="/admin">TEACH administration</a>}<a href="/my-desk">My Desk</a><a href="/planner/workspace">Your Planner</a><a href="/records">Children’s Records</a><a href="/resources">Your resources</a><a href="/forgot-password">Reset password</a><button type="button" disabled={busy} className={`${s.button} ${s.secondary}`} onClick={logout}>Log out</button></div></> }</div>;
 }
