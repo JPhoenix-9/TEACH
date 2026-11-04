@@ -1,19 +1,22 @@
 "use client";
 import {useEffect,useState} from "react";
 import {getSupabase} from "../lib/supabase-browser";
+import {safeReturnTo,authPath} from "../lib/auth-return.mjs";
 import LearningProfiles from "./LearningProfiles";
 import s from "../components/account.module.css";
-export default function FamilyAccount(){
+export default function FamilyAccount({returnTo}){
+ const next=safeReturnTo(returnTo);
+ const [hasProfile,setHasProfile]=useState(false);
  const [profileVersion,setProfileVersion]=useState(0);
  const [user,setUser]=useState(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[name,setName]=useState(""),[phone,setPhone]=useState(""),[marketing,setMarketing]=useState(false),[children,setChildren]=useState([]),[message,setMessage]=useState(""),[failed,setFailed]=useState(false),[saved,setSaved]=useState(false),[administrator,setAdministrator]=useState(false);
  useEffect(()=>{let alive=true;const sb=getSupabase();async function load(){try{
-  const {data,error}=await sb.auth.getUser();if(error||!data.user){if(alive)window.location.replace("/login");return;}
+  const {data,error}=await sb.auth.getUser();if(error||!data.user){if(alive)window.location.replace(authPath("login",next));return;}
   const [profile,kids,admin]=await Promise.all([sb.from("family_profiles").select("parent_name,phone,marketing_opt_in").eq("user_id",data.user.id).maybeSingle(),sb.from("family_children").select("id,name,age_years,grade_level,archived_at").eq("user_id",data.user.id).is("archived_at",null).order("created_at"),sb.from("teach_administrators").select("user_id").eq("user_id",data.user.id).maybeSingle()]);
   if(profile.error)throw profile.error;if(kids.error)throw kids.error;if(!alive)return;
-  setAdministrator(!!admin.data);setUser(data.user);setName(profile.data?.parent_name||"");setPhone(profile.data?.phone||"");setMarketing(profile.data?.marketing_opt_in||false);setChildren(kids.data||[]);setReady(true);
+  setHasProfile(!!profile.data?.parent_name);setAdministrator(!!admin.data);setUser(data.user);setName(profile.data?.parent_name||"");setPhone(profile.data?.phone||"");setMarketing(profile.data?.marketing_opt_in||false);setChildren(kids.data||[]);setReady(true);
  }catch(error){if(alive){setFailed(true);setMessage("We couldn’t load your family profile. Refresh this page to try again. Your saved records have not been changed.");}}}load();
  const {data:listener}=sb.auth.onAuthStateChange(event=>{if(event==="SIGNED_OUT")window.location.replace("/login");});
- return()=>{alive=false;listener.subscription.unsubscribe();};},[]);
+ return()=>{alive=false;listener.subscription.unsubscribe();};},[next]);
  function clearFeedback(){setSaved(false);setFailed(false);setMessage("");}
  function changeChild(id,field,value){clearFeedback();setChildren(old=>old.map(c=>c.id===id?{...c,[field]:value}:c));}
  async function save(e){e.preventDefault();setBusy(true);setFailed(false);clearFeedback();try{
@@ -33,5 +36,5 @@ export default function FamilyAccount(){
  <label className={s.check}><input type="checkbox" checked={marketing} onChange={e=>{setMarketing(e.target.checked);clearFeedback();}} disabled={busy}/><span>Yes, TEACH may email me homeschool encouragement, resources, product news and offers. I can change this choice here. Account and security emails are separate.</span></label>
  <button type="submit" className={s.button} disabled={busy||saved}><span aria-live="polite" aria-atomic="true">{busy?"Saving…":saved?"Family profile saved":"Save family profile"}</span></button>
  {message&&<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message}</p>}
- </form><LearningProfiles key={profileVersion}/><p className={s.status}>Your account is free. Purchased tools unlock separately. Your Planner records stay private and follow your account across devices. Editing requires an active Planner subscription; saved history remains readable when it expires.</p><div className={s.links}>{administrator&&<a href="/admin">TEACH administration</a>}<a href="/my-desk">My Desk</a><a href="/planner/workspace">Your Planner</a><a href="/records">Children’s Records</a><a href="/resources">Your resources</a><a href="/forgot-password">Reset password</a><button type="button" disabled={busy} className={`${s.button} ${s.secondary}`} onClick={logout}>Log out</button></div></> }</div>;
+ </form>{next!=="/account"&&(saved||hasProfile)&&<div className={s.actions}><a href={next}>Continue where you left off →</a></div>}<LearningProfiles key={profileVersion}/><p className={s.status}>Your account is free. Purchased tools unlock separately. Your Planner records stay private and follow your account across devices. Editing requires an active Planner subscription; saved history remains readable when it expires.</p><div className={s.links}>{administrator&&<a href="/admin">TEACH administration</a>}<a href="/my-desk">My Desk</a><a href="/planner/workspace">Your Planner</a><a href="/records">Children’s Records</a><a href="/resources">Your resources</a><a href="/forgot-password">Reset password</a><button type="button" disabled={busy} className={`${s.button} ${s.secondary}`} onClick={logout}>Log out</button></div></> }</div>;
 }

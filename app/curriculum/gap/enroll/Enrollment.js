@@ -2,6 +2,7 @@
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../../../lib/supabase-browser';
 import {gapPrice,gapQuote} from '../../../lib/gap-catalog.mjs';
+import {authPath} from '../../../lib/auth-return.mjs';
 import s from '../../../components/account.module.css';
 
 export default function Enrollment({productKey,title,pages}){
@@ -30,7 +31,7 @@ export default function Enrollment({productKey,title,pages}){
     </>:<>
       <p><strong>{gapPrice(quote.priceCents)}</strong>{quote.discountCents?' · Your $10 additional-package discount is included.':' · First GAP package'}</p>
       <p>Your first GAP package is $59.99. Every additional grade-band package is $49.99, whether you purchase it now or return later using the same family account.</p>
-      {account.state==='visitor'&&<p>Already own GAP? <a href="/login">Sign in to check your additional-package price →</a></p>}
+      {account.state==='visitor'&&<p>Already own GAP? <a href={authPath('login',`/curriculum/gap/enroll?product=${productKey}`)}>Sign in to check your additional-package price →</a></p>}
       <p role="status">Online enrollment is not open yet. No payment has been taken.</p>
       <p><a href="/contact">Contact TEACH for enrollment help →</a></p>
     </>}
