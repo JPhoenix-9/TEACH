@@ -1,18 +1,20 @@
 import SiteFooter from "../../components/SiteFooter";
 import Header from "../../components/Header";
 import styles from "./page.module.css";
+import {GAP_PACKAGES} from "../../lib/gap-catalog.mjs";
 
 export const metadata = {
   title: "GAP Curriculum | TEACH",
   description: "Download GAP and be homeschooling in 20 minutes. Zero worksheets. Complete age-appropriate curriculum, teaching methods, and instructions for 4–6 weeks, with no other purchase needed.",
 };
 
-const packages = [
+const packageDescriptions = [
   { grades: "K–2", label: "Kindergarten through second grade", id: "k-2", image: "a869c008bf84480991c85f9fa18fd141", text: "An age-appropriate starting curriculum for your youngest learners, with teaching methods and complete instructions to guide you through each subject area." },
   { grades: "3–5", label: "Third through fifth grade", id: "3-5", image: "cffd2456ab344d298227d346207c1e20", text: "Subject-specific curriculum for the upper elementary years, with teaching guidance and full instructions prepared for this stage of learning." },
   { grades: "6–8", label: "Sixth through eighth grade", id: "6-8", image: "45df80b439d445ba83acd18c19c26da6", text: "A middle school starting plan with curriculum in each subject area, age-appropriate work, and the methods and instructions you need to teach it." },
   { grades: "9–12", label: "Ninth through twelfth grade", id: "9-12", image: "12ec34124c4f41ae9c3bc914ca76c241", text: "A high school starting curriculum, with subject-specific content, teaching methods, and complete instructions designed for the secondary years." },
 ];
+const packages = GAP_PACKAGES.map(item => ({...item,text:packageDescriptions.find(description=>description.id===item.id).text}));
 
 export default function GAP() {
   return <>
@@ -59,9 +61,9 @@ export default function GAP() {
         <div className={styles.center}><p className={styles.eyebrow}>FOUR AGE-APPROPRIATE PACKAGES</p><h2>Choose your child’s grade band.</h2><p>Every package includes subject-specific curriculum, teaching methods, and complete instructions for 4–6 weeks. No other purchase is needed.</p></div>
         <div className={styles.packages}>{packages.map(item => <article key={item.id} id={`grades-${item.id}`}>
           <img className={styles.packagePhoto} src={`/products/${item.image}.png`} alt={`GAP Get Away Plan curriculum product cover for grades ${item.grades}`} />
-          <h3><span>Grades</span>{item.grades}</h3><p className={styles.ageLabel}>{item.label}</p><p className={styles.packageDescription}>{item.text}</p><p className={styles.price}><strong>Christmas Sale</strong><br /><del>$129</del> <strong>$79</strong><br />Save $50</p><a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer" aria-label={`Choose GAP grades ${item.grades} for $79`}>Choose this package · $79 ↗</a>
+          <h3><span>Grades</span>{item.grades}</h3><p className={styles.ageLabel}>{item.label}</p><p className={styles.packageDescription}>{item.text}</p><p className={styles.price}><strong>$59.99</strong><br />First package<br /><strong>$49.99</strong> for each additional grade band</p><a className={styles.primary} href={`/curriculum/gap/enroll?product=${item.key}`} aria-label={`Choose GAP grades ${item.grades}`}>Choose this package →</a>
         </article>)}</div>
-        <p className={styles.note}>Pricing and enrollment currently open on Homeschool-911. Select the matching grade band there.</p>
+        <p className={styles.note}>Your $10 discount carries forward: purchase additional grade bands now or later using the same family account. Online enrollment is not open yet.</p>
       </section>
 
       <section className={styles.testimonial}>
@@ -84,6 +86,7 @@ export default function GAP() {
             <details><summary>Does GAP explain how to teach the subjects?</summary><p>Yes. GAP includes teaching methods and complete instructions along with age-appropriate curriculum specific to each subject area.</p></details>
             <details><summary>Does GAP use worksheets?</summary><p>No. GAP is a zero worksheet curriculum across all four grade bands. The package supplies the curriculum, teaching methods, and complete instructions for learning without worksheets.</p></details>
             <details><summary>What grade levels are available?</summary><p>There are four packages: K–2, 3–5, 6–8, and 9–12.</p></details>
+            <details><summary>Does the additional-package discount expire?</summary><p>No. Your first GAP package is $59.99 and every additional grade-band package is $49.99, including later purchases on the same family account. The discount is $10 per additional package.</p></details>
             <details><summary>Is GAP the same as Blueprint?</summary><p>No. GAP is curriculum for children. Blueprint is a six-module course that trains parents to homeschool. They are available separately and can be used together.</p></details>
           </div>
         </div>

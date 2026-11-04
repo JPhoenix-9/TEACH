@@ -1,0 +1,26 @@
+[
+  {
+    "key": "gap-k2",
+    "size": 2289269,
+    "sha256": "2c4ac58a81e9a04aad7477cd4a7def234398cfa9f41b945bff1c5c4437bd4c48",
+    "path": "gap/gap-k2/curriculum.pdf"
+  },
+  {
+    "key": "gap-35",
+    "size": 1908738,
+    "sha256": "d2fd9a143553117af98e386065d8a3def1368643dd77185ad0445cd5780415e7",
+    "path": "gap/gap-35/curriculum.pdf"
+  },
+  {
+    "key": "gap-68",
+    "size": 1650154,
+    "sha256": "44a1b867672d5cf3f629f3599d279487b05eb18f44f4b57659e9dc72dc2efeb3",
+    "path": "gap/gap-68/curriculum.pdf"
+  },
+  {
+    "key": "gap-912",
+    "size": 1901688,
+    "sha256": "96a132d86b40a9b4167ced1369255d6b357770afba230d45a880cac3270295c3",
+    "path": "gap/gap-912/curriculum.pdf"
+  }
+]
