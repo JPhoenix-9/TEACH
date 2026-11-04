@@ -2,6 +2,7 @@
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../lib/supabase-browser';
 import {blueprintProduct,isBlueprintProduct} from '../lib/blueprint-catalog.mjs';
+import {authPath} from '../lib/auth-return.mjs';
 import Material from './Material';
 import BlueprintCourse from './BlueprintCourse';
 import s from '../components/account.module.css';
@@ -11,7 +12,7 @@ export default function Resources(){
  const [data,setData]=useState(null),[error,setError]=useState('');
  useEffect(()=>{let active=true;(async()=>{
    const sb=getSupabase(),auth=await sb.auth.getUser();
-   if(!auth.data.user){window.location.replace('/login');return;}
+   if(!auth.data.user){window.location.replace(authPath('login','/resources'));return;}
    const [access,materials,registrations,blueprint]=await Promise.all([
      sb.from('product_access').select('product_key,revoked_at').eq('user_id',auth.data.user.id),
      sb.from('teach_materials').select('id,title,storage_path,kind,product_key,webinar_slug').eq('published',true).order('position'),
