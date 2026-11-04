@@ -10,14 +10,14 @@ export default function AuthForm({mode="login",returnTo="/account"}){
  async function submit(e){e.preventDefault();setMessage("");setFailed(false);
   if(signup&&password!==confirm){setFailed(true);setMessage("The passwords do not match.");return;}setBusy(true);
   try{const sb=getSupabase();let result;
-   if(signup||reset){try{sessionStorage.setItem('teach-auth-return',safeReturnTo(returnTo));}catch{}}
+   if(signup||reset){try{localStorage.setItem('teach-auth-return',safeReturnTo(returnTo));}catch{}}
    if(reset)result=await sb.auth.resetPasswordForEmail(email.trim(),{redirectTo:callbackUrl()});
    else if(signup)result=await sb.auth.signUp({email:email.trim(),password,options:{emailRedirectTo:callbackUrl()}});
    else result=await sb.auth.signInWithPassword({email:email.trim(),password});
    if(result.error)throw result.error;setPassword("");setConfirm("");
    if(reset)setMessage("If this address has an account, a password-reset link is on its way. Check your inbox and spam folder.");
    else if(signup&&!result.data.session)setMessage("Check your email for the confirmation link. After confirming, you can add your family’s information. If you already have an account, use Log in or Forgot password.");
-   else {try{sessionStorage.removeItem('teach-auth-return');}catch{}window.location.assign(signup?accountSetupPath(returnTo):safeReturnTo(returnTo));}
+   else {try{localStorage.removeItem('teach-auth-return');}catch{}window.location.assign(signup?accountSetupPath(returnTo):safeReturnTo(returnTo));}
   }catch(error){setFailed(true);setMessage(error.message||"We couldn’t complete that request. Please try again.");}finally{setBusy(false);}}
  return <div className={s.panel}><form className={s.form} onSubmit={submit}>
   <label className={s.field}>Email address<input type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} disabled={busy}/></label>
