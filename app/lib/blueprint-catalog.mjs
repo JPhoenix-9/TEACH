@@ -9,7 +9,7 @@ export const BLUEPRINT_MODULES = [
 export const BLUEPRINT_BUNDLE = Object.freeze({key:'blueprint',title:'Complete Homeschool Success Blueprint',priceCents:14999,videos:44});
 export const BLUEPRINT_SAVINGS_CENTS = BLUEPRINT_MODULES.reduce((sum,module)=>sum+module.priceCents,0)-BLUEPRINT_BUNDLE.priceCents;
 export const BLUEPRINT_SALES_VIDEO = Object.freeze({
-  src:'https://video.wixstatic.com/video/d65cd2_c671eb8e28c44dfb91c563c83fa768f7/1080p/mp4/file.mp4',
+  src:'https://video.wixstatic.com/video/d65cd2_c671eb8e28c44dfb91c563c83fa768f7/720p/mp4/file.mp4',
   poster:'https://static.wixstatic.com/media/d65cd2_c671eb8e28c44dfb91c563c83fa768f7f000.jpg',
 });
 export function blueprintProduct(key){return key===BLUEPRINT_BUNDLE.key?BLUEPRINT_BUNDLE:BLUEPRINT_MODULES.find(module=>module.key===key);}

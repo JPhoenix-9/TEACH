@@ -18,7 +18,7 @@ Keep Wix and its media intact. A full independent video migration needs a select
 
 ## Sales page, pricing and enrollment
 
-- The sales page embeds the original 3:35 Blueprint introduction extracted from the Wix `/hsb` page. Its exact video and poster returned HTTP 200; playback uses native controls, no autoplay, and no preload. The public sales video is intentionally separate from gated lesson records.
+- The sales page embeds the original 3:35 Blueprint introduction extracted from the Wix `/hsb` page. The same-video 720p rendition and original poster returned HTTP 200. The 720p file is approximately 62.6 MB versus 163.4 MB for the source page’s 1080p rendition; playback uses native controls, no autoplay, and no preload. The public sales video is intentionally separate from gated lesson records.
 - The six original module titles and 44-video total are reflected on the sales page. Approved pricing is $29.99 for one module or $149.99 for the complete package. All six separately total $179.94; the package saves $29.95. Public catalog amounts are integer cents and selection uses an allowlisted product key, not a client-supplied price.
 - Each module and the bundle link to an on-site selection summary. Existing access is recognized there. New enrollment explicitly remains unavailable; it does not send buyers to the old Wix shop or pretend a payment completed. TEACH live Stripe is not exposed by the current connector, and its dashboard account was reported restricted. Checkout/payment fulfillment is the next separate step.
 - Module-only Front Porch eligibility and credits when upgrading to the bundle remain unspecified. This release does not broaden the existing community policy or promise upgrade credits.
