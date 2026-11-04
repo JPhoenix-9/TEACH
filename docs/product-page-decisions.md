@@ -41,7 +41,7 @@ Draft implementation notes:
 
 - /curriculum/gap uses the locked shared Header and original product cover artwork preserved in public/products/.
 - GAP factual basis: https://www.homeschool-911.com/gap-curriculum (retrieved October 20, 2026).
-- GAP Christmas Sale approved: $79 per grade-band package, reduced from $129, retaining the old site's pricing. No end date established. The draft links to the original shop for enrollment.
+- GAP pricing updated November 4, 2026: $59.99 for the first grade-band package; $49.99 for every additional distinct grade-band package. The $10 discount persists for later purchases on the same family account. This replaces the old $79 Christmas sale. No progressive discount or family bundle is approved. TEACH selections replace Wix shop links; online payments remain unavailable until live TEACH Stripe setup is completed.
 - Grade-specific checkout destinations and eventual TEACH fulfillment still need wiring. The draft explicitly identifies its original-shop links.
 - Page copy and layout are drafts for owner review, not new permanent specifications.
 
