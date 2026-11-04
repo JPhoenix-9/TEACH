@@ -1,20 +1,15 @@
 import SiteFooter from "../components/SiteFooter";
 import Header from "../components/Header";
 import styles from "./page.module.css";
+import SalesVideo from "./SalesVideo";
+import {BLUEPRINT_MODULES,BLUEPRINT_BUNDLE,BLUEPRINT_SAVINGS_CENTS,blueprintPrice} from "../lib/blueprint-catalog.mjs";
 
 export const metadata = {
   title: "Homeschool Success Blueprint | TEACH",
   description: "A six-module, self-paced course helping parents homeschool with confidence, choose curriculum, teach effectively, and build a home life that supports learning.",
 };
 
-const topics = [
-  ["A confident beginning", "Develop a mindset that supports your family as you begin—or find your footing again."],
-  ["Understanding the requirements", "Learn about legal requirements and preparing to respond to legal challenges."],
-  ["Teaching that makes sense", "Discover simple, effective teaching methods you can use across subjects."],
-  ["Choosing curriculum wisely", "Make thoughtful decisions about long-term curriculum and avoid costly mistakes."],
-  ["A home life that supports learning", "Get organized and find the support you need to keep going."],
-  ["Relationships at the heart", "Make room for learning, shared time, and stronger relationships with your children."],
-];
+
 
 export default function Blueprint() {
   return <>
@@ -37,19 +32,14 @@ export default function Blueprint() {
 
       <section className={styles.section} id="video">
         <div className={styles.center}><p className={styles.eyebrow}>START WITH A LITTLE CLARITY</p><h2>Practical guidance for the way you teach.</h2><p>Meet the Homeschool Success Blueprint and see how it can help you take your next step.</p></div>
-        <div className={styles.videoBridge}>
-          <span className={styles.play} aria-hidden="true">▶</span>
-          <h3>Watch the Blueprint introduction</h3>
-          <p>The existing sales presentation is available on our original website.</p>
-          <a className={styles.primary} href="https://www.homeschool-911.com/hsb" target="_blank" rel="noopener noreferrer">Open the original presentation ↗</a>
-        </div>
+        <SalesVideo />
       </section>
 
       <section className={styles.topics}>
         <div className={styles.section}>
           <p className={styles.eyebrow}>PRACTICAL HELP, STEP BY STEP</p><h2>A foundation you can build on.</h2>
-          <p className={styles.intro}>Across six modules, the Blueprint addresses the questions that shape everyday homeschooling. Choose the complete Blueprint for $149, or start with the module that addresses what you need most right now for $29.</p>
-          <div className={styles.grid}>{topics.map(([title, text], i) => <article key={title}><span className={styles.number} aria-hidden="true">0{i + 1}</span><h3>{title}</h3><p>{text}</p><p><strong>$29 individually</strong></p></article>)}</div>
+          <p className={styles.intro}>Across six modules, the Blueprint addresses the questions that shape everyday homeschooling. Choose the complete Blueprint for {blueprintPrice(BLUEPRINT_BUNDLE.priceCents)}, or start with the module that addresses what you need most right now for {blueprintPrice(BLUEPRINT_MODULES[0].priceCents)}.</p>
+          <div className={styles.grid}>{BLUEPRINT_MODULES.map(module => <article key={module.key}><span className={styles.number} aria-hidden="true">0{module.number}</span><h3>{module.title}</h3><p>{module.description}</p><p><strong>{blueprintPrice(module.priceCents)} individually</strong> · {module.videos} videos</p><a className={styles.textLink} href={`/blueprint/enroll?product=${module.key}`}>Choose module {module.number} →</a></article>)}</div>
         </div>
       </section>
 
@@ -70,16 +60,16 @@ export default function Blueprint() {
           <details><summary>Is this a curriculum for my children?</summary><p>The Blueprint is a course for parents. It helps you make decisions about homeschooling and develop the skills to teach your children. GAP is a separate curriculum for children.</p></details>
           <details><summary>Do I need to follow a class schedule?</summary><p>No. This is a self-paced online video course with six modules.</p></details>
           <details><summary>What will I learn?</summary><p>The course covers mindset, legal requirements, teaching methods, curriculum choices, organization, and finding support.</p></details>
-          <details><summary>Can I buy just one module?</summary><p>Yes. Each of the six Blueprint modules is available individually for $29, so you can start with the area where you need help most. The complete six-module Blueprint is $149.</p></details>
+          <details><summary>Can I buy just one module?</summary><p>Yes. Each of the six Blueprint modules is available individually for {blueprintPrice(BLUEPRINT_MODULES[0].priceCents)}, so you can start with the area where you need help most. The complete six-module Blueprint is {blueprintPrice(BLUEPRINT_BUNDLE.priceCents)}.</p></details>
           <details><summary>Can I get personal help?</summary><p>Personalized coaching is available separately if you would like help applying what you learn to your own situation.</p></details>
         </div>
       </section>
 
       <section className={styles.enroll} id="enroll">
         <p className={styles.eyebrow}>YOUR NEXT STEP</p><h2>Give your homeschool<br />a thoughtful beginning.</h2><p>Six modules. Your own pace. Guidance for the decisions ahead.</p>
-        <p><strong>Complete Homeschool Success Blueprint — $149</strong><br />Get all six modules and save $25 compared with purchasing them separately.</p>
-        <a className={styles.primary} href="https://www.homeschool-911.com/courses" target="_blank" rel="noopener noreferrer">Get the complete Blueprint for $149 ↗</a>
-        <p className={styles.small}>Need help with one area right now? Individual modules are $29 each. Enrollment currently opens on our Homeschool-911 website.</p>
+        <p><strong>Complete Homeschool Success Blueprint — {blueprintPrice(BLUEPRINT_BUNDLE.priceCents)}</strong><br />Get all six modules and save {blueprintPrice(BLUEPRINT_SAVINGS_CENTS)} compared with purchasing them separately.</p>
+        <a className={styles.primary} href="/blueprint/enroll?product=blueprint">Choose the complete Blueprint →</a>
+        <p className={styles.small}>Need help with one area right now? Individual modules are {blueprintPrice(BLUEPRINT_MODULES[0].priceCents)} each. Online enrollment is not open yet; you can review your selection or contact TEACH for help.</p>
       </section>
     </main>
     <SiteFooter />

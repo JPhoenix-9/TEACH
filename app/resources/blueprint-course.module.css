@@ -1,0 +1,18 @@
+.course { margin: 2rem 0; }
+.layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.7fr); gap: 1.5rem; align-items: start; }
+.modules { border: 1px solid #d6c9b1; border-radius: 10px; overflow: hidden; }
+.modules details + details { border-top: 1px solid #d6c9b1; }
+.modules summary { cursor: pointer; padding: 1rem; background: #f5eddf; font-weight: 600; }
+.modules ol { margin: 0; padding: .5rem; list-style: none; }
+.modules button { width: 100%; text-align: left; padding: .7rem; background: transparent; color: #393d31; border: 1px solid transparent; border-radius: 5px; font: inherit; cursor: pointer; }
+.modules button:hover { background: #f5eddf; }
+.modules button[aria-current] { background: #e8eddf; border-color: #697759; font-weight: 600; }
+.modules button:focus-visible, .controls button:focus-visible, .modules summary:focus-visible { outline: 3px solid #40586a; outline-offset: -3px; }
+.moduleName { color: #665f53; margin-top: 0; }
+.viewer { min-width: 0; }
+.viewer h3 { margin: .5rem 0 1rem; }
+.viewer video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #191b17; border-radius: 8px; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin: 1rem 0; }
+.controls button { border: 1px solid #657356; background: #fffaf0; color: #393d31; border-radius: 6px; padding: .7rem; font: inherit; cursor: pointer; }
+.controls button:disabled { opacity: .45; cursor: default; }
+@media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .viewer { grid-row: 1; } .controls { font-size: .9rem; } }
