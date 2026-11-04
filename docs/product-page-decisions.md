@@ -32,7 +32,7 @@
 Approved by the owner on October 20, 2026:
 
 - Homeschool Success Blueprint is a paid flagship available at launch with its own homepage destination.
-- Blueprint Christmas offer: $199, reduced from $279. No end date established.
+- Superseded November 4, 2026: Blueprint is $149.99 for all six modules or $29.99 per selected module. Individual modules total $179.94; the package saves $29.95. Earlier $199/$279 offers no longer apply.
 - GAP belongs under Courses & Curriculum and has its own complete sales page with four grade-band choices.
 - The owner owns homeschoolsuccessblueprint.com and gapcurriculum.com. Intended destination pages are /blueprint and /curriculum/gap within TEACH. Domain configuration has not been changed.
 - Library and Webinars & Videos are free at launch; Planner and Courses & Curriculum are paid destinations. Specific content availability and access must remain truthful.
