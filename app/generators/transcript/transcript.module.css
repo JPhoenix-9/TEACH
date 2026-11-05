@@ -12,3 +12,57 @@
 .sidebar{background:rgba(255,251,241,.96);padding:22px 16px;border:1px solid #d8cdb9;border-radius:7px;box-shadow:0 8px 24px #422d171c}
 .footer{width:fit-content;max-width:calc(100% - 24px);margin:24px auto 0;padding:10px 18px;background:rgba(255,251,241,.94);border-radius:5px;color:#46503f}
 @media(max-width:600px){.brand{margin:18px auto;padding:14px 22px}.sidebar{padding:16px}.page::before{background-position:48% center}}
+/* Approved Transcript Generator composition: cream navigation and central welcome card. */
+.page::before{background-image:url('/transcript-study-background-v2.webp')}
+.top{margin-left:260px;min-height:72px;justify-content:flex-end;border:0;background:transparent;padding:15px 26px;gap:12px}
+.top a:first-child{margin-right:0}
+.top .accountPill{display:flex;align-items:center;gap:10px;border-radius:22px;background:#fffaf0;border-color:#e2dac8;padding:10px 17px}
+.accountPill svg{width:19px;height:19px}
+.layout{display:block;margin-left:260px;width:calc(100% - 260px);max-width:none;padding:clamp(28px,7.5vh,84px) clamp(24px,5vw,76px) 80px}
+.panel{max-width:1100px;margin:0 auto}
+.home{width:100%;max-width:660px;padding:27px 22px 19px;border-radius:13px;background:rgba(255,251,240,.94);border-color:#e5dbc7;box-shadow:0 12px 42px #553d1c20}
+.heroBrand>img{display:block;width:58px;height:62px;object-fit:contain;margin:0 auto 3px}
+.panel .heroBrand h1{font:400 76px/.96 Georgia,'Times New Roman',serif;letter-spacing:.025em;color:#0c1612;margin:0}
+.heroBrand>div{font:16px/1.5 Georgia,'Times New Roman',serif;letter-spacing:.22em;color:#18231c;margin-top:4px}
+.heroBrand hr{width:64px;border:0;border-top:1px solid #cbb78b;margin:16px auto 10px}
+.panel .tagline{font:italic 24px/1.25 Georgia,'Times New Roman',serif;color:#4b493b;margin:10px 0 16px}
+.home .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.home .steps>div{background:rgba(255,253,247,.5);border:1px solid #e9e0cd;padding:16px 7px 18px;border-radius:10px}
+.home .steps span{width:52px;height:52px;background:#a9b197;color:white}
+.home .steps>div:nth-child(2) span{background:#91a7b2}
+.home .steps>div:nth-child(3) span{background:#caa66e}
+.steps svg{width:31px;height:31px}
+.home .steps h2{font:400 26px/1.1 Georgia,'Times New Roman',serif;color:#111c16;margin:10px 0 7px}
+.home .steps p{font:15px/1.25 Georgia,'Times New Roman',serif;color:#454b3f;margin:0}
+.panel .getStarted{display:block;width:72%;margin:14px auto 10px;border-radius:30px;padding:9px 18px;min-height:44px;font:22px/1.2 Georgia,'Times New Roman',serif;font-weight:400;background:#315540;border-color:#315540}
+.getStarted>span{margin-left:8px}
+.panel .promise{font:italic 15px/1.4 Georgia,'Times New Roman',serif;color:#5d5948;margin:13px 0 4px}
+.homeDetails{margin-top:13px;border-top:1px solid #e7ddc7}
+.panel .homeDetails summary{font:12px/1.4 Arial,Helvetica,sans-serif;color:#5e6859;padding:10px 4px 0}
+.panel .homeDetails p{font-size:13px;line-height:1.5;text-align:left}
+.appSidebar{position:fixed;left:0;top:0;z-index:3;width:260px;max-height:100vh;overflow-y:auto;background:rgba(247,241,226,.97);border-right:1px solid #d9d1be;box-shadow:3px 0 18px #4e3b1810;color:#354a3a}
+.sidebarBrand{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px 14px 24px;border-bottom:1px solid #ddd3bd;text-decoration:none}
+.sidebarBrand img{width:39px;height:62px;object-fit:contain}
+.sidebarBrand strong{display:block;font:400 43px/.96 Georgia,'Times New Roman',serif;color:#14231a;letter-spacing:.015em}
+.sidebarBrand small{display:block;font:10px/1.4 Georgia,'Times New Roman',serif;letter-spacing:.08em;margin-top:6px;color:#1e2b22}
+.appSidebar nav{padding:18px 18px 20px}
+.appSidebar nav>button,.appSidebar nav>a{display:flex;align-items:center;gap:14px;width:100%;min-height:45px;padding:10px 10px;margin:1px 0;border:0;border-radius:4px;background:transparent;color:#354a3a;text-decoration:none;text-align:left;font:14px/1.3 Arial,Helvetica,sans-serif;cursor:pointer}
+.appSidebar nav svg{width:23px;height:23px;flex-shrink:0}
+.appSidebar nav>[aria-current]{background:#dcdcc8}
+.appSidebar nav>button:hover,.appSidebar nav>a:hover{background:#e8e7d7}
+.appSidebar nav>button:disabled{opacity:.55;cursor:wait}
+.appSidebar nav hr{border:0;border-top:1px solid #d8cfb8;margin:22px 8px 20px}
+.subNavigation{border-left:1px solid #bfc7b2;margin:4px 8px 8px 21px;padding-left:9px}
+.subNavigation button{display:block;background:transparent;border:0;color:#475b46;text-align:left;font:12px/1.4 Arial,sans-serif;padding:8px 0;min-height:36px;cursor:pointer}
+.projectSummary{padding:14px 10px;margin-top:10px;border-top:1px solid #d8cfb8;font:13px/1.4 Arial,sans-serif;overflow-wrap:anywhere}
+.projectSummary small{display:block;margin:5px 0 10px;color:#65715b}
+.projectSummary button{display:block;border:1px solid #bec7b0;background:#fdfbef;color:#354b38;padding:8px;min-height:38px;font:12px Arial,sans-serif;margin-top:7px;cursor:pointer;border-radius:4px}
+.returnLinks{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #ddd3bd;margin:14px 8px 0;padding-top:15px;font:12px Arial,sans-serif}
+.returnLinks a{color:#445840;text-decoration:underline}
+.footer{margin-left:calc(260px + (100% - 260px)/2);transform:translateX(-50%);white-space:nowrap}
+@media(max-width:1050px) and (min-width:701px){.appSidebar{width:220px}.sidebarBrand strong{font-size:35px}.sidebarBrand small{font-size:8px}.sidebarBrand img{width:34px}.appSidebar nav{padding:14px 10px}.appSidebar nav>button,.appSidebar nav>a{font-size:13px;gap:10px}.top{margin-left:220px}.layout{margin-left:220px;width:calc(100% - 220px);padding:36px 24px 60px}.footer{margin-left:calc(220px + (100% - 220px)/2)}.desktopBreak{display:none}.home .steps p{font-size:14px}.panel .heroBrand h1{font-size:66px}}
+@media(max-width:700px){.appSidebar{position:relative;width:100%;max-height:none;overflow:visible;background:rgba(247,241,226,.98)}.sidebarBrand{padding:10px 16px;border:0;justify-content:flex-start}.sidebarBrand img{width:29px;height:44px}.sidebarBrand strong{font-size:31px}.sidebarBrand small{font-size:8px;margin-top:3px}.appSidebar nav{display:flex;gap:5px;overflow-x:auto;padding:5px 10px 10px;align-items:center}.appSidebar nav>button,.appSidebar nav>a{flex:0 0 auto;width:auto;min-height:44px;padding:8px;font-size:11px;gap:6px;white-space:nowrap}.appSidebar nav svg{width:18px;height:18px}.appSidebar nav hr,.returnLinks,.subNavigation,.projectSummary{display:none}.top{margin:0;padding:12px;min-height:60px;gap:8px}.top a,.top button{font-size:12px;padding:10px}.layout{margin:0;width:100%;padding:18px 12px 45px}.home{padding:23px 14px 15px}.panel .heroBrand h1{font-size:58px}.heroBrand>img{width:44px;height:48px}.heroBrand>div{font-size:12px;letter-spacing:.15em}.panel .tagline{font-size:21px}.home .steps{gap:6px}.home .steps>div{padding:12px 5px}.home .steps span{margin:0 auto;width:42px;height:42px}.steps svg{width:26px;height:26px}.home .steps h2{font-size:21px}.home .steps p{font-size:13px;line-height:1.3}.desktopBreak{display:none}.panel .getStarted{width:90%;font-size:20px}.panel .promise{font-size:14px}.footer{margin:12px auto 0;transform:none;white-space:normal}.page::before{background-position:43% center}}
+
+.top a.siteReturn{margin-right:auto}
+.home .steps p{overflow-wrap:anywhere}
+@media(max-width:380px){.home .steps h2{font-size:18px}.home .steps p{font-size:12px}}
