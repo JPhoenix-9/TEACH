@@ -14,7 +14,7 @@ export default function Page(){
   <section className={`${styles.section} ${styles.soft}`} aria-labelledby="more-generators">
    <h2 id="more-generators">More tools in preparation</h2>
    <div className={styles.gridTwo}>
-    <article className={styles.card}><span className={`${styles.badge} ${styles.pending}`}>Coming soon</span><h3>Transcript Generator</h3><p>Organize a student's learning into a useful academic record.</p></article>
+    <article className={styles.card}><span className={`${styles.badge} ${styles.pending}`}>In preparation</span><h3>Transcript Architect</h3><p>Turn completed coursework and substantial learning experiences into a polished, accurate transcript. $79 per student, three years of updates, and checks for 12 unique colleges.</p><a className={styles.primary} href="/generators/transcript">Open Transcript Architect →</a></article>
     <article className={styles.card}><span className={`${styles.badge} ${styles.pending}`}>Coming soon</span><h3>Legacy Generator</h3><p>Preserve meaningful experience and the stories that matter.</p></article>
    </div>
   </section>

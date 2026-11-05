@@ -1,0 +1,22 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {PGlite} from '@electric-sql/pglite';
+const A='11111111-1111-4111-8111-111111111111';
+test('paid transcript orders grant independent three-year student licenses, preserve other products, and resist replay',async()=>{const db=new PGlite();try{
+ await db.exec(`create role anon;create role authenticated;create role service_role bypassrls;create schema auth;create schema private;create schema vault;create table vault.decrypted_secrets(name text,decrypted_secret text);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,public to authenticated,service_role;
+ create table family_profiles(user_id uuid primary key,parent_name text);insert into family_profiles values('${A}','Parent');grant select on family_profiles to service_role;
+ create table product_access(user_id uuid references family_profiles,product_key text,granted_at timestamptz default now(),revoked_at timestamptz,primary key(user_id,product_key));
+ create table transcript_licenses(id uuid primary key default gen_random_uuid(),user_id uuid,purchased_at timestamptz default now(),expires_at timestamptz default now()+interval '3 years',order_reference text unique);grant select,insert on transcript_licenses to service_role;`);
+ await db.exec(readFileSync(new URL('../supabase/teach-commerce.sql',import.meta.url),'utf8'));
+ await db.exec(readFileSync(new URL('../supabase/transcript-commerce.sql',import.meta.url),'utf8'));
+ await db.exec('set role service_role');
+ const reserve=async key=>(await db.query('select * from reserve_teach_order($1,$2,$3)',[A,key,'https://teachforlove.com'])).rows[0];
+ const grant=async(o,n)=>db.query('select fulfill_teach_order($1,$2,$3,$4,$5)',[o.id,'cs_'+n,o.price_id,o.amount,'evt_'+n]);
+ const first=await reserve('transcript-architect');assert.equal(first.amount,7900);assert.equal((await reserve('transcript-architect')).id,first.id);
+ await grant(first,'one');await grant(first,'one');
+ const second=await reserve('transcript-architect');assert.notEqual(first.id,second.id);await grant(second,'two');
+ const licenses=(await db.query('select * from transcript_licenses')).rows;assert.equal(licenses.length,2);assert.notEqual(licenses[0].id,licenses[1].id);assert(licenses.every(l=>new Date(l.expires_at)-new Date(l.purchased_at)>1094*86400000));
+ assert.equal((await db.query('select count(*)::int n from product_access')).rows[0].n,0);
+ const gap=await reserve('gap-k2');await grant(gap,'gap');assert.equal((await db.query('select product_key from product_access')).rows[0].product_key,'gap-k2');
+ }finally{await db.close();}});
