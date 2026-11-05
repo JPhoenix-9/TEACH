@@ -1,3 +1,4 @@
+import MoneyBackGuarantee from '../components/MoneyBackGuarantee';
 import SiteFooter from "../components/SiteFooter";
 import Header from "../components/Header";
 import styles from "./page.module.css";
@@ -68,7 +69,7 @@ export default function Blueprint() {
       <section className={styles.enroll} id="enroll">
         <p className={styles.eyebrow}>YOUR NEXT STEP</p><h2>Give your homeschool<br />a thoughtful beginning.</h2><p>Six modules. Your own pace. Guidance for the decisions ahead.</p>
         <p><strong>Complete Homeschool Success Blueprint — {blueprintPrice(BLUEPRINT_BUNDLE.priceCents)}</strong><br />Get all six modules and save {blueprintPrice(BLUEPRINT_SAVINGS_CENTS)} compared with purchasing them separately.</p>
-        <a className={styles.primary} href="/blueprint/enroll?product=blueprint">Choose the complete Blueprint →</a>
+        <MoneyBackGuarantee/><a className={styles.primary} href="/blueprint/enroll?product=blueprint">Choose the complete Blueprint →</a>
         <p className={styles.small}>Need help with one area right now? Individual modules are {blueprintPrice(BLUEPRINT_MODULES[0].priceCents)} each. Choose a package to review availability and continue to secure checkout.</p>
       </section>
     </main>

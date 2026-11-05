@@ -1,4 +1,5 @@
 'use client';
+import MoneyBackGuarantee from './MoneyBackGuarantee';
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../lib/supabase-browser';
 import {authPath} from '../lib/auth-return.mjs';
@@ -19,6 +20,7 @@ export default function CheckoutButton({productKey}){
  }catch{setState('ready');setMessage('We couldn’t open checkout. Please try again.');}}
  async function cancel(){setState('busy');try{const {data}=await getSupabase().auth.getSession();const r=await fetch(endpoint+'/cancel',{method:'POST',headers:{Authorization:`Bearer ${data.session?.access_token}`}});const result=await r.json();if(r.ok){setMessage('Your unfinished checkout was cancelled. You can continue with this grade band.');setCode('');}else setMessage(result.error);}catch{setMessage('We couldn’t cancel that checkout. Please try again.');}finally{setState('ready');}}
  return <div>
+  <MoneyBackGuarantee/>
   {state==='checking'?<p role="status">Checking checkout availability…</p>:state==='setup'?<p role="status">Checkout is being connected. No payment has been taken.</p>:signedIn?<><button className={s.button} disabled={state==='busy'} onClick={checkout}>{state==='busy'?'Opening secure checkout…':'Continue to secure checkout →'}</button><p className={s.hint}>Review your order and pay securely with Stripe. Your purchase opens in Resources after payment is confirmed.</p></>:<div className={s.actions}><a href={authPath('login',next)}>Sign in to purchase →</a><a href={authPath('signup',next)}>Create a free family account →</a></div>}
   {code==='finish_pending_gap_order'&&<button className={`${s.button} ${s.secondary}`} disabled={state==='busy'} onClick={cancel}>Cancel unfinished GAP checkout</button>}
   {message&&<p role="alert">{message} <a href={message.includes('profile')?`/account?next=${encodeURIComponent(next)}`:'/resources'}>{message.includes('profile')?'Open family profile':'Your Resources'} →</a></p>}

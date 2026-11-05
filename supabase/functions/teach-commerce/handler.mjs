@@ -87,8 +87,9 @@ export function createHandler({admin,Stripe,env}){
    const catalog=await admin.from('teach_price_catalog').select('*').eq('product_key',order.product_key).single();
    const price=await stripe.prices.retrieve(order.price_id,{expand:['product']});
    if(catalog.error||price.product?.id!==catalog.data.product_id||!price.product.active||!price.active||price.type!=='one_time'||price.currency!==order.currency||price.unit_amount!==order.amount)throw new Error('price_mismatch');
-   const metadata={teach_order_id:order.id,teach_user_id:user.id,teach_product_key:order.product_key};
+   const metadata={teach_order_id:order.id,teach_user_id:user.id,teach_product_key:order.product_key,teach_refund_policy:'seven_day_v1'};
    const session=await stripe.checkout.sessions.create({
+    custom_text:{submit:{message:'7-day money-back guarantee: request a full refund within 7 days of purchase through TEACH Contact & Help, even after downloading or starting lessons.'}},
     mode:'payment',line_items:[{price:order.price_id,quantity:1}],client_reference_id:order.id,customer_email:user.email,
     metadata,payment_intent_data:{metadata},expires_at:Math.floor(new Date(order.expires_at).getTime()/1000),
     integration_identifier:'teach_web_'+order.id.replaceAll('-','').slice(-8).replace(/[0-9]/g,d=>String.fromCharCode(97+Number(d))),
