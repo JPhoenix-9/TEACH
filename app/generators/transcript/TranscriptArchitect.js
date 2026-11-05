@@ -43,7 +43,7 @@ export default function TranscriptArchitect(){
  <nav className={s.top} aria-label="Transcript navigation"><a className={s.siteReturn} href="/">← Back to TEACH</a><a href="/my-desk">My Desk</a><a className={s.accountPill} href="/account"><TranscriptIcon name="account"/>My Account<span aria-hidden="true">⌄</span></a>{project&&<button type="button" disabled={!!busy} className={s.saveButton} onClick={downloadProject}>Save Project File{dirty?' •':''}</button>}</nav>
  <div className={s.layout}>
  <section className={`${s.panel} ${screen==='home'?s.home:''}`} aria-busy={!!busy}>
- {screen==='home'?<header className={s.heroBrand}><img src="/transcript-botanical-mark.png" alt=""/><h1 ref={heading} tabIndex={-1}>TEACH</h1><div>TRANSCRIPT GENERATOR</div><hr/></header>:<><p className={s.kicker}>ONE MANAGEABLE STEP AT A TIME</p><h1 ref={heading} tabIndex={-1}>{title}</h1></>}
+ {screen==='home'?<header className={s.heroBrand}><span className={s.heroLeaf} aria-hidden="true"/><h1 ref={heading} tabIndex={-1}>TEACH</h1><div>TRANSCRIPT GENERATOR</div><hr/></header>:<><p className={s.kicker}>ONE MANAGEABLE STEP AT A TIME</p><h1 ref={heading} tabIndex={-1}>{title}</h1></>}
  {message&&<p className={s.notice} role="status">{message}</p>}{busy&&<p role="status">{['interview','titles','school-search','school-check','ncaa'].includes(busy)?'Working with your information…':busy+'…'}</p>}
  {auth==='loading'&&<p role="status">Opening your workspace…</p>}{auth==='error'&&<><p>We couldn’t check student access. Your saved project files are safe.</p><button onClick={load}>Try Again</button></>}
  {screen==='home'&&<>

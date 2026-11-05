@@ -66,3 +66,9 @@
 .top a.siteReturn{margin-right:auto}
 .home .steps p{overflow-wrap:anywhere}
 @media(max-width:380px){.home .steps h2{font-size:18px}.home .steps p{font-size:12px}}
+
+/* Render the exact olive sprig from the approved reference without altering its pixels. */
+.heroLeaf,.sidebarLeaf{display:block;flex-shrink:0;background-image:url('/transcript-approved-design.jpg');background-repeat:no-repeat;mix-blend-mode:multiply}
+.heroLeaf{width:70px;height:67px;background-size:1188px 782.1px;background-position:-657px -135px;margin:0 auto 3px}
+.sidebarLeaf{width:54px;height:65px;background-size:1188px 782.1px;background-position:-14.4px -12.6px}
+@media(max-width:700px){.sidebarLeaf{width:32px;height:43px;background-size:792px 521.4px;background-position:-9.6px -8.4px}.heroLeaf{width:54px;height:52px;background-size:924px 608.3px;background-position:-511px -105px}}
