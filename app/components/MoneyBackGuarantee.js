@@ -1,0 +1,1 @@
+export default function MoneyBackGuarantee(){return <p><strong>7-day money-back guarantee.</strong> If GAP or Blueprint isn’t right for your family, request a full refund within 7 days of purchase. <a href="/refunds">Read the guarantee →</a></p>;}

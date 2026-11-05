@@ -22,7 +22,7 @@ The readiness endpoint currently returns ready:false because that key is missing
 
 The owned domains teachforlove.com and www.teachforlove.com were added to the existing Vercel project. DNS is external (ns77/ns78.domaincontrol.com) and still resolves to GoDaddy parking A records 3.33.130.190 and 15.197.148.33. Vercel reports misconfigured. Root suggested IPs: 216.198.79.1 / 64.29.17.1 (rank 1), 76.76.21.21 (rank 2). Suggested CNAME: 1c69be3267de091a.vercel-dns-017.com. WWW is configured to redirect to the root. Change only web A/CNAME records at the authoritative DNS provider; preserve MX/TXT and mail configuration.
 
-Stripe review of business_profile.url remains pending; the account has charges_enabled and payouts_enabled true, but its account API response lists no payout bank. Confirm payout-bank setup directly in Stripe. Tax registration/product classification and customer-facing refund terms have not been changed by this implementation; review them before launch. Automatic tax is not claimed or silently enabled.
+Stripe review of business_profile.url remains pending; the account has charges_enabled and payouts_enabled true, but its account API response lists no payout bank. Confirm payout-bank setup directly in Stripe. Customer-facing refund terms were subsequently approved as a 7-day full-refund guarantee for GAP and Blueprint; see refund-policy-decision.md. Tax registration/product classification still needs review before launch. Automatic tax is not claimed or silently enabled.
 
 ## Verification
 

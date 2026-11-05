@@ -1,3 +1,4 @@
+import MoneyBackGuarantee from '../../components/MoneyBackGuarantee';
 import SiteFooter from "../../components/SiteFooter";
 import Header from "../../components/Header";
 import styles from "./page.module.css";
@@ -59,7 +60,7 @@ export default function GAP() {
 
       <section className={styles.section} id="choose">
         <div className={styles.center}><p className={styles.eyebrow}>FOUR AGE-APPROPRIATE PACKAGES</p><h2>Choose your child’s grade band.</h2><p>Every package includes subject-specific curriculum, teaching methods, and complete instructions for 4–6 weeks. No other purchase is needed.</p></div>
-        <div className={styles.packages}>{packages.map(item => <article key={item.id} id={`grades-${item.id}`}>
+        <MoneyBackGuarantee/><div className={styles.packages}>{packages.map(item => <article key={item.id} id={`grades-${item.id}`}>
           <img className={styles.packagePhoto} src={`/products/${item.image}.png`} alt={`GAP Get Away Plan curriculum product cover for grades ${item.grades}`} />
           <h3><span>Grades</span>{item.grades}</h3><p className={styles.ageLabel}>{item.label}</p><p className={styles.packageDescription}>{item.text}</p><p className={styles.price}><strong>$59.99</strong><br />First package<br /><strong>$49.99</strong> for each additional grade band</p><a className={styles.primary} href={`/curriculum/gap/enroll?product=${item.key}`} aria-label={`Choose GAP grades ${item.grades}`}>Choose this package →</a>
         </article>)}</div>
