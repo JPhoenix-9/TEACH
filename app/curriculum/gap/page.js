@@ -63,7 +63,7 @@ export default function GAP() {
           <img className={styles.packagePhoto} src={`/products/${item.image}.png`} alt={`GAP Get Away Plan curriculum product cover for grades ${item.grades}`} />
           <h3><span>Grades</span>{item.grades}</h3><p className={styles.ageLabel}>{item.label}</p><p className={styles.packageDescription}>{item.text}</p><p className={styles.price}><strong>$59.99</strong><br />First package<br /><strong>$49.99</strong> for each additional grade band</p><a className={styles.primary} href={`/curriculum/gap/enroll?product=${item.key}`} aria-label={`Choose GAP grades ${item.grades}`}>Choose this package →</a>
         </article>)}</div>
-        <p className={styles.note}>Your $10 discount carries forward: purchase additional grade bands now or later using the same family account. Online enrollment is not open yet.</p>
+        <p className={styles.note}>Your $10 discount carries forward: purchase additional grade bands now or later using the same family account.</p>
       </section>
 
       <section className={styles.testimonial}>

@@ -9,7 +9,7 @@ export default function Contact() {
     </section>
     <section className={styles.sectionNarrow}><h2>Leave a private message.</h2><SupportForm/></section>
     <section className={styles.soft}><div className={`${styles.sectionNarrow} ${styles.faq}`}><h2>Quick answers</h2>
-      <details><summary>Where do purchases happen?</summary><p>You can compare GAP grade bands and Blueprint modules here on TEACH. Online checkout is not open yet; choosing a package does not take a payment. Recognized purchases appear in Your Resources.</p></details>
+      <details><summary>Where do purchases happen?</summary><p>You can compare GAP grade bands and Blueprint modules here on TEACH. Product selection pages show current checkout availability. Choosing a package does not take a payment; review and confirm your order securely with Stripe. Recognized purchases appear in Your Resources.</p></details>
       <details><summary>Can I create a TEACH account now?</summary><p>Yes. Choose Create a Free Account in the header, confirm your email, and complete your family profile. The Library is also available without an account.</p></details>
       <details><summary>How do I watch a webinar?</summary><p>Visit Webinars & Videos and register for the available webinar using its registration link. “Can I Really Homeschool?” is filmed and preparing for release.</p><a className={styles.textLink} href="/webinars">Explore the webinars →</a></details>
     </div></section>

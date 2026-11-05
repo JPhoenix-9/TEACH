@@ -1,0 +1,87 @@
+{
+  "account_id": "acct_1UTS0sEH2BoIIOEO",
+  "livemode": true,
+  "products": [
+    {
+      "key": "blueprint",
+      "product_id": "teach_blueprint",
+      "price_id": "price_1UYGWOEH2BoIIOEOqrFyEzvZ",
+      "amount": 14999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-1",
+      "product_id": "teach_blueprint_module_1",
+      "price_id": "price_1UYGWREH2BoIIOEOZbQGGevo",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-2",
+      "product_id": "teach_blueprint_module_2",
+      "price_id": "price_1UYGWYEH2BoIIOEOZqU81lHM",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-3",
+      "product_id": "teach_blueprint_module_3",
+      "price_id": "price_1UYGWbEH2BoIIOEOLzJeMQju",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-4",
+      "product_id": "teach_blueprint_module_4",
+      "price_id": "price_1UYGWeEH2BoIIOEOu0llf37j",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-5",
+      "product_id": "teach_blueprint_module_5",
+      "price_id": "price_1UYGWiEH2BoIIOEOMcYx5GCg",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "blueprint-module-6",
+      "product_id": "teach_blueprint_module_6",
+      "price_id": "price_1UYGWmEH2BoIIOEOWcTTSPMk",
+      "amount": 2999,
+      "currency": "usd"
+    },
+    {
+      "key": "gap-k2",
+      "product_id": "teach_gap_k2",
+      "price_id": "price_1UYGWpEH2BoIIOEOoR7oe8In",
+      "amount": 5999,
+      "currency": "usd",
+      "additional_price_id": "price_1UYGaWEH2BoIIOEOnDLavC1b"
+    },
+    {
+      "key": "gap-35",
+      "product_id": "teach_gap_35",
+      "price_id": "price_1UYGWvEH2BoIIOEOWVymG01Z",
+      "amount": 5999,
+      "currency": "usd",
+      "additional_price_id": "price_1UYGaZEH2BoIIOEOp0GkKaA6"
+    },
+    {
+      "key": "gap-68",
+      "product_id": "teach_gap_68",
+      "price_id": "price_1UYGWzEH2BoIIOEOPACGiQ8v",
+      "amount": 5999,
+      "currency": "usd",
+      "additional_price_id": "price_1UYGadEH2BoIIOEOccdx3zda"
+    },
+    {
+      "key": "gap-912",
+      "product_id": "teach_gap_912",
+      "price_id": "price_1UYGX7EH2BoIIOEOMgohDZVy",
+      "amount": 5999,
+      "currency": "usd",
+      "additional_price_id": "price_1UYGagEH2BoIIOEOs2Xt5UxE"
+    }
+  ]
+}
