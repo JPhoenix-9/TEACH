@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {requestSchema,planSchema,profileComplete,profileFields,safeUrl,sourceUrls,buildActivityRequest,activityValidationMessage} from '../app/generators/activity/model.mjs';
+import {requestSchema,planSchema,profileComplete,profileFields,safeUrl,sourceUrls,buildActivityRequest,activityValidationMessage,ideaSchema,householdSupplies} from '../app/generators/activity/model.mjs';
 const base={action:'ideas',children:['11111111-1111-4111-8111-111111111111'],adults:1,guests:[],topic:'Bridges',duration:'Quick',budget:0};
 test('request rejects invalid participants, duration, budgets and missing trip dates',()=>{assert.ok(requestSchema.safeParse(base).success);for(const change of [{children:[]},{budget:-1},{duration:'Two hours'},{guests:[{age:-1,considerations:''}]},{action:'trips',trip:{location:'Kentucky',radius:-5,start:'2026-10-30',end:'2026-10-30',budget:0}}])assert.equal(requestSchema.safeParse({...base,...change}).success,false);});
 test('all profile topics require responses; None is a valid answer',()=>{assert.equal(profileComplete({}),false);const p=Object.fromEntries(profileFields.map(([k])=>[k,'None']));assert.ok(profileComplete(p));p.interests=' ';assert.equal(profileComplete(p),false);});
@@ -40,4 +40,27 @@ test('field-trip searches and trip plans still require complete, ordered dates',
    assert.match(activityValidationMessage(parsed.error),/field trip/);
   }
  }
+});
+
+test('each idea requires a concrete supplies list before it can be displayed',()=>{
+ const idea={title:'Build a bridge',summary:'Explore strength with household objects.'};
+ assert.equal(ideaSchema.safeParse(idea).success,false);
+ assert.equal(ideaSchema.safeParse({...idea,supplies:[]}).success,false);
+ assert.equal(ideaSchema.safeParse({...idea,supplies:['Cardboard','String, thread, or yarn']}).success,true);
+ assert.ok(householdSupplies.some(s=>s.includes('plastic containers')));
+});
+test('substitution requests preserve the selected idea, household constraints, and unavailable supplies',()=>{
+ const input={...base,budget:0,buy:false,unavailableMaterials:['Glue']};
+ const idea={title:'Bridge',summary:'Explore strength',supplies:['Cardboard','String'],kind:'activity'};
+ const request=buildActivityRequest(input,'substitute',{idea,unavailableMaterials:['Glue','String'],trip:{location:'',radius:50,start:'',end:'',budget:0}});
+ const parsed=requestSchema.safeParse(request);
+ assert.equal(parsed.success,true);
+ assert.equal(parsed.data.action,'substitute');
+ assert.equal(parsed.data.budget,0);
+ assert.equal(parsed.data.buy,false);
+ assert.deepEqual(parsed.data.idea.supplies,idea.supplies);
+ assert.deepEqual(parsed.data.unavailableMaterials,['Glue','String']);
+ assert.equal(Object.hasOwn(parsed.data,'trip'),false);
+ const tripIdea={...idea,kind:'trip'};
+ assert.equal(requestSchema.safeParse({...request,idea:tripIdea}).success,false);
 });
