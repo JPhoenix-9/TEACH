@@ -1,6 +1,6 @@
 # Transcript Architect implementation — November 5, 2026
 
-The 56-section master specification is in transcript-master-specification.md. The price is $79 per student, not $29. This implementation replaces the coming-soon image with a working, purchase-gated workspace. New public purchases remain closed while TEACH's existing payment connection is incomplete.
+The 56-section master specification is in transcript-master-specification.md. The price is $79 per student, not $29. This implementation replaces the coming-soon image with a working, purchase-gated workspace. New public purchases remain closed pending the new product's authenticated walkthrough and sandbox payment review. The existing commerce readiness endpoint now reports ready:true; earlier notes about a missing restricted key are stale.
 
 ## Implemented
 
@@ -27,7 +27,7 @@ The four authenticated SECURITY DEFINER functions are intentional: staff-only cr
 
 ## Still required before customer sales
 
-- Complete the existing TEACH Stripe restricted-key connection and sandbox payment review. The $79 product/price have been created in the existing live TEACH account and fulfillment has been prepared to create one independent license per paid order. TRANSCRIPT_CHECKOUT_ENABLED remains absent/false, so sales stay closed. Do not use product_access's one-row-per-product entitlement for this product: additional children require independent licenses. No paid purchase can currently be completed, and no live charge has been attempted.
+- Complete the new product’s authenticated walkthrough and sandbox payment review. The existing TEACH payment service currently reports ready:true. The $79 product/price have been created in the existing live TEACH account and fulfillment has been prepared to create one independent license per paid order. TRANSCRIPT_CHECKOUT_ENABLED remains absent/false, so sales stay closed. Do not use product_access's one-row-per-product entitlement for this product: additional children require independent licenses. No paid purchase can currently be completed, and no live charge has been attempted.
 - Perform an authenticated end-to-end review with the real TEACH administrator session and a sandbox payment journey before opening sales. Local deterministic and policy tests do not prove live AI quality, official-source search quality, or a payment webhook round trip.
 - School-specific layout supports subject grouping or chronological grouping and explicitly displays academic year/grade level for every course; arbitrary institution-specific form templates are not supported. College checks must not claim these unsupported forms have been satisfied.
 - Optional AI help naming a school is not implemented; a truthful family-name example is supplied.
@@ -39,3 +39,5 @@ The four authenticated SECURITY DEFINER functions are intentional: staff-only cr
 Local browser QA was blocked by the managed preview wrapper passing Vite flags (--host/--strictPort) to this Next.js project. Working app scripts were not changed to compensate. Browser interaction checks must be completed against a deployed preview or the live administrator workspace.
 
 Live TEACH catalog product: prod_VZiEwCWAedNQK2; price: price_1UYYo8EH2BoIIOEOP96hqvJK ($79 one time). No checkout session or charge was created. Commerce integration is in supabase/transcript-commerce.sql and preserves all existing product fulfillment. The existing return page opens the transcript workspace for a paid transcript order.
+
+The connected Postgres pgcrypto HMAC result exactly matched Node crypto for a fixed fixture. Live privilege checks confirmed anonymous access, client license self-grants and private signing-schema access are denied. Production commerce status was rechecked and reports ready:true; this product remains independently gated off by TRANSCRIPT_CHECKOUT_ENABLED.
