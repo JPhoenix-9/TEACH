@@ -1,10 +1,10 @@
 import SupportForm from "./components/SupportForm";
 import PageFrame from "../components/PageFrame";
 import styles from "../components/page-frame.module.css";
-export const metadata = { title: "Contact & Help | TEACH", description: "Find your way around TEACH and check support availability." };
+export const metadata = { title: "Contact & Help | TEACH", description: "Contact TEACH for help with your account, purchases, and homeschool tools." };
 export default function Contact() {
-  return <PageFrame eyebrow="CONTACT & HELP" title="A little help finding your way." introduction="Find the right resource and check how to reach us as TEACH takes shape.">
-    <section className={styles.sectionNarrow}><p className={styles.eyebrow}>TEACH SUPPORT</p><h2>Our new inbox is being prepared.</h2><p><strong>support@teachforlove.com</strong></p><div className={styles.notice}><p>This address is not receiving messages yet. Please wait until this notice is removed before sending an email.</p></div><p>If you purchased through Homeschool-911, use the contact or reply information in your existing order confirmation for questions about that purchase, or log in below to leave a private message for TEACH.</p>
+  return <PageFrame eyebrow="CONTACT & HELP" title="A little help finding your way." introduction="Find the right resource or get in touch with TEACH.">
+    <section className={styles.sectionNarrow}><p className={styles.eyebrow}>TEACH SUPPORT</p><h2>How can we help?</h2><p>For help with the Transcript Generator, your TEACH account, or a purchase, email <a className={styles.textLink} href="mailto:support@teachforlove.com">support@teachforlove.com</a>.</p><p>You can also log in below to leave a private message for TEACH. For a purchase made through Homeschool-911, include the name and email address used for that order.</p>
       <div className={styles.actions}><a className={styles.primary} href="/start">Take the Tour</a><a className={styles.textLink} href="/library">Browse the free Library →</a></div>
     </section>
     <section className={styles.sectionNarrow}><h2>Leave a private message.</h2><SupportForm/></section>

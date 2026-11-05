@@ -40,3 +40,7 @@ Account UI now implements email signup, password login, reset requests, confirma
 Profile saves use the security-invoker save_family_profile RPC so parent and child updates commit atomically, with ownership enforced by RLS. An independent rolled-back SQL test verified privacy, atomic rollback, child ages/count, separate marketing choice and archiving. No fictional test accounts remain. No entitlement is granted on signup.
 
 The public account and callback screens have been built; real email-link completion and cross-device user acceptance still need testing with the owner. Planner saving is not yet connected to these accounts. Stripe, historical purchase recognition and backup/recovery operations remain pending. Supabase's security advisor reports leaked-password checking is disabled; it did not report a table/RLS issue in this batch.
+
+## Contact page correction — November 5, 2026
+
+The contact page's “not receiving messages yet” notice was static setup copy, not a live delivery check. Current public MX records resolve to mx1.privateemail.com and mx2.privateemail.com. The contact page now links support@teachforlove.com with mailto and offers the existing authenticated private-message form. Its hint accurately describes database storage and the account-derived reply email; it no longer says replies are being set up. No test email was sent and individual-mailbox delivery was not asserted or independently verified.

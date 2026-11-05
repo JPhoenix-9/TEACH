@@ -44,7 +44,7 @@ Owner requested parent name and contact information plus number and ages of chil
 
 - A separate TEACH backend project is needed. The only discovered Supabase organization is named Chef Jay’s, and its only project belongs to Chef Jay. Organization selection for the TEACH project is awaiting the owner's answer; do not change the Chef Jay project.
 - Check costs before provisioning any service. Stripe is on hold.
-- Support inbox support@teachforlove.com is not active. Transactional email and account recovery delivery require setup and verification before signup is advertised as working.
+- Support contact address: support@teachforlove.com. On November 5, 2026, the domain MX records pointed to Namecheap Private Email. The old blanket “inbox not active” notice was removed; MX records alone do not establish delivery to an individual mailbox. Transactional authentication email is a separate configuration.
 
 
 ## Front Porch update — October 23, 2026
