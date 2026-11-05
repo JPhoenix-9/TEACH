@@ -72,3 +72,7 @@
 .heroLeaf{width:70px;height:67px;background-size:1188px 782.1px;background-position:-657px -135px;margin:0 auto 3px}
 .sidebarLeaf{width:54px;height:65px;background-size:1188px 782.1px;background-position:-14.4px -12.6px}
 @media(max-width:700px){.sidebarLeaf{width:32px;height:43px;background-size:792px 521.4px;background-position:-9.6px -8.4px}.heroLeaf{width:54px;height:52px;background-size:924px 608.3px;background-position:-511px -105px}}
+/* Blend the reference-paper color into each cream panel and keep only the sprig. */
+.heroLeaf,.sidebarLeaf{filter:brightness(1.2) contrast(1.1)}
+.sidebarLeaf{width:50px}
+@media(max-width:700px){.sidebarLeaf{width:30px}}
