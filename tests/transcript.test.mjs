@@ -12,3 +12,21 @@ test('routine parsing does not invent grades or academic years; malformed files 
 test('final record requires real facts and proper designations without excluding earlier coursework',()=>{const p=record();p.courses=[course('SC')];assert.deepEqual(recordProblems(p),[]);p.courses[0].year='8';assert.deepEqual(recordProblems(p),[]);p.courses[0].level='AP';assert(recordProblems(p).some(v=>v.includes('Course Audit')));p.courses[0].apAuthorized=true;assert.deepEqual(recordProblems(p),[]);p.courses[0].level='Dual Enrollment';assert(recordProblems(p).some(v=>v.includes('college')));p.courses[0].college='Example College';p.courses[0].collegeCourse='Composition';assert.deepEqual(recordProblems(p),[]);p.courses[0].grade='IP';p.student.status='graduated';assert(recordProblems(p).some(v=>v.includes('final graduated')));p.courses[0].credit='';assert(recordProblems(p).some(v=>v.includes('credit amount')));p.courses[0].credit=-1;assert(recordProblems(p).some(v=>v.includes('0 through 10')));p.courses[0].credit=Infinity;assert(recordProblems(p).some(v=>v.includes('0 through 10')));});
 test('official sources reject unsafe protocols and lookalike institution domains',()=>{assert.equal(safeUrl('javascript:alert(1)'),'');assert.equal(safeUrl('http://example.edu'),'');assert.equal(safeUrl('https://name:password@example.edu'),'');assert(sameInstitution('https://admissions.example.edu/requirements','https://www.example.edu'));assert(!sameInstitution('https://example.edu.evil.org','https://example.edu'));assert(!sameInstitution('https://other.edu','https://example.edu'));});
 test('professional transcript and addendum PDFs retain Unicode and paginate long records',async()=>{const p=record();p.courses=Array.from({length:70},(_,i)=>({...course(i%3?'A':'SC'),id:crypto.randomUUID(),subject:SUBJECTS[i%9],title:`Course ${i+1} — Literature & Composition`,description:'A factual study of selected works, written analysis, and demonstrated learning. '.repeat(4)}));p.certification={fingerprint:fingerprint(p),date:new Date().toISOString()};const font=readFileSync(new URL('../public/fonts/transcript-sans.ttf',import.meta.url));const bytes=await buildDocument(p,'transcript',null,font);const doc=await PDFDocument.load(bytes);assert(doc.getPageCount()>2);assert.equal(doc.getTitle(),'Zoë O’Connor — Transcript');assert((await buildDocument(p,'addendum',null,font)).length>1000);p.student.name='Changed';await assert.rejects(()=>buildDocument(p,'transcript',null,font),/certify/);});
+
+test('entry navigation opens setup directly and never reuses a bound, revoked or expired student purchase',async()=>{
+ const {transcriptEntryAction}=await import('../app/generators/transcript/model.mjs');
+ const now=Date.parse('2026-11-05T12:00:00Z');
+ const valid={id:crypto.randomUUID(),project_id:null,revoked_at:null,purchased_at:'2026-11-01T12:00:00Z',expires_at:'2029-11-01T12:00:00Z'};
+ const base={auth:'ready',hasProject:false,staff:false,licenses:[valid],now};
+ assert.deepEqual(transcriptEntryAction(base),{type:'begin',licenseId:valid.id});
+ assert.deepEqual(transcriptEntryAction({...base,hasProject:true}),{type:'continue'});
+ assert.deepEqual(transcriptEntryAction({...base,auth:'signedOut'}),{type:'sign-in'});
+ assert.deepEqual(transcriptEntryAction({...base,auth:'loading'}),{type:'wait'});
+ assert.deepEqual(transcriptEntryAction({...base,auth:'error'}),{type:'retry'});
+ for(const patch of [{project_id:crypto.randomUUID()},{revoked_at:'2026-11-03T12:00:00Z'},{expires_at:'2026-11-04T12:00:00Z'},{purchased_at:'2026-11-06T12:00:00Z'}]){
+  const licenses=[{...valid,...patch}];
+  assert.deepEqual(transcriptEntryAction({...base,licenses}),{type:'choose'});
+  assert.deepEqual(transcriptEntryAction({...base,licenses,staff:true}),{type:'staff-review'});
+ }
+ assert.deepEqual(transcriptEntryAction({...base,licenses:[valid,{...valid,id:crypto.randomUUID()}]}),{type:'choose'});
+});

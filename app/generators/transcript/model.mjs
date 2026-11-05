@@ -38,3 +38,14 @@ export function safeFilename(value){return String(value).normalize('NFKD').repla
 export function researchRecord(p){return {status:p.student.status,courses:p.courses.map(c=>({id:c.id,title:c.title,subject:c.subject,credit:c.credit,grade:c.grade,year:c.year,level:c.level,description:c.description,college:!!c.college})),settings:p.settings};}
 
 export function transcriptGroups(p,layout){if(layout?.organization==='year'){const years=[...new Set(p.courses.map(c=>c.year))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));return years.map(year=>({label:`Academic year / grade level: ${year}`,courses:p.courses.filter(c=>c.year===year)}));}return SUBJECTS.map(subject=>({label:subject,courses:p.courses.filter(c=>c.subject===subject)})).filter(g=>g.courses.length);}
+// Choose a visible entry step without treating a bound or expired purchase as a new student slot.
+export function transcriptEntryAction({auth,hasProject,staff,licenses,now=Date.now()}){
+ if(hasProject)return {type:'continue'};
+ if(auth==='signedOut')return {type:'sign-in'};
+ if(auth==='loading')return {type:'wait'};
+ if(auth!=='ready')return {type:'retry'};
+ const available=licenses.filter(l=>!l.project_id&&!l.revoked_at&&new Date(l.purchased_at).getTime()<=now&&new Date(l.expires_at).getTime()>now);
+ if(available.length===1)return {type:'begin',licenseId:available[0].id};
+ if(!available.length&&staff)return {type:'staff-review'};
+ return {type:'choose'};
+}
