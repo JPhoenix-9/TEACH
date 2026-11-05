@@ -76,6 +76,7 @@ export function createHandler({admin,Stripe,env}){
    }
    const body=await request.json();
    if(typeof body.product!=='string'||Object.keys(body).some(k=>k!=='product'))return json({error:'Choose a valid TEACH product.'},400);
+   if(body.product==='transcript-architect'&&env('TRANSCRIPT_CHECKOUT_ENABLED')!=='true')return json({error:'Transcript Architect purchases are being prepared. No payment has been taken.'},503);
    const reserved=await admin.rpc('reserve_teach_order',{p_user:user.id,p_key:body.product,p_origin:origin});
    if(reserved.error){
     const messages={profile_required:'Complete your family profile before purchasing.',already_owned:'This product is already in your Resources.',unknown_product:'Choose a valid TEACH product.',finish_pending_gap_order:'You have another unfinished GAP checkout. Return to that grade band to finish it, or wait for that checkout to expire before switching.'};
@@ -94,7 +95,7 @@ export function createHandler({admin,Stripe,env}){
     metadata,payment_intent_data:{metadata},expires_at:Math.floor(new Date(order.expires_at).getTime()/1000),
     integration_identifier:'teach_web_'+order.id.replaceAll('-','').slice(-8).replace(/[0-9]/g,d=>String.fromCharCode(97+Number(d))),
     success_url:`${order.return_origin}/purchase-complete?order=${order.id}`,
-    cancel_url:order.product_key.startsWith('gap-')?`${order.return_origin}/curriculum/gap/enroll?product=${order.product_key}`:`${order.return_origin}/blueprint/enroll?product=${order.product_key}`
+    cancel_url:order.product_key==='transcript-architect'?`${order.return_origin}/generators/transcript`:order.product_key.startsWith('gap-')?`${order.return_origin}/curriculum/gap/enroll?product=${order.product_key}`:`${order.return_origin}/blueprint/enroll?product=${order.product_key}`
    },{idempotencyKey:'teach_order_'+order.id});
    const saved=await admin.from('teach_orders').update({checkout_session_id:session.id,checkout_url:session.url}).eq('id',order.id).eq('state','reserved');
    if(saved.error||!session.url)throw new Error('session_save_failed');
