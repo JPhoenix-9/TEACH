@@ -3,6 +3,7 @@ import {useState} from "react";
 import {callbackUrl,getSupabase} from "../lib/supabase-browser";
 import {accountSetupPath,authPath,safeReturnTo} from "../lib/auth-return.mjs";
 import s from "./account.module.css";
+import PasswordField from "./PasswordField";
 export default function AuthForm({mode="login",returnTo="/account"}){
  const [email,setEmail]=useState(""),[password,setPassword]=useState(""),[confirm,setConfirm]=useState("");
  const [busy,setBusy]=useState(false),[message,setMessage]=useState(""),[failed,setFailed]=useState(false);
@@ -21,8 +22,8 @@ export default function AuthForm({mode="login",returnTo="/account"}){
   }catch(error){setFailed(true);setMessage(error.message||"We couldn’t complete that request. Please try again.");}finally{setBusy(false);}}
  return <div className={s.panel}><form className={s.form} onSubmit={submit}>
   <label className={s.field}>Email address<input type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} disabled={busy}/></label>
-  {!reset&&<label className={s.field}>Password<input type="password" required minLength={signup?10:undefined} autoComplete={signup?"new-password":"current-password"} value={password} onChange={e=>setPassword(e.target.value)} disabled={busy}/>{signup&&<span className={s.hint}>Use at least 10 characters.</span>}</label>}
-  {signup&&<label className={s.field}>Confirm password<input type="password" required minLength={10} autoComplete="new-password" value={confirm} onChange={e=>setConfirm(e.target.value)} disabled={busy}/></label>}
+  {!reset&&<PasswordField label="Password" required minLength={signup?10:undefined} autoComplete={signup?"new-password":"current-password"} value={password} onChange={e=>setPassword(e.target.value)} disabled={busy} hint={signup?"Use at least 10 characters.":undefined}/>}
+  {signup&&<PasswordField label="Confirm password" required minLength={10} autoComplete="new-password" value={confirm} onChange={e=>setConfirm(e.target.value)} disabled={busy}/>}
   {signup&&<p className={s.hint}>Your free account stores your family profile. Products unlock separately when purchased. You can choose whether to receive marketing emails when you complete your profile.</p>}
   <button className={s.button} disabled={busy} type="submit">{busy?"Please wait…":reset?"Send reset link":signup?"Create free account":"Log in"}</button>
   {message&&<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message}</p>}
