@@ -1,9 +1,13 @@
 "use client";
 import {useEffect,useState} from "react";
+import {usePathname} from "next/navigation";
+import {authPath,safeReturnTo} from "../lib/auth-return.mjs";
 import {getSupabase} from "../lib/supabase-browser";
 
 export default function AccountLinks(){
- const [state,setState]=useState("loading");
+ const [state,setState]=useState("loading"),[returnTo,setReturnTo]=useState("/");
+ const pathname=usePathname();
+ useEffect(()=>{setReturnTo(safeReturnTo(window.location.pathname+window.location.search,"/"));},[pathname]);
  useEffect(()=>{
   let active=true,receivedEvent=false;
   const sb=getSupabase();
@@ -16,6 +20,6 @@ export default function AccountLinks(){
   }).catch(()=>{if(active&&!receivedEvent)setState("error");});
   return ()=>{active=false;listener.subscription.unsubscribe();};
  },[]);
- if(state==="signedOut")return <><a className="create-account" href="/create-account">Create a Free Account</a><a className="login-button" href="/login">Log In</a></>;
+ if(state==="signedOut")return <><a className="create-account" href={authPath("signup",returnTo)}>Create a Free Account</a><a className="login-button" href={authPath("login",returnTo)}>Log In</a></>;
  return <a className="login-button" href="/account">{state==="loading"?"Account":"My Account"}</a>;
 }

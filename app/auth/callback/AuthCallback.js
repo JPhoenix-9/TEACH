@@ -1,10 +1,10 @@
 "use client";
 import {useEffect,useState} from "react";
 import {getSupabase} from "../../lib/supabase-browser";
-import {accountSetupPath} from "../../lib/auth-return.mjs";
+import {accountSetupPath,safeReturnTo} from "../../lib/auth-return.mjs";
 import s from "../../components/account.module.css";
 import PasswordField from "../../components/PasswordField";
-function finishPath(){try{const next=localStorage.getItem('teach-auth-return');localStorage.removeItem('teach-auth-return');return accountSetupPath(next);}catch{return '/account';}}
+function finishPath(onboarding=false){try{const next=localStorage.getItem('teach-auth-return');localStorage.removeItem('teach-auth-return');return onboarding?accountSetupPath(next):safeReturnTo(next,'/');}catch{return onboarding?'/account':'/';}}
 export default function AuthCallback(){
  const [state,setState]=useState("loading"),[message,setMessage]=useState("Checking your link…"),[password,setPassword]=useState(""),[confirm,setConfirm]=useState(""),[busy,setBusy]=useState(false);
  useEffect(()=>{let alive=true;const hash=new URLSearchParams(window.location.hash.slice(1));const type=hash.get("type")||sessionStorage.getItem("teach-password-flow");if(type==="recovery"||type==="invite")sessionStorage.setItem("teach-password-flow",type);
@@ -12,11 +12,11 @@ export default function AuthCallback(){
    if(hash.has("error")||new URLSearchParams(window.location.search).has("error"))throw new Error("This link is invalid or has expired. Please request a fresh password-reset link or log in.");
    const {data,error}=await getSupabase().auth.getUser();
    if(error||!data.user)throw new Error("This link is invalid or has expired. Please request a fresh password-reset link or log in.");
-   if(!alive)return;if(type==="recovery"||type==="invite"){setState("password");setMessage("Choose a password for your TEACH account.");}else window.location.replace(finishPath());
+   if(!alive)return;if(type==="recovery"||type==="invite"){setState("password");setMessage("Choose a password for your TEACH account.");}else window.location.replace(finishPath(true));
   }catch(error){if(alive){window.history.replaceState(null,"","/auth/callback");setState("error");setMessage(error.message);}}}finish();return()=>{alive=false;};
  },[]);
  async function save(e){e.preventDefault();if(password!==confirm){setMessage("The passwords do not match.");return;}setBusy(true);
-  try{const {error}=await getSupabase().auth.updateUser({password});if(error)throw error;sessionStorage.removeItem("teach-password-flow");setPassword("");setConfirm("");window.location.replace(finishPath());}
+  try{const {error}=await getSupabase().auth.updateUser({password});if(error)throw error;const onboarding=sessionStorage.getItem("teach-password-flow")==="invite";sessionStorage.removeItem("teach-password-flow");setPassword("");setConfirm("");window.location.replace(finishPath(onboarding));}
   catch(error){setMessage(error.message||"We couldn’t save your password. Please try again.");}finally{setBusy(false);}}
  return <div className={s.panel}><p className={`${s.message} ${state==="error"?s.error:""}`} role="status">{message}</p>{state==="password"&&<form className={s.form} onSubmit={save}><PasswordField label="New password" required minLength={10} autoComplete="new-password" value={password} onChange={e=>setPassword(e.target.value)} disabled={busy}/><PasswordField label="Confirm new password" required minLength={10} autoComplete="new-password" value={confirm} onChange={e=>setConfirm(e.target.value)} disabled={busy}/><button className={s.button} disabled={busy}>{busy?"Saving…":"Save password"}</button></form>}{state==="error"&&<div className={s.links}><a href="/forgot-password">Request a fresh reset link</a><a href="/login">Log in</a></div>}</div>;
 }

@@ -1,24 +1,27 @@
 "use client";
-import {useState} from "react";
+import {useEffect,useState} from "react";
 import {callbackUrl,getSupabase} from "../lib/supabase-browser";
-import {accountSetupPath,authPath,safeReturnTo} from "../lib/auth-return.mjs";
+import {accountSetupPath,authPath,resolveLoginReturn,safeReturnTo} from "../lib/auth-return.mjs";
 import s from "./account.module.css";
 import PasswordField from "./PasswordField";
-export default function AuthForm({mode="login",returnTo="/account"}){
+export default function AuthForm({mode="login",returnTo}){
  const [email,setEmail]=useState(""),[password,setPassword]=useState(""),[confirm,setConfirm]=useState("");
  const [busy,setBusy]=useState(false),[message,setMessage]=useState(""),[failed,setFailed]=useState(false);
  const signup=mode==="signup",reset=mode==="reset";
+ const [destination,setDestination]=useState(()=>safeReturnTo(returnTo,"/"));
+ useEffect(()=>{setDestination(resolveLoginReturn(returnTo,document.referrer,window.location.origin));},[returnTo]);
  async function submit(e){e.preventDefault();setMessage("");setFailed(false);
   if(signup&&password!==confirm){setFailed(true);setMessage("The passwords do not match.");return;}setBusy(true);
   try{const sb=getSupabase();let result;
-   if(signup||reset){try{localStorage.setItem('teach-auth-return',safeReturnTo(returnTo));}catch{}}
+   const next=resolveLoginReturn(returnTo,document.referrer,window.location.origin);
+   if(signup||reset){try{localStorage.setItem('teach-auth-return',next);}catch{}}
    if(reset)result=await sb.auth.resetPasswordForEmail(email.trim(),{redirectTo:callbackUrl()});
    else if(signup)result=await sb.auth.signUp({email:email.trim(),password,options:{emailRedirectTo:callbackUrl()}});
    else result=await sb.auth.signInWithPassword({email:email.trim(),password});
    if(result.error)throw result.error;setPassword("");setConfirm("");
    if(reset)setMessage("If this address has an account, a password-reset link is on its way. Check your inbox and spam folder.");
    else if(signup&&!result.data.session)setMessage("Check your email for the confirmation link. After confirming, you can add your family’s information. If you already have an account, use Log in or Forgot password.");
-   else {try{localStorage.removeItem('teach-auth-return');}catch{}window.location.assign(signup?accountSetupPath(returnTo):safeReturnTo(returnTo));}
+   else {try{localStorage.removeItem('teach-auth-return');}catch{}window.location.assign(signup?accountSetupPath(next):next);}
   }catch(error){setFailed(true);setMessage(error.message||"We couldn’t complete that request. Please try again.");}finally{setBusy(false);}}
  return <div className={s.panel}><form className={s.form} onSubmit={submit}>
   <label className={s.field}>Email address<input type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} disabled={busy}/></label>
@@ -27,5 +30,5 @@ export default function AuthForm({mode="login",returnTo="/account"}){
   {signup&&<p className={s.hint}>Your free account stores your family profile. Products unlock separately when purchased. You can choose whether to receive marketing emails when you complete your profile.</p>}
   <button className={s.button} disabled={busy} type="submit">{busy?"Please wait…":reset?"Send reset link":signup?"Create free account":"Log in"}</button>
   {message&&<p className={`${s.message} ${failed?s.error:""}`} role={failed?"alert":"status"}>{message}</p>}
- <p className={s.hint}>TEACH accounts are for parents and other adults. Read <a href="/privacy">Privacy</a> and <a href="/terms">Using TEACH</a>.</p></form><div className={s.links}>{mode!=="login"&&<a href={authPath('login',returnTo)}>Log in</a>}{mode!=="signup"&&<a href={authPath('signup',returnTo)}>Create a free account</a>}{!reset&&<a href={authPath('reset',returnTo)}>Forgot password?</a>}</div></div>;
+ <p className={s.hint}>TEACH accounts are for parents and other adults. Read <a href="/privacy">Privacy</a> and <a href="/terms">Using TEACH</a>.</p></form><div className={s.links}>{mode!=="login"&&<a href={authPath('login',destination)}>Log in</a>}{mode!=="signup"&&<a href={authPath('signup',destination)}>Create a free account</a>}{!reset&&<a href={authPath('reset',destination)}>Forgot password?</a>}</div></div>;
 }
