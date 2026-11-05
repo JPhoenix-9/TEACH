@@ -1,7 +1,7 @@
 import {gapProduct} from './gap-catalog.mjs';
 import {blueprintProduct} from './blueprint-catalog.mjs';
 
-const destinations=new Set(['/account','/my-desk','/resources','/contact','/front-porch','/records','/planner/workspace']);
+const destinations=new Set(['/account','/my-desk','/resources','/contact','/front-porch','/records','/planner/workspace','/generators','/generators/activity']);
 // Return destinations are a small allowlist, never arbitrary URLs or auth routes.
 export function safeReturnTo(value){
   if(typeof value!=='string'||/[\\\r\n]/.test(value))return '/account';

@@ -30,7 +30,7 @@ export default function ActivityGenerator(){
  <section className={`${s.panel} ${screen!=='home'&&auth==='ready'?s.wide:''}`} aria-busy={!!busy}>
  <h1 ref={heading} tabIndex={-1}>{screen==='home'||auth!=='ready'?'What will you discover together today?':({request:'Plan an activity',materials:'What do you have available?',results:'Your next possibilities',plan:plan?.title,saved:'Saved plans',profiles:'Your family profile'})[screen]}</h1>
  {auth==='loading'&&<p role="status">Opening your family’s workspace…</p>}
- {auth==='signedOut'&&<><p>Log in to open your purchased Activity Generator.</p><a className={s.linkButton} href="/login">Log in</a></>}
+ {auth==='signedOut'&&<><p>Log in to open your purchased Activity Generator.</p><a className={s.linkButton} href="/login?next=%2Fgenerators%2Factivity">Log in</a></>}
  {auth==='locked'&&<><p>This workspace opens with an Activity Generator purchase. Your basic family profile stays as it is until you purchase a tool that needs additional information.</p><a href="/generators">Back to Generators</a></>}
  {auth==='error'&&<><p>We couldn’t open your workspace.</p><button onClick={load}>Try again</button></>}
  {auth==='ready'&&<>
