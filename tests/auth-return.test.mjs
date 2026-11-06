@@ -9,6 +9,12 @@ test('GAP and individual Blueprint selections survive login and account setup',(
   assert.equal(new URL(accountSetupPath(next),'https://teach.invalid').searchParams.get('next'),next);
  }
 });
+test('saved activity survives login without allowing arbitrary query destinations',()=>{
+ const next='/generators/activity?plan=11111111-1111-4111-8111-111111111111';
+ assert.equal(safeReturnTo(next),next);
+ assert.equal(new URL(authPath('login',next),'https://teach.invalid').searchParams.get('next'),next);
+ for(const value of [next+'&next=https://evil.example',next+'&plan=11111111-1111-4111-8111-111111111111','/generators/activity?plan=javascript:alert(1)'])assert.equal(safeReturnTo(value),'/account');
+});
 test('return links reject external redirects, auth loops and invalid product selections',()=>{
  for(const next of [undefined,null,['/resources'],'https://evil.example','//evil.example/resources','/\\evil.example','/resources\n','javascript:alert(1)','/login','/auth/callback','/blueprint/enroll?product=blueprint-module-7','/curriculum/gap/enroll?product=gap-35&next=https://evil.example','/curriculum/gap/enroll?product=gap-35&product=gap-k2','/resources#access_token=secret']){
   assert.equal(safeReturnTo(next),'/account',String(next));
