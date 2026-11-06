@@ -16,3 +16,5 @@
 
 .panel .planTitle{font-size:clamp(26px,3vw,36px);line-height:1.2;margin-top:0}.panel>h1{scroll-margin-top:20px}.fullPlan .actions{margin-top:24px}
 @media print{.fullPlan .actions{display:none!important}.panel .planTitle{display:block;font-size:24pt}}
+
+.substitutions button{max-width:100%;box-sizing:border-box;white-space:normal;line-height:1.3}
