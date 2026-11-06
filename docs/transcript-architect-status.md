@@ -41,3 +41,7 @@ Local browser QA was blocked by the managed preview wrapper passing Vite flags (
 Live TEACH catalog product: prod_VZiEwCWAedNQK2; price: price_1UYYo8EH2BoIIOEOP96hqvJK ($79 one time). No checkout session or charge was created. Commerce integration is in supabase/transcript-commerce.sql and preserves all existing product fulfillment. The existing return page opens the transcript workspace for a paid transcript order.
 
 The connected Postgres pgcrypto HMAC result exactly matched Node crypto for a fixed fixture. Live privilege checks confirmed anonymous access, client license self-grants and private signing-schema access are denied. Production commerce status was rechecked and reports ready:true; this product remains independently gated off by TRANSCRIPT_CHECKOUT_ENABLED.
+
+## Automatic saving — November 5, 2026
+
+The generator now checkpoints complete projects and workflow position in IndexedDB on edits and screen/subject/discovery transitions. Drafts are namespaced by signed-in account and project ID. Saved Transcripts lists local projects and reopens the saved step. Unfinished interviews, proposals and unadded title drafts are retained. Save receipts control the visible status, failures offer retry/export, and revision checks prevent silent overwrites from another tab. Sign-out clears the open workspace without deleting local saved projects. Export/import remains the portable backup path; full academic records remain off the server. Browser data clearing/private sessions/device changes can remove the local copy and are explained in the interface.
