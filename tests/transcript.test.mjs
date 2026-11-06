@@ -30,3 +30,5 @@ test('entry navigation opens setup directly and never reuses a bound, revoked or
  }
  assert.deepEqual(transcriptEntryAction({...base,licenses:[valid,{...valid,id:crypto.randomUUID()}]}),{type:'choose'});
 });
+
+ test('unfinished discovery survives project save and reopen without becoming approved coursework',()=>{const p=record();p.discoveryDrafts={'Fine Arts':{facts:'Parent: Weekly piano lessons for two years.',answer:'Practiced five days each week.',result:{status:'more-information',message:'Tell me about practice.',question:'How long was each practice?',proposal:null},proposal:null,added:false}};const reopened=readProject(JSON.stringify(p));assert.deepEqual(reopened.discoveryDrafts,p.discoveryDrafts);assert.equal(reopened.courses.length,0);assert.equal(readProject(JSON.stringify(record())).discoveryDrafts,undefined);});
