@@ -1,7 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {requestSchema,planSchema,profileComplete,profileFields,safeUrl,sourceUrls,buildActivityRequest,activityValidationMessage,ideaSchema,householdSupplies} from '../app/generators/activity/model.mjs';
+import {requestSchema,planSchema,profileComplete,profileFields,safeUrl,sourceUrls,buildActivityRequest,activityValidationMessage,ideaSchema,ideaPreviewSchema,householdSupplies} from '../app/generators/activity/model.mjs';
 const base={action:'ideas',children:['11111111-1111-4111-8111-111111111111'],adults:1,guests:[],topic:'Bridges',duration:'Quick',budget:0};
+test('initial choices reject verbose summaries and sprawling supplies while accepting concise complete choices',()=>{
+ const idea={title:'Which paper bridge holds more?',summary:'Compare flat and folded paper bridges across the same gap. Predict which holds more coins, test both with the same coins, and explain how shape changes strength. Allow 20 minutes including setup and cleanup.',supplies:['2 sheets of paper','2 books','10–20 coins']};
+ assert.equal(ideaPreviewSchema.safeParse(idea).success,true);
+ for(const change of [{summary:'x'.repeat(601)},{title:'x'.repeat(91)},{supplies:Array(9).fill('Paper')},{supplies:['x'.repeat(101)]},{supplies:[]}]){
+  assert.equal(ideaPreviewSchema.safeParse({...idea,...change}).success,false);
+ }
+ // Historical saved/submitted ideas remain readable; only newly generated previews are tighter.
+ assert.equal(ideaSchema.safeParse({...idea,summary:'x'.repeat(601)}).success,true);
+});
 test('request rejects invalid participants, duration, budgets and missing trip dates',()=>{assert.ok(requestSchema.safeParse(base).success);for(const change of [{children:[]},{budget:-1},{duration:'Two hours'},{guests:[{age:-1,considerations:''}]},{action:'trips',trip:{location:'Kentucky',radius:-5,start:'2026-10-30',end:'2026-10-30',budget:0}}])assert.equal(requestSchema.safeParse({...base,...change}).success,false);});
 test('all profile topics require responses; None is a valid answer',()=>{assert.equal(profileComplete({}),false);const p=Object.fromEntries(profileFields.map(([k])=>[k,'None']));assert.ok(profileComplete(p));p.interests=' ';assert.equal(profileComplete(p),false);});
 test('only HTTPS source URLs may be offered as destination links',()=>{assert.equal(safeUrl('javascript:alert(1)'),null);assert.equal(safeUrl('http://localhost'),null);assert.equal(safeUrl('https://museum.example/visit'),'https://museum.example/visit');assert.deepEqual([...sourceUrls([{output:{results:[{url:'https://museum.example/visit'},{url:'javascript:bad'}]}}])],['https://museum.example/visit']);});

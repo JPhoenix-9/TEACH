@@ -33,6 +33,8 @@ export function activityValidationMessage(error){
  return 'Please check your activity details and try again.';
 }
 export const ideaSchema=z.object({title:z.string().min(1).max(200),summary:z.string().min(1).max(2000),supplies:z.array(z.string().min(1).max(200)).min(1).max(24)});
+// Initial choices must be scannable; choose simpler activities, never omit essentials.
+export const ideaPreviewSchema=ideaSchema.extend({title:z.string().trim().min(1).max(90),summary:z.string().trim().min(1).max(600),supplies:z.array(z.string().trim().min(1).max(100)).min(1).max(8)});
 export const planSchema=z.object({title:z.string().max(200),summary:z.string(),duration:z.string(),estimatedCost:z.number().nonnegative(),supplies:z.array(z.string()),preparation:z.array(z.string()),sessions:z.array(z.object({title:z.string(),minutes:z.number().positive().max(120),steps:z.array(z.string())})),adaptations:z.array(z.object({child:z.string(),role:z.string()})),discussion:z.array(z.string()),safety:z.array(z.string())});
 export const safeUrl=value=>{try{const u=new URL(value);return u.protocol==='https:'?u.href:null;}catch{return null;}};
 export function sourceUrls(value,out=new Set()){if(Array.isArray(value))for(const v of value)sourceUrls(v,out);else if(value&&typeof value==='object')for(const [k,v] of Object.entries(value)){if(k==='url'&&typeof v==='string'&&safeUrl(v))out.add(safeUrl(v));else sourceUrls(v,out);}return out;}
