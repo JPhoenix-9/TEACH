@@ -1,5 +1,6 @@
 import {gapProduct} from './gap-catalog.mjs';
 import {blueprintProduct} from './blueprint-catalog.mjs';
+import {activityArchivePath} from './activity-planner.mjs';
 
 const destinations=new Set(["/about","/account","/blueprint","/contact","/curriculum/gap","/curriculum","/front-porch","/generators/activity","/generators","/generators/transcript","/library","/my-desk","/","/planner","/planner/preview","/planner/workspace","/privacy","/records","/refunds","/resources","/search","/start","/terms","/webinars/5-shifts/register","/webinars/common-questions/register","/webinars","/webinars/watch","/wishing-well"]);
 // Only known TEACH pages can be return destinations. Auth/token routes cannot loop.
@@ -11,6 +12,7 @@ export function safeReturnTo(value,fallback='/account'){
   if(url.origin!=='https://teach.invalid'||url.hash||url.pathname.includes('%'))return fallback;
   const keys=[...url.searchParams.keys()];
   if(!keys.length&&(destinations.has(url.pathname)||/^\/library\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(url.pathname)))return url.pathname;
+  if(url.pathname==='/generators/activity'&&keys.length===1&&keys[0]==='plan')return activityArchivePath(url.searchParams.get('plan'));
   if(keys.length===1&&keys[0]==='product'){
    const product=url.searchParams.get('product');
    if(url.pathname==='/curriculum/gap/enroll'&&gapProduct(product))return `${url.pathname}?product=${product}`;
