@@ -11,7 +11,7 @@ const input={children:[kid],adults:1,guests:[],topic:'Butterflies',duration:'Qui
 const user={id:uid,aud:'authenticated',role:'authenticated',email:'fixture@example.test',app_metadata:{provider:'email'},user_metadata:{},created_at:new Date().toISOString()};
 const token=[Buffer.from(JSON.stringify({alg:'HS256',typ:'JWT'})).toString('base64url'),Buffer.from(JSON.stringify({sub:uid,role:'authenticated',exp:Math.floor(Date.now()/1000)+3600})).toString('base64url'),'fixture'].join('.');
 async function fixture(browser,status,width=1280){
- const ctx=await browser.newContext({viewport:{width,height:900}});let saved=null,notes=[],failSave=false;
+ const ctx=await browser.newContext({viewport:{width,height:900}});let saved=null,notes=[],failSave=false,tripMode='results';
  await ctx.addInitScript(({user,token})=>{if(location.origin!=='http://127.0.0.1:3101')return;localStorage.setItem('sb-jhooodlcvcpnzcpreqmu-auth-token',JSON.stringify({access_token:token,refresh_token:'fixture-refresh',expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user}));},{user,token});
  await ctx.route('https://jhooodlcvcpnzcpreqmu.supabase.co/**',async route=>{
   const req=route.request(),url=new URL(req.url()),name=url.pathname.split('/').pop();let data=[];let code=200;
@@ -37,7 +37,14 @@ async function fixture(browser,status,width=1280){
   else throw new Error('Unmocked backend request '+url.pathname);
   await route.fulfill({status:code,contentType:'application/json',body:JSON.stringify(data)});
  });
- await ctx.route('**/api/activity',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(JSON.parse(route.request().postData()).action==='ideas'?{ideas:[idea,{...idea,title:'Life-cycle observation'},{...idea,title:'Compare wing markings'}]}:{plan})}));
+ await ctx.route('**/api/activity',route=>{
+  const request=JSON.parse(route.request().postData());
+  if(request.action==='trips'){
+   const body=tripMode==='timeout'?{code:'trip_search_timeout',error:'The field-trip search timed out before it finished. Your search settings are still here; please try again.'}:tripMode==='empty'?{status:'no_matches',trips:[],message:`I couldn’t verify any good field-trip options for this topic within ${request.trip.radius} miles for your dates and budget. Try a larger radius, different dates or a different budget.`}:{status:'results',trips:[{title:'Sample Nature Center',summary:'Observe butterfly habitats.',supplies:['Notebook'],url:'https://nature.example/visit',evidence:'Official visitor information.',distanceMiles:20,estimatedCost:0}],message:'These options matched your search.'};
+   return route.fulfill({status:tripMode==='timeout'?503:200,contentType:'application/json',body:JSON.stringify(body)});
+  }
+  return route.fulfill({contentType:'application/json',body:JSON.stringify(request.action==='ideas'?{ideas:[idea,{...idea,title:'Life-cycle observation'},{...idea,title:'Compare wing markings'}]}:{plan})});
+ });
  const page=await ctx.newPage();let errors=[];page.on('pageerror',e=>errors.push(e.message));
  async function openPlan(){
   await page.goto('http://127.0.0.1:3101/generators/activity');
@@ -56,7 +63,7 @@ async function fixture(browser,status,width=1280){
   assert.equal(await page.getByRole('button',{name:'Revise this plan'}).count(),0);
   const focus=await page.evaluate(()=>({text:document.activeElement.textContent,y:document.activeElement.getBoundingClientRect().top}));assert.equal(focus.text,'Activity Instructions');assert(focus.y>=0&&focus.y<100);
  }
- return {ctx,page,openPlan,notes,errors,failArchive:()=>{failSave=true;},saved:()=>saved};
+ return {ctx,page,openPlan,notes,errors,failArchive:()=>{failSave=true;},saved:()=>saved,setTripMode:mode=>{tripMode=mode;}};
 }
 (async()=>{
  const {spawn}=require('node:child_process');
@@ -82,5 +89,11 @@ async function fixture(browser,status,width=1280){
   const m=await fixture(browser,'none',390);await m.openPlan();await m.page.getByRole('link',{name:'Get the TEACH Planner — $5.99/year',exact:true}).waitFor();if(process.env.TEACH_UI_SCREENSHOT_PATH)await m.page.screenshot({path:process.env.TEACH_UI_SCREENSHOT_PATH,fullPage:true});assert.equal(await m.page.getByRole('button',{name:'Add to Planner',exact:true}).count(),0);assert.deepEqual(m.errors,[]);console.log('PASS mobile: clean plan, heading visible, purchase prompt without add access');await m.ctx.close();
   const e=await fixture(browser,'error');await e.openPlan();await e.page.getByRole('button',{name:'Check again',exact:true}).waitFor();assert.equal(await e.page.getByRole('link',{name:'Get the TEACH Planner — $5.99/year',exact:true}).count(),0);console.log('PASS failed subscription check: retry rather than false purchase prompt');await e.ctx.close();
   const a=await fixture(browser,'active');await a.openPlan();a.failArchive();await a.page.getByRole('button',{name:'Add to Planner',exact:true}).click();await a.page.getByText('We couldn’t save your plan. Please try again.',{exact:true}).waitFor();assert.equal(a.notes.length,0);assert.equal(await a.page.getByLabel('Very brief overview').count(),0);console.log('PASS archive failure: no unlinked Planner note is created');await a.ctx.close();
+  const t=await fixture(browser,'none',390);await t.openPlan();await t.page.getByRole('button',{name:'Back to ideas',exact:true}).click();
+  await t.page.getByLabel('Starting town, state or ZIP code').fill('Sample Town, KY');await t.page.getByLabel('From',{exact:true}).fill('2026-11-07');await t.page.getByLabel('Through',{exact:true}).fill('2026-11-07');
+  await t.page.getByRole('button',{name:'Search this area',exact:true}).click();await t.page.getByRole('heading',{name:'Sample Nature Center',exact:true}).waitFor();
+  t.setTripMode('timeout');await t.page.getByLabel('Radius in miles').fill('75');await t.page.getByRole('button',{name:'Search this area',exact:true}).click();await t.page.getByText('The field-trip search timed out before it finished. Your search settings are still here; please try again.',{exact:true}).waitFor();
+  assert.equal(await t.page.getByRole('heading',{name:'Sample Nature Center',exact:true}).count(),0);assert.equal(await t.page.getByLabel('Radius in miles').inputValue(),'75');assert.equal(await t.page.getByLabel('Starting town, state or ZIP code').inputValue(),'Sample Town, KY');
+  t.setTripMode('empty');await t.page.getByRole('button',{name:'Search this area',exact:true}).click();await t.page.getByText(/I couldn’t verify any good field-trip options for this topic within 75 miles/).waitFor();assert.equal(await t.page.getByLabel('From',{exact:true}).inputValue(),'2026-11-07');assert.deepEqual(t.errors,[]);console.log('PASS field-trip UI: distinct results, timeout and no-match outcomes; retained criteria; no stale destinations');await t.ctx.close();
  }finally{await browser.close();server.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
