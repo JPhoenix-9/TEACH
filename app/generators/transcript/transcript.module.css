@@ -80,3 +80,8 @@
 /* Keep the approved composition while removing duplicate header navigation. */
 .topSpacer{height:72px}
 @media(max-width:700px){.topSpacer{height:12px}.appSidebar .returnLinks{display:flex;align-items:center;flex:0 0 auto;gap:8px;margin:0;padding:0;border:0}.appSidebar .returnLinks a{display:flex;align-items:center;min-height:44px;padding:8px;white-space:nowrap;font:11px Arial,Helvetica,sans-serif}}
+
+/* Saving belongs in the workspace and stays visible while reviewing long grids. */
+.saveBar{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 18px;margin:0 0 22px;background:#f5f7ed;border:1px solid #9cae91;border-radius:7px;box-shadow:0 3px 12px #263b311a;text-align:left;font:600 14px/1.4 Arial,sans-serif}
+.panel .saveBar p{margin:4px 0 0;font:14px/1.4 Arial,sans-serif;color:#315641}.saveControls{display:flex;gap:8px;flex-wrap:wrap}.panel .saveControls button{margin:0}
+@media(max-width:600px){.saveBar{top:6px;padding:12px}.saveControls{width:100%}.saveControls button{flex:1}}
