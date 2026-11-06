@@ -11,12 +11,16 @@ const input={children:[kid],adults:1,guests:[],topic:'Butterflies',duration:'Qui
 const user={id:uid,aud:'authenticated',role:'authenticated',email:'fixture@example.test',app_metadata:{provider:'email'},user_metadata:{},created_at:new Date().toISOString()};
 const token=[Buffer.from(JSON.stringify({alg:'HS256',typ:'JWT'})).toString('base64url'),Buffer.from(JSON.stringify({sub:uid,role:'authenticated',exp:Math.floor(Date.now()/1000)+3600})).toString('base64url'),'fixture'].join('.');
 async function fixture(browser,status,width=1280){
- const ctx=await browser.newContext({viewport:{width,height:900}});let saved=null,notes=[],failSave=false,tripMode='results';
+ const ctx=await browser.newContext({viewport:{width,height:900}});let saved=null,notes=[],failSave=false,tripMode='results',removedPrivateThread=false;
  await ctx.addInitScript(({user,token})=>{if(location.origin!=='http://127.0.0.1:3101')return;localStorage.setItem('sb-jhooodlcvcpnzcpreqmu-auth-token',JSON.stringify({access_token:token,refresh_token:'fixture-refresh',expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user}));},{user,token});
  await ctx.route('https://jhooodlcvcpnzcpreqmu.supabase.co/**',async route=>{
   const req=route.request(),url=new URL(req.url()),name=url.pathname.split('/').pop();let data=[];let code=200;
   if(url.pathname==='/auth/v1/user')data=user;
   else if(name==='has_activity_access')data=true;
+  else if(name==='front_porch_access')data={member:status!=='active',ask_jana:true,staff:false};
+  else if(name==='porch_threads'||name==='porch_replies'){assert.equal(req.method(),'GET','No conversation messages should be sent by this test.');data=name==='porch_threads'&&status==='active'&&!removedPrivateThread?[{id:'44444444-4444-4444-8444-444444444444',channel:'ask-jana',user_id:uid,author_name:'Fixture Parent',author_staff:false,title:'Sample private question',body:'Synthetic question for UI testing.',hidden:false,created_at:new Date().toISOString()}]:[];}
+  else if(name==='hide_own_porch_message'){assert.deepEqual(JSON.parse(req.postData()),{p_kind:'thread',p_id:'44444444-4444-4444-8444-444444444444'});removedPrivateThread=true;data=null;}
+  else if(name==='transcript_licenses')data=status==='transcript-owner'?[{purchased_at:'2026-01-01T00:00:00Z',expires_at:'2028-01-01T00:00:00Z',revoked_at:null}]:[];
   else if(name==='family_children')data=[{id:kid,name:'Sample Child',age_years:12,grade_level:'7',archived_at:null}];
   else if(name==='child_learning_profiles')data=[{child_id:kid,details:Object.fromEntries(fields.map(f=>[f,'None']))}];
   else if(name==='planner_subscriptions'){
@@ -32,7 +36,7 @@ async function fixture(browser,status,width=1280){
   }
   else if(name==='append_activity_note'){assert(saved,'archive exists before append');notes.push(JSON.parse(req.postData()));data=null;}
   else if(name==='family_profiles')data=[{parent_name:'Fixture Parent',marketing_opt_in:false}];
-  else if(name==='product_access')data=[{product_key:'activity-generator',revoked_at:null}];
+  else if(name==='product_access')data=status==='transcript-owner'?[]:[{product_key:'activity-generator',revoked_at:null}];
   else if(name==='read_planner_records')data=notes.length?[{day:notes[0].p_day,calendar_note:'',family_note:notes[0].p_note,revision:1,children:[]}]:[];
   else throw new Error('Unmocked backend request '+url.pathname);
   await route.fulfill({status:code,contentType:'application/json',body:JSON.stringify(data)});
@@ -95,5 +99,8 @@ async function fixture(browser,status,width=1280){
   t.setTripMode('timeout');await t.page.getByLabel('Radius in miles').fill('75');await t.page.getByRole('button',{name:'Search this area',exact:true}).click();await t.page.getByText('The field-trip search timed out before it finished. Your search settings are still here; please try again.',{exact:true}).waitFor();
   assert.equal(await t.page.getByRole('heading',{name:'Sample Nature Center',exact:true}).count(),0);assert.equal(await t.page.getByLabel('Radius in miles').inputValue(),'75');assert.equal(await t.page.getByLabel('Starting town, state or ZIP code').inputValue(),'Sample Town, KY');
   t.setTripMode('empty');await t.page.getByRole('button',{name:'Search this area',exact:true}).click();await t.page.getByText(/I couldn’t verify any good field-trip options for this topic within 75 miles/).waitFor();assert.equal(await t.page.getByLabel('From',{exact:true}).inputValue(),'2026-11-07');assert.deepEqual(t.errors,[]);console.log('PASS field-trip UI: distinct results, timeout and no-match outcomes; retained criteria; no stale destinations');await t.ctx.close();
+  const p=await fixture(browser,'active');await p.page.goto('http://127.0.0.1:3101/front-porch');await p.page.getByRole('button',{name:'Ask Jana',exact:false}).click();await p.page.getByRole('button',{name:'Ask a question',exact:true}).waitFor();await p.page.getByRole('button',{name:/Sample private question/}).click();await p.page.getByRole('button',{name:'Remove my message',exact:true}).click();await p.page.getByText('Hidden from the conversation.',{exact:true}).waitFor();assert.equal(await p.page.getByRole('button',{name:/Sample private question/}).count(),0);await p.page.getByRole('button',{name:'Ask a question',exact:true}).click();await p.page.getByLabel('Your message',{exact:true}).waitFor();
+  await p.page.keyboard.press('Escape');await p.page.getByRole('button',{name:'Homeschooling Support',exact:false}).click();await p.page.getByRole('dialog').getByText(/Planner-only purchase does not unlock the community/).waitFor();assert.equal(await p.page.getByRole('button',{name:'Start a conversation',exact:true}).count(),0);assert.deepEqual(p.errors,[]);console.log('PASS Planner-only Front Porch UI: private Ask Jana opens, shared conversations remain locked');await p.ctx.close();
+  const d=await fixture(browser,'transcript-owner');await d.page.goto('http://127.0.0.1:3101/my-desk');await d.page.getByText('Open your generators',{exact:true}).waitFor();assert.equal(await d.page.getByText('Build the homeschool that fits your family.',{exact:true}).count(),0);assert.deepEqual(d.errors,[]);console.log('PASS My Desk: an active per-student Transcript license is recognized as a purchase');await d.ctx.close();
  }finally{await browser.close();server.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

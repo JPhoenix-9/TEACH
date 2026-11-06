@@ -27,3 +27,13 @@ Artwork revision: replace the ball game with a calm, recognizable family read-al
 Artwork revision: family playing a relaxed game of croquet with visible mallets, colored balls and wickets, standing in naturally separated poses to feel approachable. Current asset: public/front-porch-room-v5.webp.
 
 Approved Front Porch welcome: “Pull up a chair. Join a conversation.” Use a sociable invitation without assuming visitors are overwhelmed or in distress.
+
+## November 6 — current product permissions
+
+Shared membership recognizes the complete Blueprint, any GAP band, the Activity Generator product entitlement, a current unrevoked per-student Transcript license, or trusted administrator status. An individual Blueprint module alone does not qualify. These checks read trusted purchase/license records and do not create entitlements.
+
+Ask Jana also recognizes an active, unrevoked Planner subscription. Planner-only customers can open only their own private Ask Jana threads and replies, not shared conversations or another family's questions. Expired, future-dated or revoked terms do not qualify on their own. The existing UI already uses the distinct ask_jana permission; the database mapping needed correction from obsolete product names.
+
+Owners remove their own messages through an authenticated, owner-checked action that can only set hidden=true. The public RPC is SECURITY INVOKER and delegates to a fixed-search-path private function. It cannot edit content/identity, target another author, or restore moderated content. Existing SELECT policies keep removed messages hidden from ordinary users; staff retain moderation and restore controls. Replies under a removed parent thread are not readable by unrelated members through a remembered thread ID.
+
+My Desk recognizes the real per-student Transcript licenses and labels the existing generator links accurately. Approved artwork and layouts are preserved. Tests use synthetic accounts in an isolated Postgres-compatible database and local browser network fixtures; no customer messages or purchase records are created by testing. Real-account walkthrough remains a launch acceptance item.
