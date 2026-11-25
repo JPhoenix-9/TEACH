@@ -20,3 +20,17 @@ test('sandbox checkout rejects production origins and live credentials', async (
   assert.equal((await handler(request('https://teachforlove.com'))).status, 403);
   assert.deepEqual(await (await handler(request(origin))).json(), {ready:false});
 });
+
+test('private live fulfillment is limited to the designated family and the exact saved $0 checkout',()=>{
+ const order={id:'o1',user_id:'owner-test',product_key:'gap-bundle-k2',amount:19899,currency:'usd',price_id:'p1',checkout_session_id:'cs_1'};
+ const session={id:'cs_1',livemode:true,mode:'payment',status:'complete',payment_status:'no_payment_required',
+  client_reference_id:order.id,currency:'usd',amount_subtotal:19899,amount_total:0,total_details:{amount_discount:19899,amount_tax:0},
+  metadata:{teach_order_id:order.id,teach_user_id:order.user_id,teach_product_key:order.product_key,teach_private_coupon:'teach_private_blueprint_gap_fulfillment_test'}};
+ const items=[{quantity:1,price:{id:'p1'}}];
+ assert.equal(verifyPaidOrder(session,items,order,true,order.user_id),true);
+ assert.equal(verifyPaidOrder(session,items,order,true,'different-user'),false);
+ assert.equal(verifyPaidOrder(session,items,order,true),false);
+ assert.equal(verifyPaidOrder({...session,amount_total:1},items,order,true,order.user_id),false);
+ assert.equal(verifyPaidOrder({...session,metadata:{...session.metadata,teach_private_coupon:'other'}},items,order,true,order.user_id),false);
+ assert.equal(verifyPaidOrder(session,items,{...order,checkout_session_id:null},true,order.user_id),false);
+});
