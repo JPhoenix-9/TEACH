@@ -2,9 +2,10 @@
 import MoneyBackGuarantee from './MoneyBackGuarantee';
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../lib/supabase-browser';
+import {supabaseProjectUrl,teachSandbox} from '../lib/supabase-config.mjs';
 import {authPath} from '../lib/auth-return.mjs';
 import s from './account.module.css';
-const endpoint='https://jhooodlcvcpnzcpreqmu.supabase.co/functions/v1/teach-commerce';
+const endpoint=new URL(teachSandbox?'/functions/v1/teach-commerce-sandbox':'/functions/v1/teach-commerce',supabaseProjectUrl).href;
 export default function CheckoutButton({productKey}){
  const [state,setState]=useState('checking'),[message,setMessage]=useState(''),[signedIn,setSignedIn]=useState(false),[code,setCode]=useState('');
  useEffect(()=>{let active=true;Promise.all([fetch(endpoint+'/status').then(r=>r.json()),getSupabase().auth.getUser()]).then(([status,auth])=>{if(active){setSignedIn(!!auth.data.user);setState(status.ready?'ready':'setup');}}).catch(()=>{if(active)setState('setup');});return()=>{active=false;};},[]);
