@@ -5,12 +5,15 @@ import {BLUEPRINT_MODULES,BLUEPRINT_BUNDLE,BLUEPRINT_SAVINGS_CENTS,blueprintProd
 test('six module offers and package retain the approved totals and lesson counts',()=>{
  assert.equal(BLUEPRINT_MODULES.length,6);assert.equal(new Set(BLUEPRINT_MODULES.map(m=>m.key)).size,6);
  assert.equal(BLUEPRINT_MODULES.reduce((sum,m)=>sum+m.videos,0),44);
- assert.equal(BLUEPRINT_MODULES.reduce((sum,m)=>sum+m.priceCents,0),17994);
- assert.equal(BLUEPRINT_BUNDLE.priceCents,14999);assert.equal(BLUEPRINT_SAVINGS_CENTS,2995);
+ assert.equal(BLUEPRINT_MODULES.reduce((sum,m)=>sum+m.priceCents,0),17400);
+ assert.equal(BLUEPRINT_BUNDLE.priceCents,14900);assert.equal(BLUEPRINT_SAVINGS_CENTS,2500);
+ assert.equal(blueprintPrice(2900),'$29');
  assert.equal(blueprintPrice(2999),'$29.99');
+ assert.equal(BLUEPRINT_BUNDLE.regularPriceCents,18900);
+ assert.ok(BLUEPRINT_MODULES.every(module=>module.regularPriceCents===3900));
 });
 test('module selection never substitutes the bundle or an arbitrary product',()=>{
- for(const module of BLUEPRINT_MODULES){assert.equal(blueprintProduct(module.key),module);assert.equal(module.priceCents,2999);}
+ for(const module of BLUEPRINT_MODULES){assert.equal(blueprintProduct(module.key),module);assert.equal(module.priceCents,2900);}
  for(const key of ['',undefined,'gap-k2','blueprint-module-7','blueprint-module-1&price=1'])assert.equal(blueprintProduct(key),undefined);
 });
 test('ownership display respects the bundle and exact module without expanding access',()=>{

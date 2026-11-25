@@ -9,6 +9,6 @@ export default async function Page({searchParams}){
   const selected=typeof product==='string'?blueprintProduct(product):null;
   if(!selected)notFound();
   return <PageFrame eyebrow="HOMESCHOOL SUCCESS BLUEPRINT" title="Your next step." introduction="Choose the guidance that fits what you need right now.">
-    <Enrollment productKey={selected.key} title={selected.title} price={blueprintPrice(selected.priceCents)} videos={selected.videos}/>
+    <Enrollment productKey={selected.key} title={selected.title} price={blueprintPrice(selected.priceCents)} offerLabel="Christmas offer" videos={selected.videos}/>
   </PageFrame>;
 }
