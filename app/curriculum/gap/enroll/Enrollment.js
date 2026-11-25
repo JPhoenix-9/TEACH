@@ -2,7 +2,9 @@
 import CheckoutButton from '../../../components/CheckoutButton';
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../../../lib/supabase-browser';
-import {gapPrice,gapQuote} from '../../../lib/gap-catalog.mjs';
+import {blueprintGapKey,gapPrice,gapQuote,GAP_ADDITIONAL_PRICE_CENTS} from '../../../lib/gap-catalog.mjs';
+import {BLUEPRINT_BUNDLE} from '../../../lib/blueprint-catalog.mjs';
+import {teachSandbox} from '../../../lib/supabase-config.mjs';
 import {authPath} from '../../../lib/auth-return.mjs';
 import s from '../../../components/account.module.css';
 
@@ -30,10 +32,16 @@ export default function Enrollment({productKey,title,pages}){
     {account.state==='loading'?<p role="status">Checking your family’s GAP packages…</p>:account.state==='error'?<p role="alert">We couldn’t check your family’s purchases. Refresh to try again before confirming your price.</p>:quote.owned?<>
       <p>This package is already included in your account.</p><div className={s.actions}><a href="/resources">Download your GAP curriculum →</a></div>
     </>:<>
-      <p><strong>{gapPrice(quote.priceCents)}</strong>{quote.discountCents?' · Your $10 additional-package discount is included.':' · First GAP package'}</p>
-      <p>Your first GAP package is $59.99. Every additional grade-band package is $49.99, whether you purchase it now or return later using the same family account.</p>
+      <p><strong>{gapPrice(quote.priceCents)}</strong>{quote.discountCents?' · Your $10 GAP discount is included.':' · First GAP package'}</p>
+      <p>Your first GAP package is $59.99. Every additional grade-band package is $49.99, A complete Blueprint purchase also qualifies you for $10 off your first GAP package.</p>
       {account.state==='visitor'&&<p>Already own GAP? <a href={authPath('login',`/curriculum/gap/enroll?product=${productKey}`)}>Sign in to check your additional-package price →</a></p>}
       <CheckoutButton productKey={productKey}/>
+      {teachSandbox&&!quote.discountCents&&<section aria-label="Blueprint and GAP offer">
+        <h3>Complete Blueprint and this GAP package</h3>
+        <p><strong>{gapPrice(BLUEPRINT_BUNDLE.priceCents+GAP_ADDITIONAL_PRICE_CENTS)}</strong> · Includes all six Blueprint modules and $10 off this GAP package.</p>
+        <CheckoutButton productKey={blueprintGapKey(productKey)} returnPath={`/curriculum/gap/enroll?product=${productKey}`}
+          buttonLabel="Buy Blueprint and GAP together →"/>
+      </section>}
       <p><a href="/contact">Contact TEACH for enrollment help →</a></p>
     </>}
     <div className={s.links}><a href="/curriculum/gap#choose">Compare grade bands</a><a href="/resources">Your purchased resources</a></div>
