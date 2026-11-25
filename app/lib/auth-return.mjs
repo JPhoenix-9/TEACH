@@ -2,7 +2,7 @@ import {gapProduct} from './gap-catalog.mjs';
 import {blueprintProduct} from './blueprint-catalog.mjs';
 import {activityArchivePath} from './activity-planner.mjs';
 
-const destinations=new Set(["/about","/account","/blueprint","/contact","/curriculum/gap","/curriculum","/front-porch","/generators/activity","/generators","/generators/transcript","/library","/my-desk","/","/planner","/planner/preview","/planner/workspace","/privacy","/records","/refunds","/resources","/search","/start","/terms","/webinars/5-shifts/register","/webinars/common-questions/register","/webinars","/webinars/watch","/wishing-well"]);
+const destinations=new Set(["/about","/account","/blueprint","/blueprint/private-checkout-test","/contact","/curriculum/gap","/curriculum","/front-porch","/generators/activity","/generators","/generators/transcript","/library","/my-desk","/","/planner","/planner/preview","/planner/workspace","/privacy","/records","/refunds","/resources","/search","/start","/terms","/webinars/5-shifts/register","/webinars/common-questions/register","/webinars","/webinars/watch","/wishing-well"]);
 // Only known TEACH pages can be return destinations. Auth/token routes cannot loop.
 export function safeReturnTo(value,fallback='/account'){
  fallback=fallback==='/'?'/':'/account';
