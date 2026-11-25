@@ -48,3 +48,37 @@
  .plaque small{display:none}
  .folderArt>span{font-size:1.1cqw;padding:2px 1px}
 }
+
+/* The room image and cup share the same 3:2 coordinates. */
+.ownerCup {
+ position:absolute;
+ z-index:1;
+ left:84.2%;
+ top:63%;
+ width:12.4%;
+ height:16.2%;
+ border-radius:22%;
+}
+.ownerCup:focus-visible {
+ outline:3px solid #fff3c7;
+ outline-offset:3px;
+}
+.whippedCream {
+ position:absolute;
+ pointer-events:none;
+ left:14%;
+ top:-7%;
+ width:49%;
+ height:20%;
+ border-radius:50% 53% 42% 45%;
+ background:radial-gradient(ellipse at 41% 26%, #fffef5 15%, #fff3dc 56%, #d7b890 100%);
+ box-shadow:0 2px 3px #3b1d1366;
+}
+.whippedCream::before, .whippedCream::after {
+ content:'';
+ position:absolute;
+ background:linear-gradient(140deg,#fffef5 30%,#f0dcc0 82%);
+ border-radius:70% 60% 45% 45%;
+}
+.whippedCream::before {left:21%;top:-42%;width:60%;height:86%;transform:rotate(-9deg)}
+.whippedCream::after {left:39%;top:-71%;width:32%;height:75%;transform:rotate(23deg)}
