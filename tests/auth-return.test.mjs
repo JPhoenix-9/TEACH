@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {safeReturnTo,authPath,accountSetupPath,resolveLoginReturn} from '../app/lib/auth-return.mjs';
 
 test('GAP and individual Blueprint selections survive login and account setup',()=>{
- for(const next of ['/curriculum/gap/enroll?product=gap-35','/blueprint/enroll?product=blueprint-module-3','/blueprint/enroll?product=blueprint','/resources','/contact','/generators','/generators/activity']){
+ for(const next of ['/curriculum/gap/enroll?product=gap-35','/blueprint/enroll?product=blueprint-module-3','/blueprint/enroll?product=blueprint','/blueprint/lessons','/curriculum/gap/downloads','/webinars/registered','/purchase-complete?order=11111111-1111-1111-1111-111111111111','/contact','/generators','/generators/activity']){
   assert.equal(safeReturnTo(next),next);
   assert.equal(new URL(authPath('login',next),'https://teach.invalid').searchParams.get('next'),next);
   assert.equal(new URL(accountSetupPath(next),'https://teach.invalid').searchParams.get('next'),next);

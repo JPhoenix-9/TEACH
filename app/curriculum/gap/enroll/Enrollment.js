@@ -1,4 +1,5 @@
 'use client';
+import GapDownload from '../GapDownload';
 import CheckoutButton from '../../../components/CheckoutButton';
 import {useEffect,useState} from 'react';
 import {getSupabase} from '../../../lib/supabase-browser';
@@ -28,7 +29,7 @@ export default function Enrollment({productKey,title,pages}){
   return <section className={s.panel}>
     <h2>{title}</h2><p>{pages}-page PDF download · One-time purchase</p>
     {account.state==='loading'?<p role="status">Checking your family’s GAP packages…</p>:account.state==='error'?<p role="alert">We couldn’t check your family’s purchases. Refresh to try again before confirming your price.</p>:quote.owned?<>
-      <p>This package is already included in your account.</p><div className={s.actions}><a href="/resources">Download your GAP curriculum →</a></div>
+      <p>This package is already included in your account.</p><GapDownload productKey={productKey}/>
     </>:<>
       <p><strong>{gapPrice(quote.priceCents)}</strong>{quote.discountCents?' · Your $10 additional-package discount is included.':' · First GAP package'}</p>
       <p>Your first GAP package is $59.99. Every additional grade-band package is $49.99, whether you purchase it now or return later using the same family account.</p>
@@ -36,6 +37,6 @@ export default function Enrollment({productKey,title,pages}){
       <CheckoutButton productKey={productKey}/>
       <p><a href="/contact">Contact TEACH for enrollment help →</a></p>
     </>}
-    <div className={s.links}><a href="/curriculum/gap#choose">Compare grade bands</a><a href="/resources">Your purchased resources</a></div>
+    <div className={s.links}><a href="/curriculum/gap#choose">Compare grade bands</a><a href="/curriculum/gap/downloads">Your GAP downloads</a></div>
   </section>;
 }
