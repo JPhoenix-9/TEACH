@@ -1,17 +1,29 @@
 export const ACCOUNT_ID='acct_1UTS0sEH2BoIIOEO';
+const privateCouponId='teach_private_blueprint_gap_fulfillment_test';
+const privateProduct='gap-bundle-k2';
+const privateAmount=19899;
 const origins=new Set(['https://teachforlove.com','https://www.teachforlove.com','https://teach-mocha.vercel.app']);
-export function verifyPaidOrder(session,items,order,livemode=true){
- return session.livemode===livemode&&session.mode==='payment'&&session.status==='complete'&&session.payment_status==='paid'
+export function verifyPaidOrder(session,items,order,livemode=true,privateTestUser){
+ if(livemode&&order.product_key.startsWith('gap-bundle-')&&!session.metadata?.teach_private_coupon)return false;
+ return session.livemode===livemode&&session.mode==='payment'&&session.status==='complete'&&(session.metadata?.teach_private_coupon ? isPrivateFreeCheckout(session,order,privateTestUser) : session.payment_status==='paid')
   &&session.client_reference_id===order.id&&session.metadata?.teach_order_id===order.id
   &&session.metadata?.teach_user_id===order.user_id&&session.metadata?.teach_product_key===order.product_key
   &&session.currency===order.currency&&session.amount_subtotal===order.amount
   &&(!order.checkout_session_id||session.id===order.checkout_session_id)
   &&items.length===1&&items[0].quantity===1&&items[0].price?.id===order.price_id;
 }
+function isPrivateFreeCheckout(session,order,userId){
+ return !!userId&&session.livemode===true&&order.user_id===userId&&order.product_key===privateProduct
+  &&order.amount===privateAmount&&!!order.checkout_session_id&&session.id===order.checkout_session_id
+  &&session.metadata?.teach_private_coupon===privateCouponId&&session.payment_status==='no_payment_required'
+  &&session.amount_total===0&&session.total_details?.amount_tax===0
+  &&session.total_details?.amount_discount===order.amount;
+}
 export function createHandler({admin,Stripe,env, sandbox=null}){
  const livemode=sandbox===null;
  const allowedOrigins=livemode?origins:new Set([sandbox.origin]);
  const accountId=livemode?ACCOUNT_ID:sandbox.accountId;
+ const privateTestUser=livemode?env('TEACH_PRIVATE_CHECKOUT_USER_ID'):undefined;
  return async request=>{
   const origin=request.headers.get('origin');
   const cors=allowedOrigins.has(origin)?{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'authorization,apikey,content-type,x-client-info','Access-Control-Allow-Methods':'GET,POST,OPTIONS','Vary':'Origin'}:{};
@@ -62,9 +74,9 @@ export function createHandler({admin,Stripe,env, sandbox=null}){
      }
      return json({received:true});
     }
-    if(session.payment_status!=='paid')return json({received:true});
+    if(session.payment_status!=='paid'&&!session.metadata?.teach_private_coupon)return json({received:true});
     const lineItems=await stripe.checkout.sessions.listLineItems(session.id,{limit:2});
-    if(!verifyPaidOrder(session,lineItems.data,order,livemode))return json({error:'Paid order validation failed.'},400);
+    if(!verifyPaidOrder(session,lineItems.data,order,livemode,privateTestUser))return json({error:'Paid order validation failed.'},400);
     const fulfilled=await admin.rpc('fulfill_teach_order',{p_order:order.id,p_session:session.id,p_price:order.price_id,p_amount:order.amount,p_event:event.id});
     if(fulfilled.error)throw new Error('fulfillment_failed');
     return json({received:true});
@@ -86,7 +98,8 @@ export function createHandler({admin,Stripe,env, sandbox=null}){
    }
    const body=await request.json();
    if(typeof body.product!=='string'||Object.keys(body).some(k=>k!=='product'))return json({error:'Choose a valid TEACH product.'},400);
-   if(body.product.startsWith('gap-bundle-')&&livemode)return json({error:'The combined offer is still being tested.'},503);
+   const privateCheckout=livemode&&body.product===privateProduct&&!!privateTestUser&&user.id===privateTestUser;
+   if(body.product.startsWith('gap-bundle-')&&livemode&&!privateCheckout)return json({error:'The combined offer is still being tested.'},503);
    if(body.product==='transcript-architect'&&env('TRANSCRIPT_CHECKOUT_ENABLED')!=='true')return json({error:'Transcript Architect purchases are being prepared. No payment has been taken.'},503);
    const reserved=await admin.rpc('reserve_teach_order',{p_user:user.id,p_key:body.product,p_origin:origin});
    if(reserved.error){
@@ -95,13 +108,28 @@ export function createHandler({admin,Stripe,env, sandbox=null}){
     return json({error:messages[reason]||'We couldn’t prepare your order. Please try again.',code:reason},409);
    }
    const order=Array.isArray(reserved.data)?reserved.data[0]:reserved.data;
-   if(order.checkout_url)return json({url:order.checkout_url});
+   if(order.checkout_url){
+    if(privateCheckout){
+     const existing=await stripe.checkout.sessions.retrieve(order.checkout_session_id);
+     if(existing.status!=='open'||existing.amount_total!==0||
+       existing.metadata?.teach_private_coupon!==privateCouponId)throw new Error('invalid_private_checkout');
+    }
+    return json({url:order.checkout_url});
+   }
+   if(privateCheckout){
+    if(order.amount!==privateAmount||order.product_key!==privateProduct)throw new Error('invalid_private_order');
+    const coupon=await stripe.coupons.retrieve(privateCouponId);
+    if(!coupon.valid||coupon.livemode!==true||coupon.percent_off!==100||coupon.max_redemptions!==1||
+      coupon.times_redeemed!==0||coupon.duration!=='once')throw new Error('invalid_private_coupon');
+   }
    const catalog=await admin.from('teach_price_catalog').select('*').eq('product_key',order.product_key).single();
    const price=await stripe.prices.retrieve(order.price_id,{expand:['product']});
    if(catalog.error||price.product?.id!==catalog.data.product_id||!price.product.active||!price.active||price.type!=='one_time'||price.currency!==order.currency||price.unit_amount!==order.amount)throw new Error('price_mismatch');
    if(!livemode&&price.livemode!==false)throw new Error('stripe_environment_mismatch');
    const metadata={teach_order_id:order.id,teach_user_id:user.id,teach_product_key:order.product_key,teach_refund_policy:'seven_day_v1'};
+   if(privateCheckout)metadata.teach_private_coupon=privateCouponId;
    const session=await stripe.checkout.sessions.create({
+    ...(privateCheckout?{discounts:[{coupon:privateCouponId}]}:{}),
     custom_text:{submit:{message:'7-day money-back guarantee: request a full refund within 7 days of purchase through TEACH Contact & Help, even after downloading or starting lessons.'}},
     mode:'payment',line_items:[{price:order.price_id,quantity:1}],client_reference_id:order.id,customer_email:user.email,
     metadata,payment_intent_data:{metadata},expires_at:Math.floor(new Date(order.expires_at).getTime()/1000),
@@ -109,6 +137,10 @@ export function createHandler({admin,Stripe,env, sandbox=null}){
     success_url:`${order.return_origin}/purchase-complete?order=${order.id}`,
     cancel_url:order.product_key==='transcript-architect'?`${order.return_origin}/generators/transcript`:order.product_key.startsWith('gap-')?`${order.return_origin}/curriculum/gap/enroll?product=${order.product_key.replace(/^gap-bundle-/,'gap-')}`:`${order.return_origin}/blueprint/enroll?product=${order.product_key}`
    },{idempotencyKey:'teach_order_'+order.id});
+   if(privateCheckout&&(session.amount_total!==0||session.total_details?.amount_discount!==order.amount)){
+    if(session.status==='open')await stripe.checkout.sessions.expire(session.id);
+    throw new Error('private_checkout_not_free');
+   }
    if(!livemode&&session.livemode!==false)throw new Error('stripe_environment_mismatch');
    const saved=await admin.from('teach_orders').update({checkout_session_id:session.id,checkout_url:session.url}).eq('id',order.id).eq('state','reserved');
    if(saved.error||!session.url)throw new Error('session_save_failed');
